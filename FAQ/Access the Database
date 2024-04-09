@@ -1,0 +1,9 @@
+Please follow the instructions below to access our database:
+
+1- First follow the instructions in How_to_Login
+2- Once logged in, proceed to SQL Lab.
+3- Choose 'pg_dwh' as the database
+4- Choose the schema you want to work with;
+  4.1- The 'staging' schema is used for all of our files to be initially submitted to the database.
+  4.2- The 'ods' schema is used for processed data that has been cleaned and is ready to work with.
+5. Write your queries in the SQL editor and run them to access the data you desire.
