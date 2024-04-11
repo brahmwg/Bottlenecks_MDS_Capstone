@@ -1,5 +1,7 @@
 In this section we have various documentation to provide background on the Bottlenecks project.
 
+##Overview of the Bottlenecks Database System
+
 ![pg_dwh](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/c5421651e87bf63cd3fc00097091768e84100628/documentation/pg_dwh.png)
 
 The 'pg_dwh' image depicts an overview of the structure of our database system.
