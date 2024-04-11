@@ -14,7 +14,7 @@ Next, views are created using the data tables in ods. These views represent our 
 
 ## Overview of Software 
 
-![software](documentation/Bottlenecks - Process Flow Diagram.png)
+![software](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/643b8ed7d366c697386f7c375f70662c59fdf428/documentation/Bottlenecks%20-%20Process%20Flow%20Diagram.png)
 
 The diagram above depicts a general overview of the proposed system for the Bottlenecks project. 
 
