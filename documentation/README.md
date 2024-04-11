@@ -12,4 +12,10 @@ Once the files from the staging schema are cleaned & processed, they are moved t
 
 Next, views are created using the data tables in ods. These views represent our 'data marts' or analytical layer. They are designed for queries that are used for specific analytical purposes. Materialized views are employed in cases where updates are infrequent and to improve performance.
 
+## Overview of Software 
 
+![software](documentation/Bottlenecks - Process Flow Diagram.png)
+
+The diagram above depicts a general overview of the proposed system for the Bottlenecks project. 
+
+The server housed at UBC is a virtual machine with Ubuntu operating system. On it, docker compose is used to orchestrate the containerized applications, including postgres database, nginx proxy server, redis cache, apache superset etc.
