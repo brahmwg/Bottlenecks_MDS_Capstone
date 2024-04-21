@@ -1,12 +1,12 @@
-- For each species in each system, list the numbers of hatchery and wild tags going out and the timing of those detections (to be able to compare hatchery and wild outmigrations).
+>- For each species in each system, list the numbers of hatchery and wild tags going out and the timing of those detections (to be able to compare hatchery and wild outmigrations).
 
-- For each stage (i.e. hatchery/river, estuary, microtroll, adult), what are the number of tags deployed to date or over a specific time frame? 
+>- For each stage (i.e. hatchery/river, estuary, microtroll, adult), what are the number of tags deployed to date or over a specific time frame? 
 
-- For each system/watershed, list all tags deployed that were subsequently redetected on the lowest mainstem array or in the estuary (to look at freshwater survival).
+>- For each system/watershed, list all tags deployed that were subsequently redetected on the lowest mainstem array or in the estuary (to look at freshwater survival).
 
-- For each species in each system/watershed, list the fork lengths of the fish tagged and identify which of those fish were detected as returning adults (compare size structure of initial and returning cohorts).
+>- For each species in each system/watershed, list the fork lengths of the fish tagged and identify which of those fish were detected as returning adults (compare size structure of initial and returning cohorts).
 
-- For each system each year, look up what proportion of the total tags out were detected on seal haul outs or in heron rookeries (to be able to easily pull out predator data and calculate predation rates). 
+>- For each system each year, look up what proportion of the total tags out were detected on seal haul outs or in heron rookeries (to be able to easily pull out predator data and calculate predation rates). 
 
 > A query to produce a data frame that could be used for overwinter survival analysis for Chinook: This data frame would include all Chinook to which a tag had been applied during microtrolling events at the time of original tagging. It should not include mortalities, recaps, etc. I think this query is useful to illustrate a general question…. To what extent should derived attributes be coded in SQL to facilitate direct queries vs being generated on a case by case basis in downstream analyses. 
 >
