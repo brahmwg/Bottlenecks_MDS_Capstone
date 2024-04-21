@@ -2,6 +2,8 @@ In this section we have various documentation to provide background on the Bottl
 
 ## Videos
 
+To familiarize yourself with the operations and background of the Bottlenecks to Survival Project, we suggest you watch the following videos;
+
 [![Bottlenecks to Survival](http://img.youtube.com/vi/5cH5wXQhCIc/0.jpg)](https://www.youtube.com/watch?v=5cH5wXQhCIc) [![Bottlenecks to Survival Volunteers](http://img.youtube.com/vi/PhlAyfypy1g/0.jpg)](https://www.youtube.com/watch?v=PhlAyfypy1g) [![Bottlenecks to Survival Volunteers Sam](http://img.youtube.com/vi/eFaBHc-2uxY/0.jpg)](https://www.youtube.com/watch?v=eFaBHc-2uxY) [![Bottlenecks to Survival Salish Sea](http://img.youtube.com/vi/Cgj9TjLB3-c/0.jpg)](https://www.youtube.com/watch?v=Cgj9TjLB3-c) [![Bottlenecks to Survival](http://img.youtube.com/vi/0AlQNyMOgcY/0.jpg)](https://www.youtube.com/watch?v=0AlQNyMOgcY) [![Bottlenecks to Survival](http://img.youtube.com/vi/ETfma2rYxic/0.jpg)](https://www.youtube.com/watch?v=ETfma2rYxic)
 
 
