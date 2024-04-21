@@ -2,9 +2,7 @@ In this section we have various documentation to provide background on the Bottl
 
 ## Videos
 
-[![Bottlenecks to Survival](http://img.youtube.com/vi/5cH5wXQhCIc/0.jpg)](https://www.youtube.com/watch?v=5cH5wXQhCIc)
-
-[![Bottlenecks to Survival Volunteers](http://img.youtube.com/vi/PhlAyfypy1g/0.jpg)](https://www.youtube.com/watch?v=PhlAyfypy1g)
+[![Bottlenecks to Survival](http://img.youtube.com/vi/5cH5wXQhCIc/0.jpg)](https://www.youtube.com/watch?v=5cH5wXQhCIc) [![Bottlenecks to Survival Volunteers](http://img.youtube.com/vi/PhlAyfypy1g/0.jpg)](https://www.youtube.com/watch?v=PhlAyfypy1g)
 
 [![Bottlenecks to Survival Volunteers Sam](http://img.youtube.com/vi/eFaBHc-2uxY/0.jpg)](https://www.youtube.com/watch?v=eFaBHc-2uxY)
 
