@@ -1,0 +1,459 @@
+---
+title: "Wild Tagging Data Management"
+author: "Will Duguid"
+date: '2023-04-18'
+output: html_document
+---
+
+```{r setup, results='hide',warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,results='hide',fig.height = 8, fig.width = 12, fig.align = "center")
+```
+
+# Setup
+
+The initial chunk of code is where the user will assign the directories where different files are either stored or will be written to. The wild_data_dir can contain only the field data and no other files, wild_gen_data can similarly contain only the genetics outputs from the molecular genetics lab. The other directories can contain other files, and could be the same directory if desired. 
+
+```{r, results='hide',warning = FALSE}
+wild_data_dir<-"/Users/willd/Onedrive/Bottlenecks Management/Wild Data/"
+wild_gen_dir<-"/Users/willd/Onedrive/Bottlenecks Management/Wild Genetics/"
+diagnostic_dir<-"/Users/willd/Onedrive/Bottlenecks Management/R/Diagnostic Outputs"
+work_dir<-"/Users/willd/Onedrive/Bottlenecks Management/R/Working"
+```
+# Load all necessary packages
+
+```{r, results='hide',warning = FALSE}
+require(lubridate)
+require(openxlsx)
+require(dplyr)
+require(janitor)
+require(rJava)
+require(data.table)
+require(ggplot2)
+```
+
+# Combine genetics files. Note that the number and names of fields need to match across files and some changes have been made to the files provided raw by DFO to make files match. THIS CHUNK DOES NOT NEED TO BE RUN UNLESS NEW GENETIC DATA HAVE BEEN OBTAINED AS SUBSEQUENT CHUNK WILL LOAD THE PROCESSED DATA
+
+```{r}
+setwd(wild_gen_dir)
+gen.files<-list.files()
+
+all.genetics<-data.frame()
+#Loop through each report and extract relevant fields from files and merge into a single dataframe
+
+
+  
+for (n in 1:length(gen.files)){
+
+Inventory <- data.frame(read.xlsx (gen.files[n], sheet = "extraction_sheet"))
+Genetics<-as.data.frame(cbind(Inventory$Vial,Inventory$indiv))
+names(Genetics)<-c("ID","indiv")
+Results<- data.frame(read.xlsx (gen.files[n], sheet = "collection_table_ids"))
+Genetics<-merge(Genetics,Results)
+Species<- data.frame(read.xlsx (gen.files[n], sheet = "species_ID"))
+Genetics<-merge(Genetics,Species,all.x=TRUE)
+Genetics$File.Name<-(gen.files[n])
+nrow(Genetics)
+names(Genetics)
+all.genetics<-rbind(all.genetics,Genetics)
+}
+
+names(all.genetics)
+
+#Now select just fields needed for ID and rename
+
+JustGenetics<-as.data.frame(cbind(all.genetics$ID,all.genetics$indiv,all.genetics$File.Name,all.genetics$ID_Source,all.genetics$PBT_brood_year,all.genetics$collection.1,all.genetics$prob.1,all.genetics$repunit.1,all.genetics$collection.2,all.genetics$prob.2,all.genetics$species,all.genetics$pos_sp_ID_prop,all.genetics$notes))
+names(JustGenetics)<-c("ID","indiv","File.Name","Genetic_Source","Brood Year","Stock","Prob","Stock_Group","Stock.2","Prob.2","species","pos_sp_ID_prop","notes")
+
+#Check for duplicate IDs
+
+length(unique(JustGenetics$ID))
+length(unique(JustGenetics$ID)) == nrow(JustGenetics)
+dup<-subset(JustGenetics,duplicated(ID))
+dup2<-subset(JustGenetics,JustGenetics$ID%in%dup$ID)
+setwd(diagnostic_dir)
+write.csv(dup2,"wild_tagging_genetics_duplication.csv")
+
+#Vial 28-058-21 appears to be an error wher ethe first instance (indiv 304_2021_155_4, should be 28-057-21
+#VIal 41-060-21 is a duplicate but presumably a Chinook because non target species for Coho
+#Vial 15-070-21 is a duplicate but presumably a Coho because two few loci for Chinook
+#Vial 162-22-22 was run in duplicate, select the indiv ID with a result
+#Correct dulicate IDs
+
+JustGenetics$ID[JustGenetics$indiv=="304_2021_155_49"]<-"28-057-21"
+Elim1<-subset(JustGenetics,JustGenetics$Genetic_Source=="Too few loci"&JustGenetics$ID=="15-070-21")
+Elim2<-subset(JustGenetics,JustGenetics$Genetic_Source=="non-target_species"&JustGenetics$ID=="41-060-21")
+JustGenetics<-JustGenetics[!JustGenetics$indiv %in% Elim1$indiv, ]
+JustGenetics<-JustGenetics[!JustGenetics$indiv %in% Elim2$indiv, ]
+
+
+
+JustGenetics<-subset(JustGenetics,JustGenetics$indiv!="354_2021_169_2376")
+JustGenetics<-subset(JustGenetics,JustGenetics$indiv!="458_2022_174_4846")
+
+#several IDs are NA, these were checked with lab and are corrected below
+
+JustGenetics$ID[JustGenetics$indiv=="354_2021_169_2374"]<-"29-096-021"
+JustGenetics$ID[JustGenetics$indiv=="354_2021_169_2375"]<-"30-096-021"
+JustGenetics$ID[JustGenetics$indiv=="354_2021_169_2377"]<-"31-096-021"
+
+
+#Check for duplicate MGL individual codes
+
+length(unique(JustGenetics$indiv))
+length(unique(JustGenetics$indiv)) == nrow(JustGenetics)
+
+#ID is backwards in 2022, need to fix, note this code will only work if the correct number of digits used in all IDs (include 0s)
+
+
+JustGenetics$ID[JustGenetics$File.Name=="PID20220110_Survival_BN_Nan(22)_and_more_sc458-459-460_2023-02-28.xlsx"]<-paste(substr(JustGenetics$ID[JustGenetics$File.Name=="PID20220110_Survival_BN_Nan(22)_and_more_sc458-459-460_2023-02-28.xlsx"],8,9),substr(JustGenetics$ID[JustGenetics$File.Name=="PID20220110_Survival_BN_Nan(22)_and_more_sc458-459-460_2023-02-28.xlsx"],1,6),sep="-")
+
+
+# Add a zero to cases where whatman sheet is single digit to facilitate subsequent sort
+
+JustGenetics$ID[substr(JustGenetics$ID,2,2)=="-"]<-paste("0",JustGenetics$ID[substr(JustGenetics$ID,2,2)=="-"],sep="")
+
+JustGenetics$ID[substr(JustGenetics$ID,3,3)=="-"&substr(JustGenetics$ID,6,6)=="-"]<-paste(substr(JustGenetics$ID[substr(JustGenetics$ID,3,3)=="-"&substr(JustGenetics$ID,6,6)=="-"],1,3),"0",substr(JustGenetics$ID[substr(JustGenetics$ID,3,3)=="-"&substr(JustGenetics$ID,6,6)=="-"],4,8),sep="")
+
+#for one sheet the genetics lab recorded 021 instead of 21, correct this
+
+JustGenetics$ID[substr(JustGenetics$ID,8,10)=="021"]<-paste(substr(JustGenetics$ID[substr(JustGenetics$ID,8,10)=="021"],1,7),"21",sep="")
+
+JustGenetics$Gen.Sample<-"Whatman"
+JustGenetics$whatman_sheet[JustGenetics$Gen.Sample=="Whatman"]<-substr(JustGenetics$ID[JustGenetics$Gen.Sample=="Whatman"],4,9)
+JustGenetics$whatman_square[JustGenetics$Gen.Sample=="Whatman"]<-substr(JustGenetics$ID[JustGenetics$Gen.Sample=="Whatman"],1,2)
+JustGenetics$whatman_square<-as.numeric(as.character(JustGenetics$whatman_square))
+setwd(work_dir)
+
+dup<-subset(JustGenetics,duplicated(ID))
+subset(JustGenetics,JustGenetics$ID%in%dup$ID)
+
+# 01-074-21 and 08-083-21 exist for both Coho and Chinook reports. The Chinook results (Nananimo) make sense in the context of where the whatman sheets were used. Drop the Coho results
+
+JustGenetics<-subset(JustGenetics,JustGenetics$indiv!="304_2021_165_235")
+JustGenetics<-subset(JustGenetics,JustGenetics$indiv!="304_2021_174_237")
+
+
+getwd()
+write.csv(JustGenetics,"WildGenetics.csv")
+
+```
+
+
+#Bring in and clean up wild tagging files; note that these files need to be saved as CSVs. This is because openxlsx is a pain with dates and times. Combine wild tagging data with Genetics and deal with duplicates and mismatches. Note that a number of mismatches still exist and need sorted. 
+```{r}
+setwd(wild_data_dir)
+
+wild2021<-read.csv("2021_wild_tagging_final.csv")
+
+wild2022<-read.csv("2022_wild_tagging_final.csv")
+
+wild2023<-read.csv("2023_wild_tagging_final.csv")
+
+
+#make sure names of fields match, if not renaming will be necessary
+names(wild2021)
+names(wild2022)
+names(wild2023)
+
+data<-rbind(wild2021[, c(1:26)],wild2022[, c(1:26)],wild2023[, c(1:26)])
+
+#Combine with Genetics
+
+setwd(work_dir)
+
+JustGenetics<-read.csv("WildGenetics.csv")
+
+data$scanner_id<-format(data$tag_id_long,digits=15)
+data$scanner_id<-as.numeric(data$scanner_id)
+#format dates
+
+subset(data,is.na(data$date))
+
+data$date<-ymd(data$date)
+
+#add year and date variables
+
+data$month<-month(data$date)
+data$year<-year(data$date)
+
+#create ID for linking
+
+data$whatman_sheet<-"NA"
+data$whatman_sheet[data$species=="ck"]<-data$whatman_sheet_ck[data$species=="ck"]
+data$whatman_sheet[data$species=="co"]<-data$whatman_sheet_co[data$species=="co"]
+
+#duplicate whatman 086-21 were used and the genetics lab changed the second to 186-21, in the 2021 file need to change 086-21 on 2021-06-14 to 186-2021
+
+data$whatman_sheet[data$date=="2021-06-14"&data$whatman_sheet=="086-21"]<-"186-21"
+
+
+data$ID<-paste(data$whatman_no,"-",data$whatman_sheet,sep="")
+
+
+#make sure single digit whatman squares have a 0
+
+data$ID[substr(data$ID,2,2)=="-"]<-paste("0",data$ID[substr(data$ID,2,2)=="-"],sep="")
+
+#need to create separate species field names for genetics
+
+names(JustGenetics)[names(JustGenetics) == 'species'] <- 'genetic_species'
+
+# combine, checking for creation of duplicates
+nrow(data)
+
+wildgen<-merge(data,JustGenetics,by="ID",all.x=TRUE,all.y=FALSE)
+
+nrow(wildgen)
+
+#create diagnostic files of duplicates and IDs that appear in one data set but not the other
+#only look at cases where there is a full ID
+
+setwd(diagnostic_dir)
+
+
+wildgenID<-subset(wildgen,grepl( "NA" ,wildgen$ID)=="FALSE")
+wildgenID<-subset(wildgenID,grepl( "N/A" ,wildgenID$ID)=="FALSE")
+
+dup<-subset(wildgenID,duplicated(ID))
+
+
+write.csv(subset(wildgenID,wildgenID$ID%in%dup$ID),"Wild_Duplicated_IDs.csv")
+
+datano<-subset(JustGenetics, !(ID %in% data$ID))
+write.csv(datano,"Wild_Genetics_not_in_Field.csv")
+
+dataID<-subset(data,grepl( "NA" ,data$ID)=="FALSE")
+dataID<-subset(dataID,grepl( "N/A" ,dataID$ID)=="FALSE")
+
+#2022 and 2023 Coho genetics were not run so eliminate
+
+elim<-subset(dataID,(dataID$year==2022|dataID$year==2023)&dataID$species=="co")
+
+nrow(dataID)
+dataID<-dataID[!dataID$ID%in% elim$ID, ]
+nrow(dataID)
+
+datano<-subset(dataID,!dataID$ID%in%JustGenetics$ID)
+write.csv(datano,"Wild_field_not_in_Genetics.csv")
+```
+#Assign stock groups and correct species identifications
+
+```{r}
+
+wildgen$Stock_Group[wildgen$Stock_Group=="LCR"|wildgen$Stock_Group=="NPS"|wildgen$Stock_Group=="SOR"|wildgen$Stock_Group=="SPS"|wildgen$Stock_Group=="UCR-SuF"|wildgen$Stock_Group=="OK"]<-"US"
+wildgen$Stock_Group[wildgen$Stock_Group=="NEVI"]<-"Quinsam"
+wildgen$Stock_Group[wildgen$Stock_Group=="LFR-fall"|wildgen$Stock_Group=="LFR-spring"|wildgen$Stock_Group=="Portage"|wildgen$Stock_Group=="LFR-summer"|wildgen$Stock_Group=="LFR-suppl"|wildgen$Stock=="CHILLIWACK_RIVER_fall"|wildgen$Stock=="CHILLIWACK_RIVER_summer"]<-"Lower Fraser"
+wildgen$Stock_Group[wildgen$Stock_Group=="MFR-spring"|wildgen$Stock_Group=="MFR-summer"|wildgen$Stock_Group=="NTh-spr"|wildgen$Stock_Group=="NTh-sum"|wildgen$Stock_Group=="STh-1.3"|wildgen$Stock_Group=="UFR-spring"]<-"Other Fraser"
+wildgen$Stock_Group[wildgen$Stock_Group=="STh-0.3"|wildgen$Stock_Group=="LTh"|wildgen$Stock_Group=="STh-SHUR"]<-"South Thompson 0.3"
+wildgen$Stock_Group[wildgen$Stock_Group=="KLINA"|wildgen$Stock_Group=="SMn-GStr"]<-"Other Mainland"
+wildgen$Stock_Group[wildgen$Stock_Group=="CWCH-KOK"]<-"Cowichan"
+wildgen$Stock_Group[wildgen$Stock_Group=="EVI-fall"]<-"East VI Fall (Nanaimo)"
+wildgen$Stock_Group[wildgen$Stock_Group=="EVIGStr-sum"]<-"Nanaimo and Puntledge Summer"
+wildgen$Stock_Group[wildgen$Stock_Group=="SWVI"]<-"Southwest VI"
+wildgen$Stock_Group[wildgen$Stock_Group=="QP-fall"]<-"Qualicum_Puntledge Fall"
+
+
+
+
+wildgen$Stock_Group[wildgen$Stock_Group=="BB"|wildgen$Stock_Group=="HK"|wildgen$Stock_Group=="Howe-Burrard"|wildgen$Stock_Group=="Nahwitti"]<-"Other Coho"
+wildgen$Stock_Group[wildgen$Stock_Group=="EVI+GStr"]<-"East Coast VI Coho (mostly target)"
+wildgen$Stock_Group[wildgen$Stock_Group=="FRCany"|wildgen$Stock_Group=="IntrFR"|wildgen$Stock_Group=="LFR"|wildgen$Stock_Group=="LILL"|wildgen$Stock_Group=="LTHOM"|wildgen$Stock_Group=="NTHOM"|wildgen$Stock_Group=="STHOM"&wildgen$Stock!="Chilliwack_R"]<-"Other Fraser Coho"
+wildgen$Stock_Group[wildgen$Stock=="Chilliwack_R"]<-"Chilliwack Coho"
+wildgen$Stock_Group[wildgen$Stock_Group=="MPS"|wildgen$Stock_Group=="OR"|wildgen$Stock_Group=="US"]<-"US Coho"
+wildgen$Stock_Group[wildgen$Stock_Group=="US Coho"&!is.na(wildgen$Stock_Group)&wildgen$species=="ck"]<-"US"
+
+summary(factor(wildgen$Stock_Group))
+
+summary(factor(wildgen$Genetic_Source))
+
+wildgen$Stock_Group[wildgen$Genetic_Source=="Failed to amplify"|wildgen$Genetic_Source=="non-target_species"|wildgen$Genetic_Source=="Too few loci"]<-"Wrong species or poor DNA"
+
+summary(factor(wildgen$genetic_species))
+
+#for loop to assign genetic species with the highest allele proportion as the final genetic species, selects species with highest proportion of alleles, in 50/50 cases assigns final species as NA.  
+n<-400
+for (n in 1:nrow(wildgen)){
+  wildgen$final_genetic_species[n]<-wildgen$genetic_species[n]
+ if(is.na(wildgen$genetic_species[n])){next}
+ if((wildgen$genetic_species[n]=="none")){next}
+ spec<-wildgen$genetic_species[n]
+ spec<-unlist(strsplit(spec, ";"))
+ prop<-wildgen$pos_sp_ID_prop[n]
+ prop<-unlist(strsplit(prop, ";"))
+ prop<-as.numeric(prop)
+ pos<-which.max(prop) 
+ spec<-spec[pos]
+try(if(prop[1]==0.5&prop[2]==0.5){spec<-"NA"},silent=TRUE)
+wildgen$final_genetic_species[n]<-spec
+}
+ 
+levels(factor(wildgen$final_genetic_species))
+
+#deal with chinook with space in front
+wildgen$final_genetic_species[wildgen$final_genetic_species==" chinook"]<-"chinook"
+
+wildgen$final_species<-wildgen$species
+wildgen$final_species[wildgen$final_genetic_species=="chinook"]<-"ck"
+wildgen$final_species[wildgen$final_genetic_species=="coho"]<-"co"
+wildgen$final_species[wildgen$final_genetic_species=="steelhead"]<-"stl"
+
+setwd(work_dir)
+write.csv(wildgen,"wildgen.csv")
+```
+#Produce tables of tagged fish, this code was used for the summary report but is not needed for data management, perhaps remove
+```{r}
+setwd(work_dir)
+names(wildgen)
+wildgentag<-subset(wildgen,wildgen$tag_status=="tag")
+
+levels(factor(wildgentag$final_species))
+
+wildgentag$final_species<-factor(wildgentag$final_species,levels=c("ck","co","stl","rbt","ct","bt","cm","N/A","so"))
+
+#produce table for overall wild tagging tables for report
+
+species_system<- wildgentag %>%  count(final_species,year,watershed)
+species_system<-reshape2::dcast(species_system, final_species ~ year+watershed, value.var = "n")
+species_system<-as.numeric(species_system)
+
+write.csv(species_system,"species_system.csv")
+
+wildgentaggen<-subset(wildgentag,wildgentag$river=="Nanaimo"|wildgentag$river=="Puntledge")
+
+wildgentaggen<-subset(wildgentaggen,wildgentaggen$final_species=="co"|wildgentaggen$final_species=="ck")
+
+wildgentaggen$Stock_Group<-factor(wildgentaggen$Stock_Group,levels=c("Cowichan","East VI Fall (Nanaimo)", "Lower Fraser","Nanaimo and Puntledge Summer","Qualicum_Puntledge Fall","Southwest VI","East Coast VI Coho (mostly target)","Other Fraser Coho","Wrong species or poor DNA","0"))
+wildgentaggen$final_species<-factor(wildgentaggen$final_species)
+stock_system<- wildgentaggen %>%  count(final_species,year,river,local,Stock_Group)
+stock_system<-reshape2::dcast(stock_system,year+river+Stock_Group  ~ final_species+local, value.var = "n",drop=FALSE)
+stock_system[is.na(stock_system)]<-0
+
+write.csv(stock_system,"stock_system.csv")
+
+
+wildgensource<-subset(wildgentaggen,wildgentaggen$Stock_Group!="Wrong species or poor DNA"&wildgentaggen$Stock_Group!="Southwest VI"&wildgentaggen$Stock_Group!="Other Fraser Coho"&wildgentaggen$Stock_Group!= "Lower Fraser"&wildgentaggen$Stock_Group!="0")
+
+wildgensource<-subset(wildgensource,wildgensource$Genetic_Source=="GSI"|wildgensource$Genetic_Source=="PBT")
+
+
+
+wildgensource$Genetic_Source<-factor(wildgensource$Genetic_Source)
+wildgensource$Stock_Group<-factor(wildgensource$Stock_Group)
+
+stock_system<- wildgensource %>%  count(year,river,Genetic_Source,Stock_Group,clip_status)
+stock_system<-reshape2::dcast(stock_system,year+river+Stock_Group  ~ Genetic_Source+clip_status, value.var = "n")
+stock_system[is.na(stock_system)]<-0
+
+write.csv(stock_system,"source.csv")
+
+
+```
+#Produces figures to examine fork length by date origin and stock at different systems but is not needed for data management, perhaps remove
+
+```{r}
+
+setwd(work_dir)
+
+wildgen<-read.csv("wildgen.csv")
+
+head(wildgen)
+
+nanaimo<-subset(wildgen,wildgen$watershed=="Nanaimo")
+nanaimo<-subset(nanaimo,nanaimo$final_species=="ck"|nanaimo$final_species=="co")
+nanaimo$DOY<-yday(nanaimo$date)
+nanaimo$Year<-year(nanaimo$date)
+nanaimo$fork_length_mm<-as.numeric(nanaimo$fork_length_mm)
+
+summary(factor(nanaimo$Stock))
+
+nanaimo<-subset(nanaimo,nanaimo$Stock=="NANAIMO_RIVER_fall"|nanaimo$Stock=="NANAIMO_RIVER_summer")
+
+
+ggplot(data=nanaimo,aes(x=DOY,y=fork_length_mm,col=Stock,shape=Genetic_Source,lty=Genetic_Source))+
+  geom_point()+
+  scale_y_continuous(limits = c(55, 135))+
+    theme(panel.grid.major = element_blank(), panel.grid.minor =element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+  geom_smooth(method="loess")+
+  facet_grid(Year~local)
+
+
+
+ggplot(data=nanaimo,aes(x=DOY,alpha=Genetic_Source,fill=Stock))+
+  geom_histogram()+
+  facet_grid(Year~local)+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+scale_alpha_discrete(range = c(0.4, 1))
+
+
+
+head(wildgen)
+puntledge<-subset(wildgen,wildgen$watershed=="Puntledge")
+puntledge<-subset(puntledge,puntledge$final_species=="ck")
+puntledge$DOY<-yday(puntledge$date)
+puntledge$Year<-year(puntledge$date)
+puntledge$fork_length_mm<-as.numeric(puntledge$fork_length_mm)
+
+summary(factor(puntledge$Stock))
+
+puntledge<-subset(puntledge,puntledge$Stock=="PUNTLEDGE_RIVER_fall"|puntledge$Stock=="PUNTLEDGE_RIVER"|puntledge$Stock=="Puntledge_R"|puntledge$Stock=="Roy_Cr")
+
+
+ggplot(data=puntledge,aes(x=DOY,y=fork_length_mm,col=Stock,shape=Genetic_Source,lty=Genetic_Source))+
+  geom_point()+
+  scale_y_continuous(limits = c(55, 135))+
+    theme(panel.grid.major = element_blank(), panel.grid.minor =element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+  geom_smooth(method="loess")+
+  facet_grid(Year~local)
+
+
+
+ggplot(data=puntledge,aes(x=DOY,alpha=Genetic_Source,fill=Stock))+
+  geom_histogram()+
+  facet_grid(Year~local)+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+scale_alpha_discrete(range = c(0.4, 1))
+
+
+
+head(wildgen)
+puntledge<-subset(wildgen,wildgen$watershed=="Puntledge")
+puntledge<-subset(puntledge,puntledge$final_species=="co")
+puntledge$DOY<-yday(puntledge$date)
+puntledge$Year<-year(puntledge$date)
+puntledge$fork_length_mm<-as.numeric(puntledge$fork_length_mm)
+
+summary(factor(puntledge$Stock))
+
+puntledge<-subset(puntledge,puntledge$Stock=="PUNTLEDGE_RIVER_fall"|puntledge$Stock=="PUNTLEDGE_RIVER"|puntledge$Stock=="Puntledge_R"|puntledge$Stock=="Roy_Cr")
+
+
+ggplot(data=puntledge,aes(x=DOY,y=fork_length_mm,col=Stock,shape=Genetic_Source,lty=Genetic_Source))+
+  geom_point()+
+  scale_y_continuous(limits = c(55, 135))+
+    theme(panel.grid.major = element_blank(), panel.grid.minor =element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+  geom_smooth(method="loess")+
+  facet_grid(Year~local)
+
+
+
+ggplot(data=puntledge,aes(x=DOY,alpha=Genetic_Source,fill=Stock))+
+  geom_histogram()+
+  facet_grid(Year~local)+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(panel.background = element_rect(fill = "transparent", colour = "black"), plot.background =
+          element_rect(fill = "white", colour = NA),legend.background = element_rect(fill = "transparent", colour = NA))+
+scale_alpha_discrete(range = c(0.4, 1))
+
+View(subset(wildgen,wildgen$watershed=="Englishman"))
+```
+
