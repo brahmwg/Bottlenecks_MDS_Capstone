@@ -1,0 +1,46 @@
+Regarding the question: How do you define if a detection is a return or not. Below is the logic I have used.. It needs work.
+
+First (not shown in code) I throw out all but the last detection of a tag. This is where I get $datedetect. This is a bit of a problem as a tag could wash out of a system as a carcass or bedload tag, giving a data later than the return date, also the logic does not allow for Steelhead which may reutrn more than once
+
+I calculate a lag in days between the tagging date and this final detection date.
+
+returnedtag$lag<-difftime(returnedtag$datedetect,returnedtag$date_tagged,  units = "days")
+
+All final detections are first defined as not being returns (0)
+
+returnedtag$returning<-0
+
+Chinook and coho considered returning if they are detected from August to January, create subsets that are considered to be returns.
+
+a<-subset(returnedtag,(returnedtag$species=="ck"|returnedtag$species=="co")&(returnedtag$month_return>7|returnedtag$month_return==1))
+
+Chinook and coho are considered returning prior to August if it is after March and at least 360 days after assumed out-migration (for hatch fish) or tagging date (for other stages)
+
+b<-subset(returnedtag,(returnedtag$species=="ck"|returnedtag$species=="co")&(returnedtag$lag>360)&returnedtag$month_return<8&returnedtag$month_return>3)
+
+#steelhead are considered returning if it is at least 6 months after tagging or assumed outmigration
+c<-subset(returnedtag,(returnedtag$species=="st")&(returnedtag$lag>180))
+
+Assemble records considered to be returns
+
+tags<-rbind(a,b,c)
+
+#then everything tagged outside the system is assumed to be returning
+d<-subset(returnedtag,!is.na(returnedtag$detectyear)&(!returnedtag$tag_id_long %in% tags$tag_id_long)&returnedtag$period!="river TBD"&returnedtag$period!="hatchery"&returnedtag$period!="river"&returnedtag$period!="beach")
+
+tags<-rbind(tags,d)
+
+Now we have all the "returns" together we score them as 1 and replace the 0 values in the dataframe.
+tags$returning<-1
+
+returnedtag<-subset(returnedtag, !returnedtag$tag_id_long %in% tags$tag_id_long)
+
+returnedtag<-rbind(returnedtag,tags)
+
+I am confident this probably correctly classifies about 95% of fish that have returned.. but it is far from perfect. Specifically:
+
+1. we do have some unusual return timing, so could break rules
+2.  steelhead may return more than once but only last date would be considered in this system
+3. A juvenile can die then the tag can wash over an antenna later... this could be considered a return (could maybe catch with directionality... but adults can also go downstream.
+4. Juveniles that residualize but migrate out between August and January would be considered returns.... but some Coho and Chinook will return in the fall of the same year they are released.... so cannot just use a one year lag
+
