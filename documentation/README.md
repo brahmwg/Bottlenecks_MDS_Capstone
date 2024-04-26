@@ -27,7 +27,7 @@ The diagram above depicts a general overview of the proposed system for the Bott
 
 The server housed at UBC is a virtual machine with Ubuntu operating system. On it, docker compose is used to orchestrate the containerized applications, including postgres database, nginx proxy server, redis cache, apache superset etc.
 
-![ods](documentation/pg_dwh.ods.schema.png)
+![documentation/pg_dwh.ods.schema.png](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/77c734480c06af29a7ff25033b56b5036e1c1b93/documentation/pg_dwh.ods.schema.png)
 
 The diagram above depicts the ods schema, it's tables, attributes and how they relate to eachother.
 
