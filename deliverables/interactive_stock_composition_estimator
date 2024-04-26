@@ -1,0 +1,9 @@
+An interactive stock composition estimator:
+
+In that meeting with Wilf, Kevin requested that my stock comp models be interactive. E.g. in area 17F, draw a line splitting the subarea into two subpolygons, then estimate stock proportions with standard errors with mvtweedie.
+
+Initially thought it was a daunting task, but I actually think it is quite straightforward. It doesn't require the model output, at least in its most practical application.
+
+You can plot the individual fish locations with plotly (a Javascript plotting package that has a R package)... then lasso the points you want (or use the gatepoint package  to draw a "gate" through the subarea. Save the selected point as a dataframe, then subset with !%in% to get the remaining points. Assign a group variable. Run mvtweedie code.
+
+It would need to be a shiny app. There are different packages that get you partway. 
