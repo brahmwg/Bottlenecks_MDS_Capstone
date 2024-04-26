@@ -26,3 +26,9 @@ Next, views are created using the data tables in ods. These views represent our 
 The diagram above depicts a general overview of the proposed system for the Bottlenecks project. 
 
 The server housed at UBC is a virtual machine with Ubuntu operating system. On it, docker compose is used to orchestrate the containerized applications, including postgres database, nginx proxy server, redis cache, apache superset etc.
+
+![ods](documentation/pg_dwh.ods.schema.png)
+
+The diagram above depicts the ods schema, it's tables, attributes and how they relate to eachother.
+
+
