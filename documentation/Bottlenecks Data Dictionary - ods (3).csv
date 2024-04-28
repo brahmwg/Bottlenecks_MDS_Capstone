@@ -1,0 +1,465 @@
+table_name,column_name,data_type,range,description
+cleaning_table,date_time,timestamp without time zone,,
+cleaning_table,detect_area,text,,
+cleaning_table,detect_site,text,,
+cleaning_table,latitude,double precision,,
+cleaning_table,longitude,double precision,,
+cleaning_table,tag_id,text,,
+collections_ids,mixture_collection,text,," unique identifier associated with sample mixture, or ""removed"" if filtered from mixture."
+collections_ids,indiv,text,," individual fish identifier, sampleCode, year/catch date, fish number"
+collections_ids,id_source,text,,"The source of assignment, or reason for filtration. For assignment, PBT = Parentage based tagging, explanation on filtering;GSI = Genetic Stock Identification. Filtration is ""Too Few Loci"", ""Failed to amplify"" or ""Non-target species"". See inventory sheet above for"
+collections_ids,repunit,text,,"reporting group, short name"
+collections_ids,collection,text,,reference collection name
+collections_ids,rep_pofz,text,,
+collections_ids,rank,text,,
+detections,location,text,,
+detections,datetime,timestamp without time zone,,date and time of a given fish's detection
+detections,tagid,text,,
+detections,tag_mfr,text,,
+detections,tag_id,text,,
+detections,antenna,text,,
+detections,amplitude_mv,smallint,,
+detections,loc_scanner,text,,
+detections,datedownload,date,,
+detections,date_delta,smallint,,
+detections,fname,text,,
+detections,dirname,text,,
+detections,tag_size,text,,
+extraction_sheet,indiv,text,," individual fish identifier, sampleCode, year/catch date, fish number"
+extraction_sheet,sample_id,text,,
+extraction_sheet,lane,text,,individual well in 96 well tray
+extraction_sheet,stockcode,text,,
+extraction_sheet,catchyear,text,,year of catch
+extraction_sheet,catchjuliandate,text,,date of catch in Julian days
+extraction_sheet,fish,text,,individual fish number
+extraction_sheet,vial,text,,"sampling vial number, sometimes the same as fish number, related to whatman_sheet & _no"
+extraction_sheet,tray,text,,96 well tray used for the analysis
+extraction_sheet,samplename,text,,sample description name
+extraction_sheet,lifestage,text,"""Survival Bottlenecks Winter Microtroll 2023""
+""Juv""
+""Survival Bottlenecks Winter Microtroll 2021""
+""Survival Bottlenecks Winter Microtroll 2022""","usually adult or juvenile, smolt"
+extraction_sheet,clipyn,text,"""unclip""
+""clip""",
+extraction_sheet,comments,text,,
+extraction_sheet,pid,text,,
+extraction_sheet,extractiondateyyyymmdd,text,, Date DNA extraction was performed
+extraction_sheet,extractiontech,text,,Initials of extraction technician that performed the extraction
+extraction_sheet,exportdateyyyymmdd,text,,Date sample was genotyped
+extraction_sheet,pcrtech,text,,Initials of  technician that performed the PCR
+extraction_sheet,resultssentddmmyyyy,text,,Date Results were sent to client
+extraction_sheet,status,text,,
+extraction_sheet,comments2,text,,
+extraction_sheet,comments3,text,,
+extraction_sheet,comments4,text,,
+extraction_sheet,id_source,text,,"The source of assignment, or reason for filtration. For assignment, PBT = Parentage based tagging, explanation on filtering;GSI = Genetic Stock Identification. Filtration is ""Too Few Loci"", ""Failed to amplify"" or ""Non-target species"". See inventory sheet above for"
+field,date,date,,
+field,year,numeric,,
+field,month,numeric,,
+field,watershed,text,"""chemainus""
+""nanaimo""
+""koksilah""
+""black creek""
+""quinsam""
+""campbell river""
+""englishman""
+""puntledge""
+""cowichan""",This refers to the watershed which is comprised of multiple streams and rivers. 
+field,river,text,"""englishman""
+""quinsam""
+""puntledge""
+""shelly creek""
+""tsolum""
+""center creek""
+""cowichan""
+""chemainus""
+""nanaimo""
+""haslam creek""
+""kelvin""
+""koksilah""
+""black creek""","example:This system is located in the Englishman River watershed, but the site itself is Center Creek. "
+field,site,text,"""haslam creek""
+""jack point""
+""skutz""
+""snuneymuxw beach""
+""cedar bridge""
+""hamilton ave""
+""tsolum confluence""
+""newcastle""
+""living forest""
+""condensory bridge""
+""side channel""
+""70.2""
+""center creek""
+""t-bone road""
+""little mexico""
+""sturgess bridge rd""
+""hatchery fence""
+""rst""
+""cow bay""
+""jack point ""
+""vimy pool""
+""tsolum""
+""martindale rd""
+""above tsolum""",
+field,method,text,"""pole seine""
+""hook and line""
+""smolt trap""
+""beach seine""
+""rst""
+""g-trap""
+""purse seine""
+""wolf trap""",Describes the method used to capture associated tagged fish
+field,local,text,"""lower koksilah""
+""chemainus""
+""in-river""
+""marine""
+""kelvin creek""",Describes the environement fish were captured from
+field,crew,text,,Could be initials or full names. Initials can be either two or three characters
+field,pit_scanner,text,,"refers to the hand scanner used during tagging. All tagged fish data (date,time,tagid) are on the hand scanners"
+field,pit_tray,text,,Tray Identification. Each tray hold 100 known pit tags. The tray codes can be used to link back to specific tags if required.
+field,day_start_time,time without time zone,,The day and start time of that sampling event
+field,water_temp_start,text,,Surface water temperatures taken at the start of the day
+field,day_comments,text,,
+field,day_end_time,time without time zone,,
+field,water_temp_end,text,,Surface water temperatures taken at the start of the day
+field,species,text,"""rbt""
+""ct""
+""cm""
+""co""
+""so""
+""bt""
+""stl""
+""ck""",
+field,fork_length_mm,integer,,Size of fish (fork length) in millimeters. These can rage from 20 to over 1 m for adults
+field,weight_g,double precision,,
+field,clip_status,text,"""unclip""
+""clip""","the adipose fin is used to mark hatchery chinook and coho. So a ""y"" means it is a confirmed adipose clipped fish (hatchery) or ""n"" means it is a non-clipped fish (but could still be hatchery stock as they do not clip 100% of their releases)."
+field,tag_status,text,"""no tag""
+""mort""
+""reject""
+""tag""
+""recap""","descriptor of tag deployment. i.e. was the tag in question in a mortality, or was it rejected and found on the bottom of the tank, was it in a viable fish ""tag"". "
+field,scanner_time,time without time zone,,the exact time that specific fish was tagged
+field,tag_id_long,text,,"Convertion to decimal form Hex form. The first three digits (989) can changed (982, 956, 999 etc.)"
+field,whatman_sheet_ck,text,,"001 = the sheet of the current year; -23 = year of the study. Whatman sheet numbers increase as tags are deployed starting in January till december. example of fall 2023 whatman sheet ""232-23""."
+field,whatman_sheet_co,text,,"001 = the sheet of the current year; -23 = year of the study. Whatman sheet numbers increase as tags are deployed starting in January till december. example of fall 2023 whatman sheet ""232-23""."
+field,whatman_no,text,,Indicates what square on the whatman sheet the sample is associated with. So a DNA sample could be 02-132-23
+field,fish_comments,text,,
+field,set_no,text,,
+field,whatman_concat_ck,text,,
+field,whatman_concat_co,text,,
+field,whatman_concat_ck2,text,,
+field,whatman_concat_co2,text,,
+hatch_param,session_id,uuid,,
+hatch_param,cwt,character varying,"""y""
+""n""
+""partial*""",If the release cohort were tagged with coded wire tags (CWT)
+hatch_param,mean_size_tag,numeric,,mean weight in grams (g) of tag group
+hatch_param,system,character varying,"""goldstream""
+""nanaimo""
+""nanaimo_millstone""
+""quinsam""
+""puntledge""
+""little qualicum""
+""goldstream_millstream""
+""big qualicum""
+""quinsam (4 study)""
+""cowichan""",used to reference hatchery tagging and release locations
+hatch_param,tagging_setup,character varying,"""static""
+""flow""
+""unknown""",if the fish were tagged in a flow through system (constant freshwater moving) or static baths (no flow).
+hatch_param,rearing_tank_release,character varying,,type of tank tagged fish were reared in post-tagging. 
+hatch_param,release_date,date,,Date PIT tagged fish were released into the river 
+hatch_param,off_feed,character varying,"""y""
+""n""",If fish were starved off of feed 24 hours before tagging
+hatch_param,number_tagged,integer,,
+hatch_param,mixing_date,date,,"Date PIT tagged fish were mixed into the main population of fish, post tagging."
+hatch_param,tagging_date,date,,
+hatch_param,cohort,character varying,"""smlun""
+""smlma""
+""s""
+""sm""
+""smpma""
+""smpun""
+""f""","F = Fall Chinook, S = Summer Chinook, Sm = coho smolts, SmLun = coho late relaese unmarked, SmLma = coho late release marked, SmPun = coho production release unmarked, SmPma = coho production release marked, OR = ocean release, RR = river release, unk = unknown release group"
+hatch_param,tank_cover,character varying,,type of cover on tank
+hatch_param,species,character varying,"""co""
+""ck""",
+hatch_param,number_released,integer,,Number of total fish released from that cohort
+hatch_param,brood_year,integer,"2021
+2020
+2022
+2019","This indicates the year ""brood"" the parents were collected during adult return and spawned. For coho that are released in 2023 brood year would be 2020 (they spend 1 year rearing in hatchery settings before release). For Chinook it is typically the year prior i.e. 2023 releases "
+hatch_param,feed_frequency,character varying,,daily feed frequency 
+hatch_param,ad_clip,character varying,"""y""
+""n""
+""partial*""","the adipose fin is used to mark hatchery chinook and coho. So a ""y"" means it is a confirmed adipose clipped fish (hatchery) or ""n"" means it is a non-clipped fish (but could still be hatchery stock as they do not clip 100% of their releases)."
+hatch_param,mean_size_rel,numeric,,mean size at release
+hatch_param,release_info,text,,method used to release fish
+hatch_param,release_group,character varying,"""regular""
+""net pen""
+""late""
+""early""
+""traditional""
+""smolt""
+""regular smolt""",release strategy of those fish
+hatch_param,feed_type,character varying,,Information on type of feed 
+hatch_param,water_temp,numeric,,temperature is typically taken in degrees celcius
+hatch_param,rearing_tank_post_tagging,character varying,,type of tank tagged fish were reared in post-tagging. 
+hatch_param,staging_id,integer,,
+hatch_recovery,system,text,"""quinsam""
+""puntledge""
+""unknown""
+""little qualicum""
+""big qualicum""
+""cowichan""
+""robertson creek""
+""goldstream""
+""nanaimo""
+""millstream""",This refers to the watershed which is comprised of multiple streams and rivers. 
+hatch_recovery,rearing_tank_post_tagging,text,,type of tank tagged fish were reared in post-tagging. 
+hatch_recovery,year,bigint,,
+hatch_recovery,date_tagged,timestamp without time zone,,
+hatch_recovery,dat_tag_ret,timestamp without time zone,,
+hatch_recovery,cohort,text,"""f""
+""smlun""
+""millstone""
+""smlma""
+""s""
+""sm""
+""mix""
+""smpma""
+""smpun""","F = Fall Chinook, S = Summer Chinook, Sm = coho smolts, SmLun = coho late relaese unmarked, SmLma = coho late release marked, SmPun = coho production release unmarked, SmPma = coho production release marked, OR = ocean release, RR = river release, unk = unknown release group"
+hatch_recovery,species,text,"""stl""
+""co""
+""ck""",
+hatch_recovery,tag_id_long,text,,
+hatch_recovery,status,text,"""unknown""
+""mort""
+""not tagged""
+""reject""
+""squib""
+""loose""","descriptor of tag deployment. i.e. was the tag in question in a mortality, or was it rejected and found on the bottom of the tank, was it in a viable fish ""tag"". Or was it a squib (a tag still in the needle that was not properly deployed)."
+hatch_tag,tray,character varying,,Tray Identification. Each tray hold 100 known pit tags. The tray codes can be used to link back to specific tags if required.
+hatch_tag,crew,character varying,,Could be initials or full names. Initials can be either two or three characters
+hatch_tag,system,character varying,"""big qualicum""
+""cowichan""
+""goldstream""
+""little qualicum""
+""millstone""
+""millstream""
+""nanaimo""
+""puntledge""
+""quinsam""
+""robertson creek""",Name of the river work is being conducted in
+hatch_tag,species,character varying,"""ck""
+""co""
+""stl""",
+hatch_tag,cohort,character varying,"""f""
+""s""
+""sm""
+""smlma""
+""smlun""
+""smpma""
+""smpun""
+""stlor""
+""stlrr""
+""unk""","F = Fall Chinook, S = Summer Chinook, Sm = coho smolts, SmLun = coho late relaese unmarked, SmLma = coho late release marked, SmPun = coho production release unmarked, SmPma = coho production release marked, OR = ocean release, RR = river release, unk = unknown release group"
+hatch_tag,outmigration_y,integer,"2014
+2015
+2016
+2017
+2018
+2019
+2021
+2022
+2023",
+hatch_tag,hex,character varying,,hex code of tag id
+hatch_tag,tag_id_long,character varying,,decimal version of tag id
+hatch_tag,cwt,character varying,,
+hatch_tag,date_time_release,timestamp without time zone,,
+hatch_tag,fork_length_mm,numeric,,
+hatch_tag,origin,character varying,"""h""",
+hatch_tag,clip_status,character varying,"""c""",adipose fin clip or unclipped
+hatch_tag,sampler,character varying,"""BCCF""
+""BCCF/DFO""
+""BCCF/UVIC""
+""Cam F""
+""DFO""
+""KP""
+""UVIC""",
+hatch_tag,stage,character varying,"""adult""
+""beach""
+""microtroll""
+""purse""
+""purse_1""
+""river""
+""sub_adult""",
+hatch_tag,release_location,character varying,,
+hatch_tag,release_latitude,numeric,,
+hatch_tag,release_longitude,numeric,,
+hatch_tag,river_km,numeric,,
+hatch_tag,dna,character varying,,
+hatch_tag,scale_book,character varying,,used for genetic samples
+hatch_tag,scale_num,character varying,,used for genetic samples
+hatch_tag,depth_m,numeric,,
+hatch_tag,staging_id,bigint,,
+hatch_tag,tag_size,text,,
+location,site_name,character varying,,
+location,nearest_town,character varying,,
+location,watershed,character varying,"""little qualicum""
+""devicemanblue1""
+""robertson creek""
+""goldstream""
+""mobile loop antenna""
+""stamp river""
+""devicemanblackvault""
+""englishman""
+""big qualicum""
+""cowichan""
+""nanaimo""
+""millstream""
+""black creek""
+""stamp river falls us""
+""devicemanblue2""
+""toquaht""
+""quinsam""
+""puntledge""",the watershed antennas are installed in
+location,site_description,text,,
+location,mc,character,"""n  ""
+""y  """,the master controller watershed code identifier
+location,is1001,character,"""n  ""
+""y  """,the watershed code identifier
+location,subloc,character varying,"""ds""
+""us""
+""mid""",the location of the specific antenna compared to its counter part
+location,location_code,character varying,,the watershed code identifier
+location,latitude,numeric,,
+location,longitude,numeric,,
+location,utm_easting,numeric,,
+location,utm_northing,numeric,,
+location,antennas,integer,,"Total number of antennas associated with that ""code"""
+location,installation,date,,Date of antenna installation
+location,removal,date,,Date of antenna removal
+location,location_type,character varying,"""har""
+""pre""
+""tag""
+""det""",
+location,sitenotes,text,,
+location,othernotes,text,,
+location,jamiesonnotes,text,,
+microtroll,ID,text,,
+microtroll,identifier,text,,
+microtroll,date,text,,date of sampling event
+microtroll,project,text,"""uvic""
+""bccf""
+""volunteer""",
+microtroll,pre_injury,text,,
+microtroll,clip_status,text,"""unk""
+""unclip""
+""clip""",
+microtroll,day_start_gps,text,,"Latitude and Longitude of the start location of that ""set"""
+microtroll,crew,text,,initials or name of individual/group conducting sampling
+microtroll,general_location,text,,General location of sampling event
+microtroll,pit_tray,text,,
+microtroll,set_start_time,text,,start time of the specific set
+microtroll,set_end_time,text,,
+microtroll,sides_fished,text,,indicates how many lines of gear you are deploying on a given set
+microtroll,set_start_gps,text,,Latitude and Longitude of the start of the set
+microtroll,set_end_gps,text,,
+microtroll,depth_deepest_hook_ft,text,,indicates the depth of the deepest hook deployed on a given set (typically in ft)
+microtroll,interval_hook_ft,double precision,,distance in feet between each hook on a given set
+microtroll,number_hooks,double precision,,Number of hooks deployed on a given set
+microtroll,fish_depth_ft,double precision,,the depth of capture (feet) for a given fish
+microtroll,species,text,,
+microtroll,tag_status,text,,describes what was done to that given fish on a given set regarding tagging
+microtroll,tag_id_long,double precision,,
+microtroll,fork_length_mm,double precision,,
+microtroll,fish_comments,text,,
+microtroll,whatman_sheet,text,,
+microtroll,whatman_no,text,,
+microtroll,month,bigint,,
+microtroll,year,bigint,,
+microtroll,field_day,text,,
+microtroll,startlat,double precision,,
+microtroll,endlat,double precision,,
+microtroll,startlong,double precision,,
+microtroll,endlong,double precision,,
+microtroll,indiv,text,,
+microtroll,File_Name,text,,
+microtroll,Genetic_Source,text,,
+microtroll,Brood_Year,double precision,,
+microtroll,Brood_Group,text,,
+microtroll,Stock,text,,
+microtroll,Prob,double precision,,
+microtroll,Stock_Group,text,,
+microtroll,Stock_2,text,,
+microtroll,Prob_2,double precision,,
+microtroll,species_ID,text,,
+microtroll,sex_notes,text,,
+microtroll,sex_ID,text,,
+microtroll,Gen_Sample,text,,
+microtroll,book,text,,
+microtroll,scale,double precision,,
+microtroll,Year_Class,text,,
+microtroll,PFMA,bigint,,PFMA code for the set
+microtroll,X,double precision,,
+microtroll,Y,double precision,,
+microtroll,location_quality,text,,
+microtroll,nmonth,bigint,,
+microtroll,study_year,text,,
+microtroll,latregion,text,,
+pit_tag,hex,character varying,,
+pit_tag,tag_id_long,character varying,,
+pit_tag,tray,character varying,,
+predator,date,timestamp without time zone,,
+predator,crew,text,,
+predator,scan_start_time,time without time zone,,
+predator,scan_end_time,time without time zone,,
+predator,location_name,text,"""beacon hill park""
+""black rock""
+""burial islet""
+""chemainus""
+""comox harbour seal haulout""
+""cowichan heron rookery""
+""crofton reef""
+""danger reef""
+""deep bay""
+""deer lake""
+""little qualicum""
+""miami islet""
+""piercy road""
+""pipers lagoon 2""
+""rose islets""
+""se orlebar point rock""
+""s shah point reef""
+""stanley park""",The commom name of the location of the mobile pit scan
+predator,location_gps,text,,Latitude and Longitude of mobile scan location
+predator,final_fate,text,"""m""
+""r""
+""p""","character indicates the potential final fate of a fish (m=miami, p = unknown predation, h = harveted, r = heron rookery)  "
+predator,scanner_id,text,,"refers to the hand scanner used during tagging. All tagged fish data (date,time,tagid) are on the hand scanners"
+predator,scanner_time,text,,the exact time that specific fish was tagged
+predator,tag_id_long,text,,
+predator,tag_gps,text,,Location of the specific tag (if available)
+predator,comments,text,,
+repunits_ids,mixture_collection,text,,
+repunits_ids,indiv,text,,
+repunits_ids,id_source,text,"""GSI""
+""PBT""",Genetic Stock Identification
+repunits_ids,repunit,text,,
+repunits_ids,rep_pofz,text,,
+repunits_ids,rank,text,,
+sex_id,collection,text,,
+sex_id,indiv,text,," individual fish identifier, sampleCode, year/catch date, fish number"
+sex_id,sex_id,text,"""presumed_female""
+""unknown""
+""male""",sex description based on amplification of sex specific locus
+sex_id,notes,text,,
+species_id,indiv,text,," individual fish identifier, sampleCode, year/catch date, fish number"
+species_id,species,text,,species for which species diagnostic markers were observed.
+species_id,pos_sp_id_count,text,,count of species diagnostic alleles observed
+species_id,pos_sp_id_prop,text,,count of species diagnostic alleles observed divided by the maximum possible count
+species_id,neg_sp_confirmed,text,,species for which no species-diagnostic alleles were counted
+species_id,notes,text,,
