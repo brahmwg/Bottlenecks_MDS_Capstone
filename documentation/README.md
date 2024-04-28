@@ -29,7 +29,7 @@ The server housed at UBC is a virtual machine with Ubuntu operating system. On i
 
 ![https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/77c734480c06af29a7ff25033b56b5036e1c1b93/documentation/pg_dwh.ods.schema.png](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/009a4e931b30c63ac0a957e8d41a83268fa5ca5e/documentation/ods_schema.png)
 
-The diagram above depicts the ods schema, it's tables, attributes and how they relate to eachother. It is suggested that you review the [data dictionary](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/fce496db2ea3d2ac7bca254d409ad9d200cc7b43/documentation/data_dictionary_ods.csv)  to better understand each table and it's contents. 
+The diagram above depicts the ods schema, it's tables, attributes and how they relate to eachother. It is suggested that you review the [data dictionary](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/4aa4fdd235843127f412b12acfee3b1c5a6605da/documentation/Data_Dictionary_ods.csv)  to better understand each table and it's contents. 
 
 You'll notice that most tables can be related based on the tag_id_long column, which have been indexed to improve query performance. Primary and foreign key constraints are relaxed at this time. 
 
