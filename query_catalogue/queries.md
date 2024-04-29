@@ -8,6 +8,13 @@ The following are the quesries needed for each problem:
 2. For each stage (i.e. hatchery/river, estuary, microtroll, adult), what are the number of tags deployed to date or over a specific time frame?
 
 ```
+SELECT stage,
+      COUNT(DISTINCT(tag_id_long))
+FROM hatch_tag 
+WHERE stage IS NOT NULL
+AND date_time_release BETWEEN '2018-01-01' -- Change this for initial date
+                          AND '2024-01-01' -- Change this for after date
+GROUP BY stage
 ```
 
 3. For each system/watershed, list all tags deployed that were subsequently redetected on the lowest mainstem array or in the estuary immediately after outmigration (to look at freshwater survival rather than overall survival and adult returns).
