@@ -30,6 +30,27 @@ GROUP BY stage
 5. For each species in each system/watershed, list the fork lengths of the fish tagged and identify which of those fish were detected as returning adults (compare size structure of initial and returning cohorts).
 
 ```
+WITH seen_again_table AS (
+SELECT f.tag_id_long, f.species, f.fork_length_mm, f.date, 
+    CASE
+        WHEN next_occurrence.date IS NOT NULL THEN next_occurrence.date
+        ELSE NULL
+    END AS seen_again
+FROM field f
+LEFT JOIN (
+    SELECT
+        tag_id_long,
+        LEAD(date, 1) OVER (PARTITION BY tag_id_long ORDER BY date) AS date
+    FROM
+        field
+) next_occurrence ON f.tag_id_long = next_occurrence.tag_id_long AND f.date < next_occurrence.date
+ORDER BY f.date
+)
+
+SELECT *, seen_again - date AS no_of_days
+FROM seen_again_table
+WHERE seen_again - date IS NOT NULL
+ORDER BY no_of_days DESC
 ```
 
 6. For each system each year, look up what proportion of the total tags out were detected on seal haul outs or in heron rookeries (to be able to easily pull out predator data and calculate predation rates).
