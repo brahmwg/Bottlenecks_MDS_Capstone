@@ -30,26 +30,18 @@ GROUP BY stage
 5. For each species in each system/watershed, list the fork lengths of the fish tagged and identify which of those fish were detected as returning adults (compare size structure of initial and returning cohorts).
 
 ```
-WITH seen_again_table AS (
-SELECT f.tag_id_long, f.species, f.fork_length_mm, f.date, 
-    CASE
-        WHEN next_occurrence.date IS NOT NULL THEN next_occurrence.date
-        ELSE NULL
-    END AS seen_again
-FROM field f
-LEFT JOIN (
-    SELECT
-        tag_id_long,
-        LEAD(date, 1) OVER (PARTITION BY tag_id_long ORDER BY date) AS date
-    FROM
-        field
-) next_occurrence ON f.tag_id_long = next_occurrence.tag_id_long AND f.date < next_occurrence.date
-ORDER BY f.date
+WITH table_1 AS (
+  SELECT field.tag_id_long, field.watershed, field.species, field.fork_length_mm, field.date, det.last_date
+  FROM field 
+  INNER JOIN (
+    SELECT DISTINCT d.tagid, MAX(DATE(d.datetime)) OVER (PARTITION BY d.tagid) AS last_date
+    FROM detections d
+  ) det ON field.tag_id_long = det.tagid
 )
 
-SELECT *, seen_again - date AS no_of_days
-FROM seen_again_table
-WHERE seen_again - date IS NOT NULL
+SELECT *, last_date - date AS no_of_days
+FROM table_1
+WHERE last_date - date > 100
 ORDER BY no_of_days DESC
 ```
 
