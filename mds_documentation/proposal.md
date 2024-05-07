@@ -23,7 +23,7 @@ To ensure the continual updating of dashboards and models, it is important to es
 
 The implementation of the pipeline will follow the ETL (Extract, Transform, Load) principle. This involves extracting data from the Strait of Georgia Database, performing transformation operations using a Python script, and subsequently loading the processed data into cleaned tables within the same database. The models and dashboards will then retrieve information from these tables. The pipeline's operational flow is outlined in the following diagram:
 
-<IMAGE>
+![alt text](img/pipeline.png)
 
 ## Stretch goals
 As previously mentioned, our primary efforts will be directed towards refining survival analysis modeling and developing two machine learning models. With these milestones accomplished, we are shifting our attention to stretch goals—additional objectives that may extend beyond the capstone period. Our stretch goals encompass the creation of two interactive dashboards: one to visualize the prediction rate of predators by herons and sea owls, and the other to compare the initial and return body sizes of salmon returning to the hatchery.
