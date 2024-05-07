@@ -1,5 +1,5 @@
 # Proposal Report
-Title: Survival analysis of salmon in the Salish sea \n
+Title: Survival analysis of salmon in the Salish sea <br>
 Team members: Jenny, Arturo, Rafe, Riya
 
 ## Executive summary
@@ -37,10 +37,10 @@ As previously mentioned, our primary efforts will be directed towards refining s
 Stretch goals are aimed at maximizing progress within the remaining time frame, without a strict commitment to completing the work by the end of the capstone period. Our objective is to deliver comprehensive documentation alongside the primary deliverables, ensuring that the work can be seamlessly transitioned to other professionals for further development after the capstone period.
 
 ## Timeline
-Week 1 - Deliver SQL queries \n
-Week 2 - Understand Survival analysis paper and re-defining requirements, work on species prediction and outmigration models \n
-Week 3 - Start working on survival analysis model, distribute the work, assign each section of the modelling to a team member \n
-Week 4 - Rest will be done when we meet with stakeholders \n
+Week 1 - Deliver SQL queries <br>
+Week 2 - Understand Survival analysis paper and re-defining requirements, work on species prediction and outmigration models <br>
+Week 3 - Start working on survival analysis model, distribute the work, assign each section of the modelling to a team member <br>
+Week 4 - Rest will be done when we meet with stakeholders <br>
 Week 5 - 
 Week 6 - 
 Week 7 - 
