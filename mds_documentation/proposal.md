@@ -14,8 +14,12 @@ The data for this project consists of tagging fishes with PIT tags at hatcheries
 
 ## Deliverables
 ### 1. Dashboard - Fork length v/s Survivability
+To effectively communicate our data and analysis findings, we are designing and creating an interactive platform where interested parties can engage with graphical representations (graphs) and concise summaries. Our focus is in creating a user-friendly dashboard tailored to showcase the insights from the fork length versus survivability analysis. 
 
-### 2. Basyesian modelling
+We will be creating this dashboard in the SuperSet interface the partners have provided in order to mantain all the information in one place.
+
+
+### 2. Bayesian modelling
 As a crucial component of our project, we will be involved in enhancing a survival analysis model utilizing Cormack-Jolly-Seber (CJS) Bayesian modeling techniques. This model is widely used in ecological research, for predicting changes in animal populations. Utilizing data gathered since 2021, the Pacific Salmon Foundation collected information pertaining to the posterior parameters of the Bayesian model. To establish robust prior distributions, telemetry data from previous researches are used.
 
 ### 3. Species prediction model
