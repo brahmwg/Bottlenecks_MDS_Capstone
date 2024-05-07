@@ -46,7 +46,7 @@ Stretch goals are aimed at maximizing progress within the remaining time frame, 
 - Week 5
 - Week 6
 - Week 7
-This section will be further modified after we hold a meeting with our partners to discuss more about CJS Bayesian modeling. 
+<br>This section will be further modified after we hold a meeting with our partners to discuss more about CJS Bayesian modeling. 
 
 ## Works Cited
 - “Home.” Understanding Evolution, evolution.berkeley.edu/bottlenecks-and-founder-effects/. Accessed 7 May 2024.
