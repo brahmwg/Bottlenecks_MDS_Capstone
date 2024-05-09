@@ -11,7 +11,7 @@ Pacific Salmon Foundation is a non-profit organization, the organization’s mis
 
 The data for this project consists of tagging fishes with PIT tags at hatcheries and in the field, and the encounter of fishes and PIT antenna array or with captures.   
 
-## Deliverables
+## Data Science Techniques
 ### 1. Dashboard - `Fork length` vs. `Survivability`
 To effectively communicate our data and analysis findings, we are designing and creating an interactive platform where our business partners can engage with graphical representations (graphs) and provided with concise summaries. Our goal here is to create visual tools that make it simple to see how changes in salmon fork lengths relate to their chances of survival. We will be using the visualization techniques and skills we learned from our previous courses to build interactive dashboards for this deliverable.
 
@@ -21,7 +21,7 @@ We will be creating this dashboard in the SuperSet interface the partners have p
 As a crucial component of our project, we will be involved in enhancing a survival analysis model utilizing Cormack-Jolly-Seber (CJS) Bayesian modeling techniques. This model is widely used in ecological research, for predicting changes in animal populations. Utilizing data gathered since 2021, the Pacific Salmon Foundation collected information pertaining to the posterior parameters of the Bayesian model. For prior distribution used in Bayesian modeling, telemetry data collected from previous researches are used.
 
 ### 3. Species prediction model
-The goal of this model is to help fill information that was missed out during manual data collection, i.e; an imputation model.This model will be a supervised machine learning model using a decision tree. The labels for this model would be the different kinds of fishes found in the salish sea. Another output of this model is the confidence percentage for each of the predictions. This will help scientists decide whether they want to accept or reject the prediction. An interactive dash app will be created to take user inputs and view results of the prediction.
+The goal of this model is to help fill information that was missed out during manual data collection, i.e; an imputation model.This model will be a supervised machine learning model using a decision tree. The labels for this model would be the different kinds of fishes found in the salish sea. Another output of this model is the confidence percentage for each of the predictions. This will help scientists decide whether they want to accept or reject the prediction. An interactive dash app will be created to take user inputs and view results of the prediction. The success criteria for this model will be the confidence of prediction being greater than a decided threshold (e.g: 75%).
 
 ### 4. Outmigration model
 Our goal with this model is to forecast when Coho and Chinook salmon will migrate from freshwater habitats. To achieve this, we will analyze tagging, detection, and site temperature data. Initially, we will look for trends, seasonality, and cyclicity in the data. If we find any, we will use time series modeling techniques. Otherwise, we will utilize machine learning for predictive modeling. Our partners have emphasized the importance of precise results, so we will prioritize achieving high accuracy rates based on a chosen evaluation metric.
