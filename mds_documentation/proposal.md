@@ -13,9 +13,9 @@ The data for this project consists of tagging fishes with PIT tags at hatcheries
 
 ## Data Science Techniques
 ### 1. Dashboard - `Fork length` vs. `Survivability`
-To effectively communicate our data and analysis findings, we are designing and creating an interactive platform where our business partners can engage with graphical representations (graphs) and provided with concise summaries. Our goal here is to create visual tools that make it simple to see how changes in salmon fork lengths relate to their chances of survival. We will be using the visualization techniques and skills we learned from our previous courses to build interactive dashboards for this deliverable.
+To effectively communicate our data and analysis findings, we are designing and creating an interactive platform where our business partners can engage with graphical representations (graphs) and provided with concise summaries. Our goal here is to create visual tools that make it simple to see how changes in salmon fork lengths relate to their chances of survival. We will be using the visualization techniques and skills we learned from our previous courses to build interactive dashboards for this deliverable, such as bar charts for categorical data, line or scatter plots for continuous data, and histograms for data distribution. This alongside filters for data slicing, will make an intuitive yet useful approach to visualize our data to the partners.
 
-We will be creating this dashboard in the SuperSet interface the partners have provided in order to mantain all the information in one place.
+We will be creating this dashboard in the SuperSet interface the partners have provided in order to mantain all the information in the same place where the queries lie, so it's easy for the partners to alternate from query to dashboard.
 
 ### 2. Bayesian modelling
 As a crucial component of our project, we will be involved in enhancing a survival analysis model utilizing Cormack-Jolly-Seber (CJS) Bayesian modeling techniques. This model is widely used in ecological research, for predicting changes in animal populations (Cormack, 1964; Jolly, 1965; Seber, 1965). Utilizing data gathered since 2021, the Pacific Salmon Foundation collected information pertaining to the posterior parameters of the Bayesian model. For prior distribution used in Bayesian modeling, telemetry data collected from previous researches are used.
@@ -32,6 +32,7 @@ To ensure the continual updating of dashboards and models, it is important to es
 The implementation of the pipeline will follow the ETL (Extract, Transform, Load) principle. This involves extracting data from the Strait of Georgia Database, performing transformation operations using a Python script, and subsequently loading the processed data into cleaned tables within the same database. The models and dashboards will then retrieve information from these tables. The pipeline's operational flow is outlined in the following diagram:
 
 ![Pipeline](img/pipeline.png)
+Figure 1: Proposed data pipeline mockup
 
 ## Stretch goals
 As previously mentioned, our primary efforts will be directed towards refining survival analysis modeling and developing two machine learning models. With these milestones accomplished, we are shifting our attention to stretch goals—additional objectives that may extend beyond the capstone period. Our stretch goals encompass the creation of an additional interactive dashboard; the purpose of this dashboard is to visualize the prediction rate of predators by herons and sea owls over time. This analysis will enable biologists to look into trends in predation and its correlation with salmon survival probability. To fulfill this objective, we will establish a foundational structure and develop a functional dashboard using Superset.
