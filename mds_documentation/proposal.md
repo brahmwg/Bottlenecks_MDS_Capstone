@@ -46,7 +46,7 @@ Stretch goals are aimed at maximizing progress within the remaining time frame, 
 - Week 4: Prioritize survival ananlysis model and coding. Review the outmigration and survival analysis model. <br>
 - Week 5: Pipeline for survival analysis using original data in place of simulation data. <br>
 - Week 6: Continue working on inferences for the survival analysis. <br>
-- Week 7: Finalize the models and review them with the stakeholders. <br>
+- Week 7: Finalize the models and review them with the stakeholders. If we have time left, work on stretch goals.<br>
 
 ## Works Cited
 - Cormack, R. M. ‘Estimates of Survival from the Sighting of Marked Animals’. Biometrika, vol. 51, no. 3/4, JSTOR, Dec. 1964, p. 429, https://doi.org10.2307/2334149.
