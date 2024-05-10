@@ -40,14 +40,13 @@ As previously mentioned, our primary efforts will be directed towards refining s
 Stretch goals are aimed at maximizing progress within the remaining time frame, without a strict commitment to completing the work by the end of the capstone period. Our objective is to deliver comprehensive documentation alongside the primary deliverables, ensuring that the work can be seamlessly transitioned to other professionals for further development after the capstone period. All completed work will be thoroughly documented and stored in a GitHub repository for easy access and future reference.
 
 ## Timeline
-- Week 1: Deliver SQL queries
-- Week 2: Understand Survival analysis paper and re-defining requirements, work on species prediction and outmigration models
-- Week 3: Start working on survival analysis model, distribute the work, assign each section of the modelling to a team member 
-- Week 4: Rest will be done when we meet with stakeholders
-- Week 5
-- Week 6
-- Week 7
-<br>This section will be further modified after we hold a meeting with our partners to discuss more about CJS Bayesian modeling. 
+- Week 1: Deliver SQL queries <br>
+- Week 2: Understand Survival analysis paper and re-defining requirements, work on species prediction and outmigration models <br>
+- Week 3: Fine-tuning species prediction and outmigration model, start working on survival analysis model, distribute the work, assign each section of the modelling to a team member <br>
+- Week 4: Prioritize survival ananlysis model and coding. Review the outmigration and survival analysis model. <br>
+- Week 5: Pipeline for survival analysis using original data in place of simulation data. <br>
+- Week 6: Continue working on inferences for the survival analysis. <br>
+- Week 7: Finalize the models and review them with the stakeholders. <br>
 
 ## Works Cited
 - Cormack, R. M. ‘Estimates of Survival from the Sighting of Marked Animals’. Biometrika, vol. 51, no. 3/4, JSTOR, Dec. 1964, p. 429, https://doi.org10.2307/2334149.
