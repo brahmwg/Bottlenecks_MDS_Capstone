@@ -2,6 +2,32 @@ This document contains all the SQL queries used to extract data from the Data Ce
 
 ## STAGE:
 
+### Stage 1: Facility 
+
+```
+SELECT tag_id_long, date_time_release, outmigration_y, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species FROM HATCH_TAG
+```
+
+### Stage 2: Downstream
+
+The juvinille salmons that from hatchary- maybe there are tagging events between hatchery and detection, not yet considered yet. 
+
+```
+SELECT tagid, datetime, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.species, HATCH_TAG.fork_length_mm 
+FROM detections 
+INNER JOIN HATCH_TAG ON DETECTIONS.tagid = HATCH_TAG.tag_id_long  
+WHERE location IN (
+  SELECT DISTINCT d.location 
+  FROM detections d
+  JOIN location l ON d.location = l.location_code
+  WHERE l.site_description = 'Mainstem Array'
+    AND l.subloc = 'ds'
+)
+AND DATE(DETECTIONS.datetime) - DATE(HATCH_TAG.tagging_date) < 100;
+```
+### Stage 3: Estuary
+
+
 ### Stage 4: Microtroll
 
 All hatchry origin fish from microtroll
