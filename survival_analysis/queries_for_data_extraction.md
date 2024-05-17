@@ -5,7 +5,8 @@ This document contains all the SQL queries used to extract data from the Data Ce
 ### Stage 1: Facility 
 
 ```
-SELECT tag_id_long, date_time_release, outmigration_y, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species FROM HATCH_TAG
+SELECT tag_id_long, date_time_release, outmigration_y, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species
+FROM HATCH_TAG
 ```
 
 ### Stage 2: Downstream
@@ -53,3 +54,4 @@ WHERE tag_id_long NOT IN (
     WHERE microtroll.tag_id_long IS NOT NULL
 )
 ```
+### Stage 5: Return
