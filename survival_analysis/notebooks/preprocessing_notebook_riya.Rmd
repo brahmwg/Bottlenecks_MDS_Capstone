@@ -1,0 +1,66 @@
+---
+title: "Trail for preprocessing - Survival Analysis"
+output: html_notebook
+---
+
+# Imports
+
+```{r}
+library(readr)
+```
+
+# Data reading
+
+```{r}
+hatchery <- read_csv("../raw_data/hatchery.csv")
+downstream <- read_csv("../raw_data/downstream.csv")
+microtroll_hatch <- read_csv("../raw_data/microtroll_hatch.csv")
+microtroll_wild <- read_csv("../raw_data/microtroll_wild.csv")
+```
+
+The columns we want the final dataset to have is the following:
+
+```{r}
+columns <- colnames(microtroll_hatch)
+columns
+```
+
+### Note on `action` column
+
+`Action` can be taken care only after combining the whole dataset. The first instance of a tag_id is "tag" and the following instances is "detect".
+
+# Pre-processing
+
+## Stage 1: Hatchery
+
+```{r}
+head(hatchery)
+```
+
+## Stage 2: Downstream
+
+```{r}
+head(downstream)
+```
+
+## Stage 3: Estuary
+
+```{r}
+
+```
+
+## Stage 4: Microtroll
+
+```{r}
+head(microtroll_hatch)
+```
+
+```{r}
+head(microtroll_wild)
+```
+
+## Stage 5: Return
+
+```{r}
+
+```
