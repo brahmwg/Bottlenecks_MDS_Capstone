@@ -14,7 +14,7 @@ FROM HATCH_TAG
 The juvinille salmons that from hatchary- maybe there are tagging events between hatchery and detection, not yet considered yet. 
 
 ```
-SELECT tagid, datetime, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.species, HATCH_TAG.fork_length_mm 
+SELECT tagid, datetime, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.fork_length_mm, HATCH_TAG.species 
 FROM detections 
 INNER JOIN HATCH_TAG ON DETECTIONS.tagid = HATCH_TAG.tag_id_long  
 WHERE location IN (
