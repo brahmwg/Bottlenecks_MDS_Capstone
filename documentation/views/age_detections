@@ -1,0 +1,19 @@
+ SELECT DISTINCT a.tag_id_long,
+    a.species,
+    a.source,
+    a.year,
+    a.river AS origin_location,
+    a.stock,
+    a.date AS tag_date,
+    date(d.datetime) AS detection_date,
+        CASE
+            WHEN a.date IS NOT NULL THEN age(date(d.datetime)::timestamp with time zone, a.date::timestamp with time zone)
+            ELSE age(date(d.datetime)::timestamp with time zone, to_date(a.year::text, 'YYYY'::text)::timestamp with time zone)
+        END AS date_diff,
+    d.location,
+    d.antenna_fixed,
+    aln.watershed AS detection_location
+   FROM ods.all_tagging a
+     LEFT JOIN ods.detections d ON a.tag_id_long = d.tagid
+     LEFT JOIN ods.antenna_location_names aln ON d.location = aln.location
+  WHERE d.tagid IS NOT NULL;
