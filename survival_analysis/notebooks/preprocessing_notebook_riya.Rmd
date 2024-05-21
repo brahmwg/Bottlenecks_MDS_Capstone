@@ -38,7 +38,7 @@ columns
 
 ## Stage 1: Hatchery
 
-Notes: Fix date column, rearrange columns if needed.
+Notes: Table clean, good to go
 
 ```{r}
 head(hatchery)
