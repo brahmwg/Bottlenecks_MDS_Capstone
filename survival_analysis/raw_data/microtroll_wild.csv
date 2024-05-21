@@ -1,4 +1,4 @@
-tag_id_long,date,stage,origin,fork_length_mm,action,species
+tag_id,date,stage,origin,fork_length_mm,action,species
 0000000000000000,2023-10-31,microtroll,wild,307.0,unclip,co
 982.000403134521,2020-10-15,microtroll,wild,452.0,unclip,ck
 982.091062627359,2022-11-21,microtroll,wild,320.0,clip,co

@@ -1,4 +1,4 @@
-tag_id_long,date,stage,origin,fork_length_mm,action,species
+tag_id,date,stage,origin,fork_length_mm,action,species
 989.001034046413,2021-10-27,microtroll,hatch,210.0,clip,ck
 989.001038730126,2022-03-10,microtroll,hatch,268.0,unclip,ck
 989.001039383269,2022-10-13,microtroll,hatch,277.0,clip,co

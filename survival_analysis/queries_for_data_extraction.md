@@ -5,7 +5,7 @@ This document contains all the SQL queries used to extract data from the Data Ce
 ### Stage 1: Facility 
 
 ```
-SELECT tag_id_long, tagging_date, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species  
+SELECT tag_id_long as tag_id, release_date as date, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, 'tag' AS action, species  
 FROM HATCH_TAG
 ```
 
@@ -13,8 +13,10 @@ FROM HATCH_TAG
 
 The juvinille salmons that from hatchary- maybe there are tagging events between hatchery and detection, not yet considered yet. 
 
+All hatchery origin fish in downstream
 ```
-SELECT tagid, datetime, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.fork_length_mm, HATCH_TAG.species 
+SELECT tagid as tag_id, DATE(datetime) as date, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.fork_length_mm, 'detect' as action,
+      HATCH_TAG.species 
 FROM detections 
 INNER JOIN HATCH_TAG ON DETECTIONS.tagid = HATCH_TAG.tag_id_long  
 WHERE location IN (
@@ -26,6 +28,22 @@ WHERE location IN (
 )
 AND DATE(DETECTIONS.datetime) - DATE(HATCH_TAG.tagging_date) < 100;
 ```
+
+All wild origin fish in downstream - from field
+```
+SELECT tagid as tag_id, field.date, 'downstream' as stage, 'wild' as origin, field.fork_length_mm, 
+      clip_status as action, field.species 
+FROM detections 
+INNER JOIN field ON DETECTIONS.tagid = field.tag_id_long  
+WHERE location IN (
+  SELECT DISTINCT d.location 
+  FROM detections d
+  JOIN location l ON d.location = l.location_code
+  WHERE l.site_description = 'Mainstem Array'
+    AND l.subloc = 'ds'
+)
+AND DATE(DETECTIONS.datetime) - DATE(FIELD.date) < 100;
+```
 ### Stage 3: Estuary
 
 
@@ -33,7 +51,7 @@ AND DATE(DETECTIONS.datetime) - DATE(HATCH_TAG.tagging_date) < 100;
 
 All hatchry origin fish from microtroll
 ```
-SELECT DISTINCT microtroll.tag_id_long, date, 'microtroll' as stage, 'hatch' as origin,
+SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'hatch' as origin,
         microtroll.fork_length_mm, 
         microtroll.clip_status as action, microtroll.species
 FROM microtroll 
@@ -43,7 +61,7 @@ WHERE microtroll.tag_id_long IS NOT NULL
 
 All wild origin fish from microtroll
 ```
-SELECT DISTINCT microtroll.tag_id_long, date, 'microtroll' as stage, 'wild' as origin,
+SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'wild' as origin,
         microtroll.fork_length_mm, 
         microtroll.clip_status as action, microtroll.species
 FROM microtroll 

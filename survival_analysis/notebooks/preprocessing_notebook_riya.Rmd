@@ -14,7 +14,11 @@ library(readr)
 ```{r}
 hatchery <- read_csv("../raw_data/hatchery.csv", show_col_types = FALSE)
 
-downstream <- read_csv("../raw_data/downstream.csv", show_col_types = FALSE)
+downstream_hatch <- read_csv("../raw_data/downstream_hatch.csv", 
+                             show_col_types = FALSE)
+
+downstream_wild <- read_csv("../raw_data/downstream_wild.csv", 
+                             show_col_types = FALSE)
 
 microtroll_hatch <- read_csv("../raw_data/microtroll_hatch.csv", 
                              show_col_types = FALSE)
@@ -38,18 +42,28 @@ columns
 
 ## Stage 1: Hatchery
 
-Notes: Table clean, good to go
+Notes: Why is all forklength NULL?
 
 ```{r}
 head(hatchery)
 ```
 
+```{r}
+
+```
+
 ## Stage 2: Downstream
 
-Notes: Fix date column, rest good to go
+Notes: fork_length is all NULL in hatch
 
 ```{r}
-head(downstream)
+head(downstream_hatch)
+```
+
+Notes: Change action unclip/clip to tag/detect
+
+```{r}
+head(downstream_wild)
 ```
 
 ## Stage 3: Estuary
@@ -60,9 +74,7 @@ head(downstream)
 
 ## Stage 4: Microtroll
 
-Notes: These data sets are in the required format. No further processing needed.
-
-Action column - what to do?
+Notes: action - change clip/unclip to tag/detect
 
 ```{r}
 head(microtroll_hatch)
@@ -81,17 +93,13 @@ head(microtroll_wild)
 # Combining cleaned dfs
 
 ```{r}
-
-```
-
-## `Action` column 
-
-```{r}
-
+combined <- rbind(hatchery, downstream_hatch, downstream_wild, 
+                  microtroll_hatch, microtroll_wild)
+head(combined)
 ```
 
 # Save the dataset
 
 ```{r}
-
+write.csv(combined, "../survival_analysis.csv")
 ```
