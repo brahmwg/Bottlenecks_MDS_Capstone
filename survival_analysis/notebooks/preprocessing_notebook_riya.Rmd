@@ -96,7 +96,8 @@ head(combined)
 
 ## `Action` column
 
-Sometimes there is a data entry error, write script to make sure of tag and detect.
+1.  Sometimes there is a data entry error, write script to make sure of tag and detect.
+2.  Change "recap" to "detect"
 
 ```{r}
 
