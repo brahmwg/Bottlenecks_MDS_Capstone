@@ -98,6 +98,14 @@ combined <- rbind(hatchery, downstream_hatch, downstream_wild,
 head(combined)
 ```
 
+## `Action` column
+
+Sometimes there is a data entry error, write script to make sure of tag and detect.
+
+```{r}
+
+```
+
 # Save the dataset
 
 ```{r}

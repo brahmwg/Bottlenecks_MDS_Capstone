@@ -31,8 +31,9 @@ AND DATE(DETECTIONS.datetime) - DATE(HATCH_TAG.tagging_date) < 100;
 
 All wild origin fish in downstream - from field
 ```
+WITH table_1 AS(
 SELECT tagid as tag_id, field.date, 'downstream' as stage, 'wild' as origin, field.fork_length_mm, 
-      clip_status as action, field.species 
+      tag_status as action, field.species 
 FROM detections 
 INNER JOIN field ON DETECTIONS.tagid = field.tag_id_long  
 WHERE location IN (
@@ -42,7 +43,13 @@ WHERE location IN (
   WHERE l.site_description = 'Mainstem Array'
     AND l.subloc = 'ds'
 )
-AND DATE(DETECTIONS.datetime) - DATE(FIELD.date) < 100;
+AND DATE(DETECTIONS.datetime) - DATE(FIELD.date) < 100
+)
+
+SELECT * FROM table_1
+WHERE tag_id NOT IN (
+            SELECT DISTINCT tag_id_long
+            FROM hatch_tag )
 ```
 ### Stage 3: Estuary
 
