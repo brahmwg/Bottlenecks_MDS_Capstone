@@ -42,25 +42,21 @@ columns
 
 ## Stage 1: Hatchery
 
-Notes: Why is all forklength NULL?
+Notes: Clean
 
 ```{r}
 head(hatchery)
 ```
 
-```{r}
-
-```
-
 ## Stage 2: Downstream
 
-Notes: fork_length is all NULL in hatch
+Notes: Clean
 
 ```{r}
 head(downstream_hatch)
 ```
 
-Notes: Change action unclip/clip to tag/detect
+Notes: Clean
 
 ```{r}
 head(downstream_wild)
