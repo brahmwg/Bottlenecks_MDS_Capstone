@@ -5,7 +5,7 @@ This document contains all the SQL queries used to extract data from the Data Ce
 ### Stage 1: Facility 
 
 ```
-SELECT tag_id_long, date_time_release, outmigration_y, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species
+SELECT tag_id_long, tagging_date, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, species  
 FROM HATCH_TAG
 ```
 
