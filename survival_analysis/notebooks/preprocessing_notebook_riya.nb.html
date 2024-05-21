@@ -1767,55 +1767,17 @@ Analysis</h1>
 <h1>Data reading</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGF0Y2hlcnkgPC0gcmVhZF9jc3YoXCIuLi9yYXdfZGF0YS9oYXRjaGVyeS5jc3ZcIilcbmBgYCJ9 -->
-<pre class="r"><code>hatchery &lt;- read_csv(&quot;../raw_data/hatchery.csv&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGF0Y2hlcnkgPC0gcmVhZF9jc3YoXCIuLi9yYXdfZGF0YS9oYXRjaGVyeS5jc3ZcIiwgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSlcblxuZG93bnN0cmVhbSA8LSByZWFkX2NzdihcIi4uL3Jhd19kYXRhL2Rvd25zdHJlYW0uY3N2XCIsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpXG5cbm1pY3JvdHJvbGxfaGF0Y2ggPC0gcmVhZF9jc3YoXCIuLi9yYXdfZGF0YS9taWNyb3Ryb2xsX2hhdGNoLmNzdlwiLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSlcblxubWljcm90cm9sbF93aWxkIDwtIHJlYWRfY3N2KFwiLi4vcmF3X2RhdGEvbWljcm90cm9sbF93aWxkLmNzdlwiLCBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaG93X2NvbF90eXBlcyA9IEZBTFNFKVxuYGBgIn0= -->
+<pre class="r"><code>hatchery &lt;- read_csv(&quot;../raw_data/hatchery.csv&quot;, show_col_types = FALSE)
+
+downstream &lt;- read_csv(&quot;../raw_data/downstream.csv&quot;, show_col_types = FALSE)
+
+microtroll_hatch &lt;- read_csv(&quot;../raw_data/microtroll_hatch.csv&quot;, 
+                             show_col_types = FALSE)
+
+microtroll_wild &lt;- read_csv(&quot;../raw_data/microtroll_wild.csv&quot;, 
+                            show_col_types = FALSE)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAwIENvbHVtbnM6IDfilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgKDMpOiBzdGFnZSwgb3JpZ2luLCBzcGVjaWVzXG5kYmwgKDIpOiB0YWdfaWRfbG9uZywgb3V0bWlncmF0aW9uX3lcbmxnbCAoMik6IGRhdGVfdGltZV9yZWxlYXNlLCBmb3JrX2xlbmd0aF9tbVxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 100 Columns: 7── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr (3): stage, origin, species
-dbl (2): tag_id_long, outmigration_y
-lgl (2): date_time_release, fork_length_mm
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZG93bnN0cmVhbSA8LSByZWFkX2NzdihcIi4uL3Jhd19kYXRhL2Rvd25zdHJlYW0uY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>downstream &lt;- read_csv(&quot;../raw_data/downstream.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAwIENvbHVtbnM6IDbilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgICgzKTogc3RhZ2UsIG9yaWdpbiwgc3BlY2llc1xuZGJsICAoMSk6IHRhZ2lkXG5sZ2wgICgxKTogZm9ya19sZW5ndGhfbW1cbmR0dG0gKDEpOiBkYXRldGltZVxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 100 Columns: 6── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (3): stage, origin, species
-dbl  (1): tagid
-lgl  (1): fork_length_mm
-dttm (1): datetime
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWljcm90cm9sbF9oYXRjaCA8LSByZWFkX2NzdihcIi4uL3Jhd19kYXRhL21pY3JvdHJvbGxfaGF0Y2guY3N2XCIpXG5gYGAifQ== -->
-<pre class="r"><code>microtroll_hatch &lt;- read_csv(&quot;../raw_data/microtroll_hatch.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTUgQ29sdW1uczogN+KUgOKUgCBDb2x1bW4gc3BlY2lmaWNhdGlvbiDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIBcbkRlbGltaXRlcjogXCIsXCJcbmNociAgKDQpOiBzdGFnZSwgb3JpZ2luLCBhY3Rpb24sIHNwZWNpZXNcbmRibCAgKDIpOiB0YWdfaWRfbG9uZywgZm9ya19sZW5ndGhfbW1cbmRhdGUgKDEpOiBkYXRlXG7ihLkgVXNlIGBzcGVjKClgIHRvIHJldHJpZXZlIHRoZSBmdWxsIGNvbHVtbiBzcGVjaWZpY2F0aW9uIGZvciB0aGlzIGRhdGEuXG7ihLkgU3BlY2lmeSB0aGUgY29sdW1uIHR5cGVzIG9yIHNldCBgc2hvd19jb2xfdHlwZXMgPSBGQUxTRWAgdG8gcXVpZXQgdGhpcyBtZXNzYWdlLlxuIn0= -->
-<pre><code>Rows: 15 Columns: 7── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (4): stage, origin, action, species
-dbl  (2): tag_id_long, fork_length_mm
-date (1): date
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWljcm90cm9sbF93aWxkIDwtIHJlYWRfY3N2KFwiLi4vcmF3X2RhdGEvbWljcm90cm9sbF93aWxkLmNzdlwiKVxuYGBgIn0= -->
-<pre class="r"><code>microtroll_wild &lt;- read_csv(&quot;../raw_data/microtroll_wild.csv&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiUm93czogMTAwIENvbHVtbnM6IDfilIDilIAgQ29sdW1uIHNwZWNpZmljYXRpb24g4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSAXG5EZWxpbWl0ZXI6IFwiLFwiXG5jaHIgICg1KTogdGFnX2lkX2xvbmcsIHN0YWdlLCBvcmlnaW4sIGFjdGlvbiwgc3BlY2llc1xuZGJsICAoMSk6IGZvcmtfbGVuZ3RoX21tXG5kYXRlICgxKTogZGF0ZVxu4oS5IFVzZSBgc3BlYygpYCB0byByZXRyaWV2ZSB0aGUgZnVsbCBjb2x1bW4gc3BlY2lmaWNhdGlvbiBmb3IgdGhpcyBkYXRhLlxu4oS5IFNwZWNpZnkgdGhlIGNvbHVtbiB0eXBlcyBvciBzZXQgYHNob3dfY29sX3R5cGVzID0gRkFMU0VgIHRvIHF1aWV0IHRoaXMgbWVzc2FnZS5cbiJ9 -->
-<pre><code>Rows: 100 Columns: 7── Column specification ──────────────────────────────────────────────────────────────────────────────────
-Delimiter: &quot;,&quot;
-chr  (5): tag_id_long, stage, origin, action, species
-dbl  (1): fork_length_mm
-date (1): date
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>The columns we want the final dataset to have is the following:</p>
@@ -1842,6 +1804,7 @@ instances is “detect”.</p>
 <h1>Pre-processing</h1>
 <div id="stage-1-hatchery" class="section level2">
 <h2>Stage 1: Hatchery</h2>
+<p>Notes: Fix date column, rearrange columns if needed.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChoYXRjaGVyeSlcbmBgYCJ9 -->
@@ -1859,6 +1822,7 @@ instances is “detect”.</p>
 </div>
 <div id="stage-2-downstream" class="section level2">
 <h2>Stage 2: Downstream</h2>
+<p>Notes: Fix date column, rest good to go</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChkb3duc3RyZWFtKVxuYGBgIn0= -->
@@ -1883,6 +1847,9 @@ instances is “detect”.</p>
 </div>
 <div id="stage-4-microtroll" class="section level2">
 <h2>Stage 4: Microtroll</h2>
+<p>Notes: These data sets are in the required format. No further
+processing needed.</p>
+<p>Action column - what to do?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChtaWNyb3Ryb2xsX2hhdGNoKVxuYGBgIn0= -->
@@ -1917,10 +1884,31 @@ instances is “detect”.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 </div>
+</div>
+<div id="combining-cleaned-dfs" class="section level1">
+<h1>Combining cleaned dfs</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="action-column" class="section level2">
+<h2><code>Action</code> column</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="save-the-dataset" class="section level1">
+<h1>Save the dataset</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRyYWlsIGZvciBwcmVwcm9jZXNzaW5nIC0gU3Vydml2YWwgQW5hbHlzaXMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIEltcG9ydHMNCg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0KYGBgDQoNCiMgRGF0YSByZWFkaW5nDQoNCmBgYHtyfQ0KaGF0Y2hlcnkgPC0gcmVhZF9jc3YoIi4uL3Jhd19kYXRhL2hhdGNoZXJ5LmNzdiIpDQpkb3duc3RyZWFtIDwtIHJlYWRfY3N2KCIuLi9yYXdfZGF0YS9kb3duc3RyZWFtLmNzdiIpDQptaWNyb3Ryb2xsX2hhdGNoIDwtIHJlYWRfY3N2KCIuLi9yYXdfZGF0YS9taWNyb3Ryb2xsX2hhdGNoLmNzdiIpDQptaWNyb3Ryb2xsX3dpbGQgPC0gcmVhZF9jc3YoIi4uL3Jhd19kYXRhL21pY3JvdHJvbGxfd2lsZC5jc3YiKQ0KYGBgDQoNClRoZSBjb2x1bW5zIHdlIHdhbnQgdGhlIGZpbmFsIGRhdGFzZXQgdG8gaGF2ZSBpcyB0aGUgZm9sbG93aW5nOg0KDQpgYGB7cn0NCmNvbHVtbnMgPC0gY29sbmFtZXMobWljcm90cm9sbF9oYXRjaCkNCmNvbHVtbnMNCmBgYA0KDQojIyMgTm90ZSBvbiBgYWN0aW9uYCBjb2x1bW4NCg0KYEFjdGlvbmAgY2FuIGJlIHRha2VuIGNhcmUgb25seSBhZnRlciBjb21iaW5pbmcgdGhlIHdob2xlIGRhdGFzZXQuIFRoZSBmaXJzdCBpbnN0YW5jZSBvZiBhIHRhZ19pZCBpcyAidGFnIiBhbmQgdGhlIGZvbGxvd2luZyBpbnN0YW5jZXMgaXMgImRldGVjdCIuDQoNCiMgUHJlLXByb2Nlc3NpbmcNCg0KIyMgU3RhZ2UgMTogSGF0Y2hlcnkNCg0KYGBge3J9DQpoZWFkKGhhdGNoZXJ5KQ0KYGBgDQoNCiMjIFN0YWdlIDI6IERvd25zdHJlYW0NCg0KYGBge3J9DQpoZWFkKGRvd25zdHJlYW0pDQpgYGANCg0KIyMgU3RhZ2UgMzogRXN0dWFyeQ0KDQpgYGB7cn0NCg0KYGBgDQoNCiMjIFN0YWdlIDQ6IE1pY3JvdHJvbGwNCg0KYGBge3J9DQpoZWFkKG1pY3JvdHJvbGxfaGF0Y2gpDQpgYGANCg0KYGBge3J9DQpoZWFkKG1pY3JvdHJvbGxfd2lsZCkNCmBgYA0KDQojIyBTdGFnZSA1OiBSZXR1cm4NCg0KYGBge3J9DQoNCmBgYA0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRyYWlsIGZvciBwcmVwcm9jZXNzaW5nIC0gU3Vydml2YWwgQW5hbHlzaXMiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIEltcG9ydHMNCg0KYGBge3J9DQpsaWJyYXJ5KHJlYWRyKQ0KYGBgDQoNCiMgRGF0YSByZWFkaW5nDQoNCmBgYHtyfQ0KaGF0Y2hlcnkgPC0gcmVhZF9jc3YoIi4uL3Jhd19kYXRhL2hhdGNoZXJ5LmNzdiIsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpDQoNCmRvd25zdHJlYW0gPC0gcmVhZF9jc3YoIi4uL3Jhd19kYXRhL2Rvd25zdHJlYW0uY3N2Iiwgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSkNCg0KbWljcm90cm9sbF9oYXRjaCA8LSByZWFkX2NzdigiLi4vcmF3X2RhdGEvbWljcm90cm9sbF9oYXRjaC5jc3YiLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSkNCg0KbWljcm90cm9sbF93aWxkIDwtIHJlYWRfY3N2KCIuLi9yYXdfZGF0YS9taWNyb3Ryb2xsX3dpbGQuY3N2IiwgDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSkNCmBgYA0KDQpUaGUgY29sdW1ucyB3ZSB3YW50IHRoZSBmaW5hbCBkYXRhc2V0IHRvIGhhdmUgaXMgdGhlIGZvbGxvd2luZzoNCg0KYGBge3J9DQpjb2x1bW5zIDwtIGNvbG5hbWVzKG1pY3JvdHJvbGxfaGF0Y2gpDQpjb2x1bW5zDQpgYGANCg0KIyMjIE5vdGUgb24gYGFjdGlvbmAgY29sdW1uDQoNCmBBY3Rpb25gIGNhbiBiZSB0YWtlbiBjYXJlIG9ubHkgYWZ0ZXIgY29tYmluaW5nIHRoZSB3aG9sZSBkYXRhc2V0LiBUaGUgZmlyc3QgaW5zdGFuY2Ugb2YgYSB0YWdfaWQgaXMgInRhZyIgYW5kIHRoZSBmb2xsb3dpbmcgaW5zdGFuY2VzIGlzICJkZXRlY3QiLg0KDQojIFByZS1wcm9jZXNzaW5nDQoNCiMjIFN0YWdlIDE6IEhhdGNoZXJ5DQoNCk5vdGVzOiBGaXggZGF0ZSBjb2x1bW4sIHJlYXJyYW5nZSBjb2x1bW5zIGlmIG5lZWRlZC4NCg0KYGBge3J9DQpoZWFkKGhhdGNoZXJ5KQ0KYGBgDQoNCiMjIFN0YWdlIDI6IERvd25zdHJlYW0NCg0KTm90ZXM6IEZpeCBkYXRlIGNvbHVtbiwgcmVzdCBnb29kIHRvIGdvDQoNCmBgYHtyfQ0KaGVhZChkb3duc3RyZWFtKQ0KYGBgDQoNCiMjIFN0YWdlIDM6IEVzdHVhcnkNCg0KYGBge3J9DQoNCmBgYA0KDQojIyBTdGFnZSA0OiBNaWNyb3Ryb2xsDQoNCk5vdGVzOiBUaGVzZSBkYXRhIHNldHMgYXJlIGluIHRoZSByZXF1aXJlZCBmb3JtYXQuIE5vIGZ1cnRoZXIgcHJvY2Vzc2luZyBuZWVkZWQuDQoNCkFjdGlvbiBjb2x1bW4gLSB3aGF0IHRvIGRvPw0KDQpgYGB7cn0NCmhlYWQobWljcm90cm9sbF9oYXRjaCkNCmBgYA0KDQpgYGB7cn0NCmhlYWQobWljcm90cm9sbF93aWxkKQ0KYGBgDQoNCiMjIFN0YWdlIDU6IFJldHVybg0KDQpgYGB7cn0NCg0KYGBgDQoNCiMgQ29tYmluaW5nIGNsZWFuZWQgZGZzDQoNCmBgYHtyfQ0KDQpgYGANCg0KIyMgYEFjdGlvbmAgY29sdW1uIA0KDQpgYGB7cn0NCg0KYGBgDQoNCiMgU2F2ZSB0aGUgZGF0YXNldA0KDQpgYGB7cn0NCg0KYGBgDQo=</div>
 
 
 

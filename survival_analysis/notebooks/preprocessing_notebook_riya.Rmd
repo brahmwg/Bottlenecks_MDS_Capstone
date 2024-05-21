@@ -12,10 +12,15 @@ library(readr)
 # Data reading
 
 ```{r}
-hatchery <- read_csv("../raw_data/hatchery.csv")
-downstream <- read_csv("../raw_data/downstream.csv")
-microtroll_hatch <- read_csv("../raw_data/microtroll_hatch.csv")
-microtroll_wild <- read_csv("../raw_data/microtroll_wild.csv")
+hatchery <- read_csv("../raw_data/hatchery.csv", show_col_types = FALSE)
+
+downstream <- read_csv("../raw_data/downstream.csv", show_col_types = FALSE)
+
+microtroll_hatch <- read_csv("../raw_data/microtroll_hatch.csv", 
+                             show_col_types = FALSE)
+
+microtroll_wild <- read_csv("../raw_data/microtroll_wild.csv", 
+                            show_col_types = FALSE)
 ```
 
 The columns we want the final dataset to have is the following:
@@ -33,11 +38,15 @@ columns
 
 ## Stage 1: Hatchery
 
+Notes: Fix date column, rearrange columns if needed.
+
 ```{r}
 head(hatchery)
 ```
 
 ## Stage 2: Downstream
+
+Notes: Fix date column, rest good to go
 
 ```{r}
 head(downstream)
@@ -51,6 +60,10 @@ head(downstream)
 
 ## Stage 4: Microtroll
 
+Notes: These data sets are in the required format. No further processing needed.
+
+Action column - what to do?
+
 ```{r}
 head(microtroll_hatch)
 ```
@@ -60,6 +73,24 @@ head(microtroll_wild)
 ```
 
 ## Stage 5: Return
+
+```{r}
+
+```
+
+# Combining cleaned dfs
+
+```{r}
+
+```
+
+## `Action` column 
+
+```{r}
+
+```
+
+# Save the dataset
 
 ```{r}
 
