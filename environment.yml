@@ -1,0 +1,11 @@
+name: mds_bottleneck
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - matplotlib
+  - pandas
+  - seaborn
+  - scikit-learn
+  
