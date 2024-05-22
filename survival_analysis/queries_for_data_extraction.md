@@ -64,3 +64,43 @@ WHERE tag_id_long NOT IN (
     )
 ```
 ### Stage 5: Return
+
+```
+WITH excluded_combos AS (
+    SELECT DT.tagid, DATE(DT.datetime) AS date
+    FROM detections DT
+    INNER JOIN HATCH_TAG HT ON DT.tagid = HT.tag_id_long
+    JOIN location L ON DT.location = L.location_code
+    WHERE L.site_description = 'Mainstem Array'
+      AND L.subloc = 'ds'
+      AND DATE(DT.datetime) - DATE(HT.tagging_date) < 100
+    
+    UNION
+
+    SELECT DT.tagid, DATE(DT.datetime) AS date
+    FROM detections DT
+    INNER JOIN field F ON DT.tagid = F.tag_id_long
+    JOIN location L ON DT.location = L.location_code
+    WHERE L.site_description = 'Mainstem Array'
+      AND L.subloc = 'ds'
+      AND DATE(DT.datetime) - DATE(F.date) < 100
+)
+
+
+SELECT 
+    D.tagid, 
+    MIN(D.datetime) AS earlist_datetime, 
+    'return' AS stage, 
+    A.source AS origin, 
+    A.fork_length_mm, 
+    A.species
+FROM detections D
+JOIN all_tagging A ON D.tagid = A.tag_id_long
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM excluded_combos EC
+    WHERE EC.tagid = D.tagid
+      AND EC.date = DATE(D.datetime)
+)
+GROUP BY D.tagid, A.source, A.fork_length_mm, A.species;
+```
