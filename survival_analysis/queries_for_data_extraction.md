@@ -65,6 +65,8 @@ WHERE tag_id_long NOT IN (
 ```
 ### Stage 5: Return
 
+Exclude those who were encountered in the first detection to make sure is return. 
+
 ```
 WITH excluded_combos AS (
     SELECT DT.tagid, DATE(DT.datetime) AS date
