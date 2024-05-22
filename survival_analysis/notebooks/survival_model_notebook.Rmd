@@ -20,10 +20,10 @@ library(postpack)
 library(coda)
 library(remotes)
 library(rjags)
-library(telemetyr)
+#library(telemetyr)
 library(dplyr)
 library(ggplot2)
-library(anchors)
+#library(anchors)
 library(lubridate)
 library(car)
 library(lme4)
@@ -50,7 +50,7 @@ library(RMark)
 library(marked)
 library(mra)
 library(tidyverse)
-library(mark)
+#library(mark)
 library(knitr)
 library(MCMCvis)
 
@@ -58,7 +58,7 @@ library(MCMCvis)
 
 ```{r}
 getwd()
-survdata <- read.delim("../data6.txt", sep = " ")
+survdata <- read.delim("C:\\Users\\hp\\Desktop\\MDS work\\Capstone\\Bottlenecks_MDS_Capstone\\documentation\\sample_code\\data6.txt", sep = " ")
 head(survdata)
 ```
 
@@ -80,7 +80,6 @@ hatchsurv <- survdata[which(substr(survdata$origin,1,5)=="hatch"),]
 ```{r}
 hatchsurv$action[hatchsurv$action=="recap"] <- "detect"
 hatchsurv$action <- droplevels(hatchsurv$action)
-hatchsurv$action
 ```
 
 ```{r}
