@@ -34,7 +34,7 @@ WHERE tagid NOT IN (
 ### Stage 3: Estuary
 
 ```
-SELECT tag_id_long, date, 'estuary' AS stage, wild_or_hatchery AS origin, fork_length_mm, tag_status AS action, species
+SELECT tag_id_long AS tag_id, date, 'estuary' AS stage, wild_or_hatchery AS origin, fork_length_mm, tag_status AS action, species
 FROM field 
 WHERE river_or_estuary='estuary'
 ```
@@ -90,11 +90,12 @@ WITH excluded_combos AS (
 
 
 SELECT 
-    D.tagid, 
-    MIN(D.datetime) AS earlist_datetime, 
+    D.tagid as tag_id, 
+    DATE(MIN(D.datetime)) AS date, 
     'return' AS stage, 
     A.source AS origin, 
     A.fork_length_mm, 
+    'detect' as action,
     A.species
 FROM detections D
 JOIN all_tagging A ON D.tagid = A.tag_id_long
