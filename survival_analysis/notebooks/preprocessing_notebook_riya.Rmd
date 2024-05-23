@@ -67,7 +67,7 @@ head(downstream_wild)
 ## Stage 3: Estuary
 
 ```{r}
-
+head(estuary)
 ```
 
 ## Stage 4: Microtroll
@@ -85,14 +85,14 @@ head(microtroll_wild)
 ## Stage 5: Return
 
 ```{r}
-
+head(return)
 ```
 
 # Combining cleaned dfs
 
 ```{r}
-combined <- rbind(hatchery, downstream_hatch, downstream_wild, 
-                  microtroll_hatch, microtroll_wild)
+combined <- rbind(hatchery, downstream_hatch, downstream_wild, estuary,
+                  microtroll_hatch, microtroll_wild, return)
 head(combined)
 ```
 
@@ -102,11 +102,11 @@ head(combined)
 2.  Change "recap" to "detect"
 
 ```{r}
-
+combined$action[combined$action == 'recap'] <- 'detect'
 ```
 
 # Save the dataset
 
 ```{r}
-write.csv(combined, "../survival_analysis.csv")
+write.csv(combined, "../preprocessed_data/survival_analysis.csv")
 ```
