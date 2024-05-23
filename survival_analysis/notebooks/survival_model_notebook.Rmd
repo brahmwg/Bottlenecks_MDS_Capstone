@@ -1,6 +1,8 @@
 ---
 title: "Survival analysis model"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 date: "2024-05-22"
 ---
 
@@ -20,7 +22,7 @@ library(postpack)
 library(coda)
 library(remotes)
 library(rjags)
-#library(telemetyr)
+library(telemetyr)
 library(dplyr)
 library(ggplot2)
 #library(anchors)

@@ -1,6 +1,6 @@
 ---
 title: "Trail for preprocessing - Survival Analysis"
-output: html_notebook
+output: pdf_notebook
 ---
 
 # Imports
