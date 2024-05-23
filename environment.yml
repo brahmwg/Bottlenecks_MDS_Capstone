@@ -8,7 +8,9 @@ dependencies:
   - pandas
   - seaborn
   - scikit-learn
+  - vl-convert-python
   - altair 
   - vegafusion  
   - vegafusion-python-embed  
   - vegafusion-jupyter
+  - pytorch 
