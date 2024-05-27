@@ -60,7 +60,7 @@ library(MCMCvis)
 
 ```{r}
 getwd()
-survdata <- read.delim("C:\\Users\\hp\\Desktop\\MDS work\\Capstone\\Bottlenecks_MDS_Capstone\\documentation\\sample_code\\data6.txt", sep = " ")
+survdata <- read_csv("C:\\Users\\hp\\Desktop\\MDS work\\Capstone\\Bottlenecks_MDS_Capstone\\survival_analysis\\preprocessed_data\\survival_analysis_small.csv")
 head(survdata)
 ```
 

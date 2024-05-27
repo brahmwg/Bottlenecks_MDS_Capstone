@@ -88,6 +88,21 @@ head(microtroll_wild)
 head(return)
 ```
 
+(I'm making a table return with 2 tables i extracted seperately so that the dataset has values for both wild and hatch, this will not be seen in preprocessing.R because we'll use the entire dataset)
+
+```{r}
+return_hatch <- read_csv("../raw_data/return_hatch.csv", 
+                             show_col_types = FALSE)
+return_wild <- read_csv("../raw_data/return_wild.csv", 
+                             show_col_types = FALSE)
+return <- rbind(return_hatch, return_wild)
+```
+
+```{r}
+head(return)
+return$origin <- ifelse(return$origin == "hatch_tag", "hatch", "wild")
+```
+
 # Combining cleaned dfs
 
 ```{r}
@@ -108,5 +123,5 @@ combined$action[combined$action == 'recap'] <- 'detect'
 # Save the dataset
 
 ```{r}
-write.csv(combined, "../preprocessed_data/survival_analysis.csv")
+write.csv(combined, "../preprocessed_data/survival_analysis_small.csv")
 ```
