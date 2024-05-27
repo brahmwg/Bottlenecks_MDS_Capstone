@@ -68,42 +68,14 @@ WHERE tag_id_long NOT IN (
 Exclude those who were encountered in the first detection to make sure is return. 
 
 ```
-WITH excluded_combos AS (
-    SELECT DT.tagid, DATE(DT.datetime) AS date
-    FROM detections DT
-    INNER JOIN HATCH_TAG HT ON DT.tagid = HT.tag_id_long
-    JOIN location L ON DT.location = L.location_code
-    WHERE L.site_description = 'Mainstem Array'
-      AND L.subloc = 'ds'
-      AND DATE(DT.datetime) - DATE(HT.tagging_date) < 100
-    
-    UNION
-
-    SELECT DT.tagid, DATE(DT.datetime) AS date
-    FROM detections DT
-    INNER JOIN field F ON DT.tagid = F.tag_id_long
-    JOIN location L ON DT.location = L.location_code
-    WHERE L.site_description = 'Mainstem Array'
-      AND L.subloc = 'ds'
-      AND DATE(DT.datetime) - DATE(F.date) < 100
-)
-
-
-SELECT 
-    D.tagid as tag_id, 
-    DATE(MIN(D.datetime)) AS date, 
-    'return' AS stage, 
-    A.source AS origin, 
-    A.fork_length_mm, 
-    'detect' as action,
-    A.species
-FROM detections D
-JOIN all_tagging A ON D.tagid = A.tag_id_long
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM excluded_combos EC
-    WHERE EC.tagid = D.tagid
-      AND EC.date = DATE(D.datetime)
-)
-GROUP BY D.tagid, A.source, A.fork_length_mm, A.species;
+SELECT o.tag_id_long AS tag_id, 
+      earliest_detection_date as date, 
+      'return' as stage,
+      o.source AS origin,
+      COALESCE(a.fork_length_mm, h.avg_fork_length::double precision) AS fork_length_mm,
+      'detect' AS action,
+      o.species
+FROM outmigrant_or_return o
+LEFT JOIN all_tagging a ON o.tag_id_long = a.tag_id_long
+LEFT JOIN hatch_tag h ON o.tag_id_long = h.tag_id_long
 ```
