@@ -61,6 +61,9 @@ library(MCMCvis)
 ```{r}
 getwd()
 survdata <- read_csv("C:\\Users\\hp\\Desktop\\MDS work\\Capstone\\Bottlenecks_MDS_Capstone\\survival_analysis\\preprocessed_data\\survival_analysis_small.csv")
+
+# Removing the first col (index, not needed)
+survdata <- survdata[,2:8]
 head(survdata)
 ```
 
@@ -80,26 +83,39 @@ hatchsurv <- survdata[which(substr(survdata$origin,1,5)=="hatch"),]
 ```
 
 ```{r}
-hatchsurv$action[hatchsurv$action=="recap"] <- "detect"
 hatchsurv$action <- droplevels(hatchsurv$action)
 ```
 
 ```{r}
-hatchtag <- hatchsurv[which(substr(hatchsurv$action,1,3)=="tag"),] 
+# Finding fishes that were tagged at hatchery, and tracking their path
+hatchtag <- hatchsurv[which(substr(hatchsurv$action,1,3)=="tag"),]
+
 hatchdown <- hatchsurv[which(substr(hatchsurv$stage,1,10)=="downstream"),] 
+
 hatchestuary <- hatchsurv[ which( hatchsurv$stage == "estuary" & 
                                     hatchsurv$action == "detect") , ]
+
 hatchmicro <- hatchsurv[which(substr(hatchsurv$stage,1,5)=="micro" &
                                 hatchsurv$action == "detect" ),]
+
 hatchreturn <- hatchsurv[which(substr(hatchsurv$stage,1,6)=="return"),]
 ```
 
 ```{r}
+library(purrr)
+library(dplyr)
 df_list <- list(hatchtag, hatchdown, hatchestuary, hatchmicro, hatchreturn)
-hatchtotal <- df_list %>% reduce(full_join, by='tag')
 ```
 
 ```{r}
+# Create a table such that there is only one row for each tag_id
+hatchtotal <- df_list |> reduce(full_join, by='tag_id')
+```
+
+```{r}
+
+# Columns t1, t2, t3 etc created to see if that fish was seen in those specific stages
+
 hatchtotal$t1 <- with(hatchtotal, ifelse(stage.x %in% c("facility") & 
                                            action.x == "tag", 
                                          "1", "0"))
@@ -129,6 +145,8 @@ hatchtotal$t5 <- as.factor(hatchtotal$t5)
 ```
 
 ```{r}
+
+# Eg: The values in t1, t2 etc are 0,0,1,1,1, then ch is 00111
 hatchtotal$ch <- paste(hatchtotal$t1, hatchtotal$t2, hatchtotal$t3, hatchtotal$t4, hatchtotal$t5, sep = "")
 ```
 
@@ -138,7 +156,6 @@ head(hatchtotal)
 
 ```{r}
 #rename some columns
-names(hatchtotal)[names(hatchtotal) == "tag"] <- "tag_id"
 names(hatchtotal)[names(hatchtotal) == "ch"] <- "cap_hist"
 hatchtotal$duty_cycle <- "batch_1"
 head(hatchtotal)
@@ -159,8 +176,8 @@ head(hatchtotal)
 
 ```{r}
 #Make a simpler dataset with just the columns we want
-hatchsimple <- hatchtotal[c(1, 37, 32:36)]
-#hatchsimple <- hatchtotal[c(2, 42, 37:41)]
+#hatchsimple <- hatchtotal[c(1, 37, 32:36)]
+hatchsimple <- hatchtotal[c(1, 42, 37:41)]
 head(hatchsimple)
 head(hatchtotal)
 

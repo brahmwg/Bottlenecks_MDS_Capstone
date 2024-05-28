@@ -67,6 +67,7 @@ head(downstream_wild)
 ## Stage 3: Estuary
 
 ```{r}
+estuary$origin <- ifelse(estuary$origin == "hatchery", "hatch", "wild")
 head(estuary)
 ```
 
@@ -99,8 +100,12 @@ return <- rbind(return_hatch, return_wild)
 ```
 
 ```{r}
-head(return)
 return$origin <- ifelse(return$origin == "hatch_tag", "hatch", "wild")
+head(return)
+```
+
+```{r}
+
 ```
 
 # Combining cleaned dfs

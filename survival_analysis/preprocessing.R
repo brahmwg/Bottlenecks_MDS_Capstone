@@ -8,6 +8,7 @@ microtroll_hatch <- read_csv("raw_data/microtroll_hatch.csv")
 microtroll_wild <- read_csv("raw_data/microtroll_wild.csv")
 return <- read_csv("raw_data/return.csv")
 
+estuary$origin <- ifelse(estuary$origin == "hatchery", "hatch", "wild")
 return$origin <- ifelse(return$origin == "hatch_tag", "hatch", "wild")
 
 combined <- rbind(hatchery, downstream_hatch, downstream_wild, estuary,
