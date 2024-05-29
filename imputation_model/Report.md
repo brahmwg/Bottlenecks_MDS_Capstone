@@ -1,5 +1,5 @@
 Date: 29-May-2024
-Topic: Challenges and futire of the imputation model
+Topic: Challenges and future of the imputation model
 
 The goal of this model was to be able to impute data for missing species in the field table(or any table like microtroll). Unfortunately we cannot achive this model in our current capacity.
 Challenges:
