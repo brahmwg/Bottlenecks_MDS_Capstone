@@ -1,0 +1,20 @@
+ SELECT tag_id_long,
+    species,
+    source,
+    year,
+    origin_location,
+    stock,
+    tag_date,
+    min(detection_date) AS earliest_detection_date,
+    max(detection_date) AS latest_detection_date,
+    date_part('day'::text, min(detection_date)::timestamp without time zone - tag_date::timestamp without time zone) AS days_from_tagging_to_earliest,
+    date_part('day'::text, max(detection_date)::timestamp without time zone - tag_date::timestamp without time zone) AS days_from_tagging_to_latest,
+        CASE
+            WHEN source = 'microtroll'::text THEN 'return'::text
+            WHEN (source = ANY (ARRAY['river'::text, 'estuary'::text, 'hatch_tag'::text])) AND date_part('day'::text, min(detection_date)::timestamp without time zone - tag_date::timestamp without time zone) < 100::double precision THEN 'outmigrant'::text
+            WHEN (source = ANY (ARRAY['river'::text, 'estuary'::text, 'hatch_tag'::text])) AND date_part('day'::text, min(detection_date)::timestamp without time zone - tag_date::timestamp without time zone) >= 100::double precision THEN 'return'::text
+            ELSE NULL::text
+        END AS migration_status
+   FROM ods.age_detections ad
+  GROUP BY tag_id_long, species, source, year, origin_location, stock, tag_date
+  ORDER BY tag_id_long;
