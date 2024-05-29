@@ -1,0 +1,16 @@
+name: mds_bottleneck
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - matplotlib
+  - pandas
+  - seaborn
+  - scikit-learn
+  - vl-convert-python
+  - altair 
+  - vegafusion  
+  - vegafusion-python-embed  
+  - vegafusion-jupyter
+  - pytorch 
