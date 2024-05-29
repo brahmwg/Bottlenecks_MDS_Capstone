@@ -1,0 +1,72 @@
+date,year,month,watershed,river,site,method,local,crew,pit_scanner,pit_tray,day_start_time,water_temp_start,day_comments,day_end_time,water_temp_end,species,fork_length_mm,weight_g,clip_status,tag_status,scanner_time,tag_id_long,whatman_sheet_ck,whatman_sheet_co,whatman_no,fish_comments,set_no,whatman_concat_ck,whatman_concat_co,whatman_concat_ck2,whatman_concat_co2,stock,river_or_estuary,wild_or_hatchery
+2021-06-10,2021,6,puntledge,puntledge,little mexico,beach seine,marine,"ds, tn, ctm, cm",4037,apt095175,12:00:00,15.2,,15:30:00,16.4,,,,unclip,tag,14:27:27,989.001038866877,,064-21,17,,4,,064-21-17,,17-064-21,,estuary,unknown
+2021-05-11,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101184,09:15:00,,,10:45:00,,,,,,tag,09:17:02,989.001039379550,,,,"missed fl, weight, clip status",,,,,,,river,
+2021-05-11,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101184,09:15:00,,,10:45:00,,,,,,tag,09:20:01,989.001039379532,,,,"missed fl, weight, clip status",,,,,,,river,
+2021-05-11,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101184,09:15:00,,,10:45:00,,,,,,tag,10:01:41,989.001039379548,,,,"missed fl, weight, clip status",,,,,,,river,
+2021-05-11,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101184,09:15:00,,,10:45:00,,,,,,tag,10:29:51,989.001039379579,,,,"missed fl, weight, clip status",,,,,,,river,
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,09:24:52,989.001042811432,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,09:26:21,989.001042811462,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:05:03,989.001042812949,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:06:57,989.001042812981,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:07:23,989.001042812887,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:07:38,989.001042812928,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:07:46,989.001042812885,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:07:59,989.001042812979,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:08:15,989.001042812967,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:08:26,989.001042812963,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:09:52,989.001042812952,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:10:09,989.001042812931,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:10:52,989.001042812965,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:11:09,989.001042812940,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:11:23,989.001042812944,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:11:36,989.001042812892,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:12:15,989.001042812941,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,11:12:48,989.001042812932,,,,,,,,,,,river,wild
+2023-05-26,2023,5,englishman,center creek,center creek,smolt trap,in-river,"ht,aa",5828,,11:00:00,13.8,,,,,,,unclip,tag,09:25:27,,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,79,,unclip,tag,11:19:04,989.001042812192,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,83,,unclip,tag,11:05:54,989.001042812228,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,86,,unclip,tag,11:18:45,989.001042812234,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,87,,unclip,tag,11:19:19,989.001042812185,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,87,,unclip,tag,11:19:35,989.001042812260,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,89,,unclip,tag,11:06:35,989.001042812266,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,89,,unclip,tag,11:06:46,989.001042812212,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,91,,unclip,tag,11:05:42,989.001042812240,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,91,,unclip,tag,11:06:02,989.001042812280,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,91,,unclip,tag,11:18:56,989.001042812283,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,93,,unclip,tag,11:19:12,989.001042812243,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,,,unclip,tag,11:06:11,989.001042812205,,,,,,,,,,,river,wild
+2021-05-03,2021,5,englishman,center creek,center creek,smolt trap,in-river,"js, aa, ds",4040,apt093961,10:45:00,9.6,,12:00:00,9.8,,,,,tag,11:17:51,989.001038744927,,,,,,,,,,,river,
+2021-05-13,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101178,10:40:00,,,11:15:00,,,,,,no tag,11:02:46,989.001039379020,,,,lost tag,,,,,,,river,
+2021-05-13,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101178,10:40:00,,,11:15:00,,,,,,no tag,11:10:12,989.001039378975,,,,lost tag,,,,,,,river,
+2021-05-13,2021,5,campbell river,quinsam,hatchery fence,wolf trap,in-river,a'telgay,4041,apt101178,10:40:00,,,11:15:00,,,,,,no tag,11:11:07,989.001039378968,,,,lost tag,,,,,,,river,
+2022-05-18,2022,5,englishman,center creek,center creek,smolt trap,in-river,"aa, ab, jt",5076,apt127562,09:49:00,8.3,30 fry released. lots of debris on fence and in trap.,10:19:00,8.6,,103,,unclip,tag,10:00:37,989.001042005502,,,,missed species,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,70,,unclip,tag,11:19:48,989.001042812233,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,77,,unclip,tag,11:19:57,989.001042812197,,,,,,,,,,,river,wild
+2023-05-15,2023,5,englishman,center creek,center creek,smolt trap,in-river,"tn,ab",5828,,10:24:00,13.4,"165 fry released
+jodi & jesse b here today",11:24:00,13.7,,78,,unclip,tag,11:19:28,989.001042812186,,,,,,,,,,,river,wild
+2021-04-26,2021,4,black creek,black creek,sturgess bridge rd,,in-river,"ds, tn",852,apt095200,11:31:00,,,13:35:00,,,,,,tag,11:38:06,989.001038869405,,,,,,,,,,,river,
+2021-04-26,2021,4,black creek,black creek,sturgess bridge rd,,in-river,"ds, tn",852,apt095200,11:31:00,,,13:35:00,,,,,,tag,11:39:33,989.001038869396,,,,,,,,,,,river,
+2021-05-20,2021,5,cowichan,cowichan,vimy pool,beach seine,in-river,"tn, tr, ks, gh, hj",5081,,11:18:00,15.3,,13:28:00,15.4,,,,unclip,recap,,5350,,,,maybe hatchery fish?,"3,4,5,6",,,,,,river,wild
+2021-05-20,2021,5,cowichan,cowichan,vimy pool,beach seine,in-river,"tn, tr, ks, gh, hj",5081,,11:18:00,15.3,,13:28:00,15.4,,,,unclip,recap,,6514,,,,,"3,4,5,6",,,,,,river,wild
+2021-05-11,2021,5,black creek,black creek,sturgess bridge rd,,in-river,"ds, tn",5076,apt095201,13:04:00,15.4,,15:56:00,15.1,,,,,tag,13:22:09,989.001038869493,,,,,,,,,,,river,
+2021-05-10,2021,5,cowichan,cowichan,mainstem fence,rst,in-river,"js, hj, dfo",4037,,10:31:00,13,,14:00:00,13.7,,,,unclip,mort,13:07:04,989.001038856420,,,,,,,,,,,river,wild
+2021-05-10,2021,5,cowichan,cowichan,mainstem fence,rst,in-river,"js, hj, dfo",4037,,10:31:00,13,,14:00:00,13.7,,,,unclip,recap,12:51:47,989.001039719085,,,,,,,,,,,river,wild
+2021-05-13,2021,5,cowichan,cowichan,mainstem fence,rst,in-river,"kc, ks",5086,apt095083,10:30:00,13.9,,14:00:00,,,,,,tag,11:07:51,989.001038857697,,,,"missed sp, fl, adipose",,,,,,,river,
+2021-05-18,2021,5,cowichan,cowichan,mainstem fence,rst,in-river,"jd, ab, dfo",5074,apt104789,09:36:00,12.4,,13:00:00,13.1,,,,unclip,tag,11:46:05,989.001039721206,,,,"scanned but missed sp, fl",,,,,,,river,wild
+2021-05-28,2021,5,cowichan,cowichan,mainstem fence,rst,in-river,"js, hj",5099,apt104779,11:56:00,15.6,,14:17:00,,,,,unclip,tag,14:12:57,989.001039720228,,,,"missed sp, fl",,,,,,,river,wild
+2022-05-04,2022,5,cowichan,cowichan,mainstem fence,rst,in-river,"jd, ks",4799,apt095162,10:10:00,9.3,,10:50:00,9.3,,146,,unclip,tag,10:31:16,989.001038865537,,,,,,,,,,,river,wild
+2022-05-30,2022,5,cowichan,cowichan,mainstem fence,rst,in-river,"sp, jd, hj",5002,,10:34:00,,,11:34:00,,,,,unclip,mort,10:34:04,989.001042511835,,,,,,,,,,,river,wild
