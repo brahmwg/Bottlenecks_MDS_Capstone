@@ -1,0 +1,49 @@
+ SELECT source,
+    pit_tray,
+    river,
+    species,
+    cohort,
+    year,
+    hex,
+    tag_id_long,
+    date,
+    fork_length_mm,
+    origin,
+    clip_status,
+    release_latitude,
+    release_longitude,
+    site,
+    method,
+    whatman_concat_ck,
+    whatman_concat_co,
+    project,
+    latregion,
+    pfma,
+    stock,
+    prob,
+    stock_group,
+    species_id,
+    year_class,
+    genetic_source,
+    whatman_sheet,
+    whatman_no,
+        CASE
+            WHEN (stock_group = ANY (ARRAY['US'::text, 'Lower Fraser Ocean-Type'::text, 'Chilliwack Coho'::text, 'US Coho'::text, 'Other Mainland'::text, 'Other Coho'::text, 'Fraser Stream-Type'::text, 'Other Fraser Coho'::text, 'Thompson and Shuswap Ocean-Type'::text, 'Southwest VI'::text])) OR stock_group IS NULL AND source = 'microtroll'::text OR (stock = ANY (ARRAY['HARRISON_RIVER'::text, 'CHILLIWACK_RIVER_fall'::text, 'Wire_Cache_Cr'::text, 'GOLD_RIVER'::text, 'Chemainus_R'::text, 'CHEMAINUS_RIVER'::text, 'French_Cr'::text, 'SLIAMMON_CREEK'::text, 'OYSTER_RIVER'::text, 'Rosewall_Cr'::text, 'Trent_R'::text])) THEN NULL::text
+            WHEN stock = ANY (ARRAY['COWICHAN_RIVER'::text, 'Cowichan_R'::text, 'koksilah'::text, 'cowichan'::text]) THEN 'Cowichan'::text
+            WHEN (stock = ANY (ARRAY['puntledge'::text, 'PUNTLEDGE_RIVER_fall'::text, 'tsolum'::text])) AND species = 'ck'::text THEN 'Puntledge fall'::text
+            WHEN (stock = ANY (ARRAY['Puntledge_R'::text, 'tsolum'::text, 'puntledge'::text])) AND species = 'co'::text THEN 'Puntledge'::text
+            WHEN stock = 'puntledge'::text THEN 'Puntledge'::text
+            WHEN stock = 'PUNTLEDGE_RIVER'::text THEN 'Puntledge summer'::text
+            WHEN stock = ANY (ARRAY['QUALICUM_RIVER'::text, 'Big_Qualicum_R'::text, 'big qualicum'::text]) THEN 'Big Qualicum'::text
+            WHEN stock = ANY (ARRAY['QUINSAM_RIVER'::text, 'Quinsam_R'::text, 'SALMON_RIVER_JNST'::text, 'WOSS_RIVER'::text, 'quinsam'::text]) THEN 'Quinsam'::text
+            WHEN stock = ANY (ARRAY['LITTLE_QUALICUM_RIVER'::text, 'little qualicum'::text]) THEN 'Little Qualicum'::text
+            WHEN stock = 'nanaimo'::text AND source = 'hatch_tag'::text AND species = 'ck'::text AND cohort = 'f'::text THEN 'Nanaimo fall'::text
+            WHEN stock = 'nanaimo'::text AND source = 'hatch_tag'::text AND species = 'ck'::text AND cohort = 's'::text THEN 'Nanaimo summer'::text
+            WHEN (stock = ANY (ARRAY['nanaimo'::text, 'NANAIMO_RIVER_fall'::text])) AND species = 'ck'::text THEN 'Nanaimo fall'::text
+            WHEN stock = 'NANAIMO_RIVER_summer'::text THEN 'Nanaimo summer'::text
+            WHEN stock = ANY (ARRAY['Nanaimo_R'::text, 'haslam creek'::text, 'nanaimo'::text]) THEN 'Nanaimo'::text
+            WHEN stock = ANY (ARRAY['Goldstream_R'::text, 'goldstream'::text]) THEN 'Goldstream'::text
+            WHEN stock = ANY (ARRAY['center creek'::text, 'englishman'::text, 'shelly creek'::text]) THEN 'Englishman'::text
+            ELSE stock
+        END AS updated_stock
+   FROM ods.all_tagging;
