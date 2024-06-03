@@ -60,26 +60,11 @@ library(MCMCvis)
 
 ```{r}
 getwd()
-survdata <- read_csv("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/preprocessed_data/survival_analysis_small.csv")
-# survdata <- read.delim("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/documentation/sample_code/data6.txt", sep = " ")
-
-survdata
+survdata <- read_csv("C:\\Users\\hp\\Desktop\\MDS work\\Capstone\\Bottlenecks_MDS_Capstone\\survival_analysis\\preprocessed_data\\survival_analysis_small.csv")
 
 # Removing the first col (index, not needed)
 survdata <- survdata[,2:8]
 head(survdata)
-```
-
-```{r}
-nrow(survdata[which(survdata$species == "stl"),])
-# Issue: There are too less stl data. 
-nrow(survdata[which(survdata$species == "ck"),])
-nrow(survdata[which(survdata$species == "co"),])
-```
-
-```{r}
-survdata <- survdata[survdata$species %in% c("co", "ck"), ]
-nrow(survdata)
 ```
 
 ```{r}
@@ -88,16 +73,13 @@ survdata$origin<-as.factor(survdata$origin)
 survdata$action<-as.factor(survdata$action)
 survdata$juliandate <- yday(survdata$date)  
 survdata$juliandate<-as.factor(survdata$juliandate)
-survdata$species<-as.factor(survdata$species)
 ```
 
 ```{r}
 ## Create two separate datasets for wild vs hatchery fish
 
-hatchsurv <- survdata
-
-# wildsurv <- survdata[which(substr(survdata$origin,1,4)=="wild"),] 
-# hatchsurv <- survdata[which(substr(survdata$origin,1,5)=="hatch"),] 
+wildsurv <- survdata[which(substr(survdata$origin,1,4)=="wild"),] 
+hatchsurv <- survdata[which(substr(survdata$origin,1,5)=="hatch"),] 
 ```
 
 ```{r}
@@ -155,20 +137,11 @@ hatchtotal$t5 <- with(hatchtotal, ifelse(stage %in% c("return"),
 ```
 
 ```{r}
-hatchtotal$origin.x <- with(hatchtotal, ifelse(origin.x == "hatch",
-                                         "1", "0"))
-hatchtotal
-```
-
-```{r}
 hatchtotal$t1 <- as.factor(hatchtotal$t1)
 hatchtotal$t2 <- as.factor(hatchtotal$t2)
 hatchtotal$t3 <- as.factor(hatchtotal$t3)
 hatchtotal$t4 <- as.factor(hatchtotal$t4)
 hatchtotal$t5 <- as.factor(hatchtotal$t5)
-
-# --- ADDED BY JENNY
-hatchtotal$origin.x <- as.factor(hatchtotal$origin.x)
 ```
 
 ```{r}
@@ -195,9 +168,6 @@ hatchtotal$t2<-as.numeric(as.character(hatchtotal$t2))
 hatchtotal$t3<-as.numeric(as.character(hatchtotal$t3))
 hatchtotal$t4<-as.numeric(as.character(hatchtotal$t4))
 hatchtotal$t5<-as.numeric(as.character(hatchtotal$t5))
-
-hatchtotal$cap_hist<-as.numeric(as.character(hatchtotal$cap_hist))
-# hatchtotal$origin.x<-as.numeric(hatchtotal$origin.x)
 ```
 
 ```{r}
@@ -207,32 +177,14 @@ head(hatchtotal)
 ```{r}
 #Make a simpler dataset with just the columns we want
 #hatchsimple <- hatchtotal[c(1, 37, 32:36)]
-hatchsimple <- hatchtotal[c(1, 42, 4, 37:41)]
-names(hatchsimple)[names(hatchsimple) == "origin.x"] <- "origin"
+hatchsimple <- hatchtotal[c(1, 42, 37:41)]
 head(hatchsimple)
 head(hatchtotal)
 
-hatchsimple2 <- hatchsimple[!duplicated(hatchsimple$tag_id), ]
-hatchsimple2
+hatchsimple2 <- hatchsimple[!duplicated(hatchsimple$tag_id), ]  
 ```
 
 ```{r}
-sum(is.na(hatchsimple2$origin))
-nrow(hatchsimple2[which(hatchsimple2$origin == 1),])
-nrow(hatchsimple2[which(hatchsimple2$origin == 0),])
-```
-
-```{r}
-hatchsimple_clean <- hatchsimple2[!is.na(hatchsimple2$origin), ]
-hatchsimple_clean <- hatchsimple_clean |>
-  mutate(origin = as.numeric(origin),
-         origin = origin - 1)
-hatchsimple_clean
-nrow(hatchsimple_clean)
-```
-
-```{r}
-
 write_bayes_cjs = function(file_path = NULL) {
   
   if(is.null(file_path)) file_path = 'CJS_model.txt'
@@ -245,14 +197,11 @@ write_bayes_cjs = function(file_path = NULL) {
     phi[1] <- 1
     p[1] <- 1
     
-    b0 ~ dnorm(0, 1/100)
-    b1 ~ dnorm(0, 1 /100)
-    
     for(j in 2:J) {
       phi[j] ~ dbeta(1,1) # survival probability between arrays
     }
     
-    for(j in 2:(J-1)) { 
+    for(j in 2:(J-1)) {
       p[j] ~ dbeta(1,1) # detection probability between arrays
     }
     
@@ -264,15 +213,12 @@ write_bayes_cjs = function(file_path = NULL) {
       for (j in (f[i] + 1):J) {
         
         # survival process: 
-        logit(phi[j]) <- b0 + b1 * origin[i]
         z[i,j] ~ dbern(phi[j] * z[i,j-1]) # fish i in period j is a bernoulli trial
         
         # detection process: 
-        logit(p[j]) <- b0 + b1 * origin[i]
         y[i,j] ~ dbern(p[j] * z[i,j]) # another bernoulli trial
       }
     }
-    
     survship[1] <- 1 # the tagging stage (stage 1)
     for (j in 2:J) { # the rest of the stages (stages 2-5)
       survship[j] <- survship[j-1] * phi[j]
@@ -283,12 +229,12 @@ write_bayes_cjs = function(file_path = NULL) {
 }
 
 
-write_bayes_cjs(file_path = 'CJS_model_edited.txt')
+write_bayes_cjs(file_path = 'CJS_model2.txt')
 ```
 
 ```{r}
 jags_data = prep_jags_cjs(
-  cap_hist_wide = hatchsimple_clean,
+  cap_hist_wide = hatchsimple2,
   tag_meta = hatchtotal,
   drop_col_nm = "duty_cycle",
   drop_values = c("batch_2", "batch_3")
@@ -296,7 +242,7 @@ jags_data = prep_jags_cjs(
 ```
 
 ```{r}
-cjs_post = run_jags_cjs(file_path = 'CJS_model_edited.txt',
+cjs_post = run_jags_cjs(file_path = 'CJS_model2.txt',
                         jags_data = jags_data,
                         n_chains = 4,
                         n_adapt = 1000,
@@ -446,7 +392,7 @@ postpack::post_summ(cjs_post, "phi")
 postpack::post_summ(cjs_post, "p")
 postpack::post_summ(cjs_post, "survship")
 
-# postpack::post_summ(cjs_post)
+postpack::post_summ(cjs_post)
 ```
 
 ```{r}
@@ -479,6 +425,10 @@ PR <- rbeta(nsims, 1,1)
 
 simd <- tibble(prop = (hatchtotal$t1-mean(hatchtotal$t1))/sd(hatchtotal$t1))
 
+for(i in 1:nsims){
+  this_mu <- beta0[i] + beta1[i]*simd$prop 
+  simd[paste0(i)] <- this_mu + rnorm(nrow(simd), 0, sigma[i])
+}
 
 ## Prior predictive checks
 set.seed(182)
@@ -486,11 +436,6 @@ nsims <- 100
 sigma <- 1 / sqrt(rgamma(nsims, 1, rate = 100))
 beta0 <- rnorm(nsims, 1,1)
 beta1 <- rnorm(nsims, 1,1)
-
-for(i in 1:nsims){
-  this_mu <- beta0[i] + beta1[i]*simd$prop 
-  simd[paste0(i)] <- this_mu + rnorm(nrow(simd), 0, sigma[i])
-}
 
 
 dsims <- tibble(log_gest_c = (log(ds$gest)-mean(log(ds$gest)))/sd(log(ds$gest)))
