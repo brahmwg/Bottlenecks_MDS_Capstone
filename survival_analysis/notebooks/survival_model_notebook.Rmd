@@ -71,8 +71,13 @@ head(survdata)
 ```
 
 ```{r}
-nrow(survdata[which(survdata$species == "stl"),])
-# Issue: There are too less stl data. 
+nrow(survdata[which(survdata$origin == "wild"),])
+nrow(survdata[which(survdata$origin == "hatch"),])
+```
+
+```{r}
+# nrow(survdata[which(survdata$species == "stl"),])
+# # Issue: There are too less stl data. 
 nrow(survdata[which(survdata$species == "ck"),])
 nrow(survdata[which(survdata$species == "co"),])
 ```
@@ -240,23 +245,32 @@ write_bayes_cjs = function(file_path = NULL) {
   # specify model in JAGS
   jags_model = function() {
     
+    b0 ~ dnorm(0, 1/100)
+    b1 ~ dnorm(0, 1 /100)
+    
+    for (i in 1:N) {
+      origin[i] ~ dnorm(0, 1)
+    }
     
     # PRIORS AND CONSTRAINTS
     phi[1] <- 1
     p[1] <- 1
-    
-    b0 ~ dnorm(0, 1/100)
-    b1 ~ dnorm(0, 1 /100)
+
     
     for(j in 2:J) {
       phi[j] ~ dbeta(1,1) # survival probability between arrays
+      p[j] ~ dbeta(1,1)
     }
     
-    for(j in 2:(J-1)) { 
-      p[j] ~ dbeta(1,1) # detection probability between arrays
-    }
+    # for(j in 2:(J-1)) {
+    #   p[j] ~ dbeta(1,1) # detection probability between arrays
+    # }
+
+    # p[J] <- 0.95  # this constrains the model and allows user to input the known detection efficiency of final PIT receiver
     
-    p[J] <- 0.95  # this constrains the model and allows user to input the known detection efficiency of final PIT receiver
+    for (i in 1:N) {
+      logit_phi[i] <- b0 + b1 * origin[i]
+    }
     
     # LIKELIHOOD 
     for (i in 1:N) {
@@ -264,19 +278,17 @@ write_bayes_cjs = function(file_path = NULL) {
       for (j in (f[i] + 1):J) {
         
         # survival process: 
-        logit(phi[j]) <- b0 + b1 * origin[i]
         z[i,j] ~ dbern(phi[j] * z[i,j-1]) # fish i in period j is a bernoulli trial
         
         # detection process: 
-        logit(p[j]) <- b0 + b1 * origin[i]
         y[i,j] ~ dbern(p[j] * z[i,j]) # another bernoulli trial
       }
     }
     
-    survship[1] <- 1 # the tagging stage (stage 1)
-    for (j in 2:J) { # the rest of the stages (stages 2-5)
-      survship[j] <- survship[j-1] * phi[j]
-    }
+    # survship[1] <- 1 # the tagging stage (stage 1)
+    # for (j in 2:J) { # the rest of the stages (stages 2-5)
+    #   survship[j] <- survship[j-1] * phi[j]
+    # }
   }
   
   postpack::write_model(jags_model, file_path)
@@ -287,12 +299,23 @@ write_bayes_cjs(file_path = 'CJS_model_edited.txt')
 ```
 
 ```{r}
+model_content <- readLines("CJS_model_edited.txt")  # Replace "path_to_your_model_file.txt" with the actual path to your file
+# Print line 19
+print(model_content[14])
+```
+
+```{r}
 jags_data = prep_jags_cjs(
   cap_hist_wide = hatchsimple_clean,
   tag_meta = hatchtotal,
   drop_col_nm = "duty_cycle",
   drop_values = c("batch_2", "batch_3")
 )
+
+```
+
+```{r}
+jags_data
 ```
 
 ```{r}
@@ -303,7 +326,7 @@ cjs_post = run_jags_cjs(file_path = 'CJS_model_edited.txt',
                         n_burnin = 2500,
                         n_iter = 2500,
                         n_thin = 5,
-                        params_to_save = c("phi", "p", "survship"),
+                        params_to_save = c("phi", "p", "survship", "b0", "b1"),
                         rng_seed = 4)
 ```
 
@@ -315,7 +338,19 @@ param_summ
 ```
 
 ```{r}
-param_summ %<>%
+logit_subset = param_summ[which(param_summ$param_grp == "logit"),]
+logit_subset
+```
+
+```{r}
+logit_subset <- logit_subset[sample(1:nrow(logit_subset),30, replace=FALSE),]
+ggplot(logit_subset, aes(x=site_num, y=mean)) +         
+       geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`)) +
+      geom_point(size = 5, color="red")
+```
+
+```{r}
+param_summ = param_summ %<>%
   left_join(tibble(site = colnames(jags_data$y)) %>%
               mutate(site = factor(site, levels = site),
                      site_num = as.integer(site))) %>%
