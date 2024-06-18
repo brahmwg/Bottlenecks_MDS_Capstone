@@ -3,6 +3,7 @@ This document contains all the SQL queries used to extract data from the Data Ce
 ## STAGE:
 
 ### Stage 1: Facility 
+Save the query below as `hatchery.csv`.
 
 ```
 SELECT tag_id_long as tag_id, release_date as date, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, 'tag' AS action, species  
@@ -14,6 +15,7 @@ FROM HATCH_TAG
 The juvinille salmons that from hatchary- maybe there are tagging events between hatchery and detection, not yet considered yet.
 
 All hatchery origin fish in downstream
+Save the query below as `downstream_hatch.csv`.
 ```
 SELECT tagid as tag_id, DATE(datetime) as date, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.fork_length_mm, 'detect' as action,
       HATCH_TAG.species 
@@ -22,6 +24,7 @@ INNER JOIN HATCH_TAG ON downstream_detections.tagid = HATCH_TAG.tag_id_long
 ```
 
 All wild origin fish in downstream 
+Save the query below as `downstream_wild.csv`.
 ```
 SELECT tagid as tag_id, DATE(datetime) as date, 'downstream' as stage, 'wild' as origin, field.fork_length_mm, tag_status as action, field.species 
 FROM downstream_detections
@@ -32,6 +35,7 @@ WHERE tagid NOT IN (
   INNER JOIN downstream_detections ON hatch_tag.tag_id_long = downstream_detections.tagid)
 ```
 ### Stage 3: Estuary
+Save the query below as `estuary.csv`.
 
 ```
 SELECT tag_id_long AS tag_id, date, 'estuary' AS stage, wild_or_hatchery AS origin, fork_length_mm, tag_status AS action, species
@@ -42,6 +46,7 @@ WHERE river_or_estuary='estuary'
 ### Stage 4: Microtroll
 
 All hatchry origin fish from microtroll
+Save the query below as `microtroll_hatch.csv`.
 ```
 SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'hatch' as origin,
         microtroll.fork_length_mm, 
@@ -52,6 +57,7 @@ WHERE microtroll.tag_id_long IS NOT NULL
 ```
 
 All wild origin fish from microtroll
+Save the query below as `microtroll_wild.csv`.
 ```
 SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'wild' as origin,
         microtroll.fork_length_mm, 
@@ -66,6 +72,7 @@ WHERE tag_id_long NOT IN (
 ### Stage 5: Return
 
 Exclude those who were encountered in the first detection to make sure is return. 
+Save the query below as `return.csv`.
 
 ```
 SELECT o.tag_id_long AS tag_id, 
