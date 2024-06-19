@@ -2,6 +2,72 @@ import pandas as pd
 import numpy as np
 import pyarrow
 
+cowichan_historic_query = """
+SELECT DATE(min_dt.date_time) AS date, min_dt.species, COUNT(DISTINCT min_dt.TAG_ID_LONG) AS count
+FROM (
+    SELECT TAG_ID_LONG, species, MIN(date_time) as date_time
+    FROM cowichan_historical
+    WHERE origin IN ('W', 'w', 'W COHO') AND date_time IS NOT NULL
+    GROUP BY TAG_ID_LONG, species
+) AS min_dt
+GROUP BY DATE(min_dt.date_time), min_dt.species
+ORDER BY DATE(min_dt.date_time);
+"""
+
+salmon_query = """
+SELECT DATE(MIN(f.date)) AS date, f.watershed, f.site, f.species, COUNT(DISTINCT f.tag_id_long) AS count
+FROM FIELD f
+INNER JOIN (
+    SELECT tag_id_long, MIN(DATE(date)) AS min_date
+    FROM FIELD
+    GROUP BY tag_id_long
+) AS subquery ON f.tag_id_long = subquery.tag_id_long AND DATE(f.date) = DATE(subquery.min_date)
+GROUP BY f.watershed, f.site, f.species, DATE(f.date)
+ORDER BY DATE(f.date);
+"""
+
+level_query = """
+SELECT DATE(MIN(f.date)) AS date, f.watershed, f.site, f.species, COUNT(DISTINCT f.tag_id_long) AS count
+FROM FIELD f
+INNER JOIN (
+    SELECT tag_id_long, MIN(DATE(date)) AS min_date
+    FROM FIELD
+    GROUP BY tag_id_long
+) AS subquery ON f.tag_id_long = subquery.tag_id_long AND DATE(f.date) = DATE(subquery.min_date)
+GROUP BY f.watershed, f.site, f.species, DATE(f.date)
+ORDER BY DATE(f.date);
+"""
+
+flow_query = """
+SELECT DATE(MIN(f.date)) AS date, f.watershed, f.site, f.species, COUNT(DISTINCT f.tag_id_long) AS count
+FROM FIELD f
+INNER JOIN (
+    SELECT tag_id_long, MIN(DATE(date)) AS min_date
+    FROM FIELD
+    GROUP BY tag_id_long
+) AS subquery ON f.tag_id_long = subquery.tag_id_long AND DATE(f.date) = DATE(subquery.min_date)
+GROUP BY f.watershed, f.site, f.species, DATE(f.date)
+ORDER BY DATE(f.date);
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def preprocessing(species, salmon_df_name, temp_df_name, level_df_name, flow_df_name):
     df_salmon = pd.read_csv(salmon_df_name)
     df_salmon = df_salmon[df_salmon[species] == True][["date", "count"]].groupby("date").sum().reset_index()
