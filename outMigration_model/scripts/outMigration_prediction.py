@@ -16,8 +16,7 @@ SELECT * FROM outMigration_staging;
 staging = pd.DataFrame(plpy.execute(cowichan_historic_query))
 
 
-def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plot=False):
-    df = pd.read_csv(df_name)
+def prediction(df, prediction_year, lower_percentile, upper_percentile, plot=False):
     recent_year = df["year"].max()
     df["date"] = pd.to_datetime(df["date"], format='%Y-%m-%d')
     df['count_diff'] = df['count'].diff().dropna()
