@@ -99,10 +99,8 @@ probabilistic_models = {
 for row in results:
     data = plpy.execute("SELECT * FROM staging.species WHERE id = %s" % row['id'])[0]
 
-    # Apply the deterministic voting classifier
     pred_1, det_predictions = voting_classifier_deterministic(data, deterministic_models)
 
-    # Apply the probabilistic voting classifier
     predictions, final_prediction = voting_classifier_probabilistic(data, probabilistic_models, pred_1)
 
     # Insert the result into ods.species_prediction
