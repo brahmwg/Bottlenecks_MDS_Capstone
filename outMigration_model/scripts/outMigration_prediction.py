@@ -9,6 +9,13 @@ import xgboost as xgb
 import matplotlib.pyplot as plt
 import pyarrow 
 
+staging_query = """
+SELECT * FROM outMigration_staging;
+"""
+
+staging = pd.DataFrame(plpy.execute(cowichan_historic_query))
+
+
 def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plot=False):
     df = pd.read_csv(df_name)
     recent_year = df["year"].max()
@@ -103,11 +110,10 @@ def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plo
 
     print(f"{lower_percentile}% to {upper_percentile}% of salmon are predicted to be tagged between: {start_date_str} to {end_date_str}.")
 
-if __name__ == "__main__":
-    df_name = "../data/jenny/preprocessed_ck.csv"
-    prediction_year = 2022
-    lower_percentile = 5
-    upper_percentile = 10
-    plot = True  # Change to False if you do not want to plot the results
 
-    prediction(df_name, prediction_year, lower_percentile, upper_percentile, plot)
+prediction_year = 2022
+lower_percentile = 5
+upper_percentile = 10
+plot = True  # Change to False if you do not want to plot the results
+
+prediction(staging, prediction_year, lower_percentile, upper_percentile, plot)
