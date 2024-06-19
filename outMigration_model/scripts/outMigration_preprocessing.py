@@ -31,29 +31,25 @@ ORDER BY DATE(f.date);
 salmon = pd.DataFrame(plpy.execute(salmon_query))
 
 level_query = """
-SELECT DATE(MIN(f.date)) AS date, f.watershed, f.site, f.species, COUNT(DISTINCT f.tag_id_long) AS count
-FROM FIELD f
-INNER JOIN (
-    SELECT tag_id_long, MIN(DATE(date)) AS min_date
-    FROM FIELD
-    GROUP BY tag_id_long
-) AS subquery ON f.tag_id_long = subquery.tag_id_long AND DATE(f.date) = DATE(subquery.min_date)
-GROUP BY f.watershed, f.site, f.species, DATE(f.date)
-ORDER BY DATE(f.date);
+SELECT "STATION_NUMBER", "YEAR", "MONTH", "LEVEL1", "LEVEL2", "LEVEL3", "LEVEL4", "LEVEL5", "LEVEL6", "LEVEL7", "LEVEL8", "LEVEL9", "LEVEL10", 
+       "LEVEL11", "LEVEL12", "LEVEL13", "LEVEL14", "LEVEL15", "LEVEL16", "LEVEL17", "LEVEL18", "LEVEL19", "LEVEL20", 
+       "LEVEL21", "LEVEL22", "LEVEL23", "LEVEL24", "LEVEL25", "LEVEL26", "LEVEL27", "LEVEL28", "LEVEL29", "LEVEL30", 
+       "LEVEL31"
+FROM hydat_fdw."DLY_LEVELS" 
+WHERE "STATION_NUMBER" IN ('08HA003', '08HA001')
+AND "YEAR" > 2012; 
 """
 
 level = pd.DataFrame(plpy.execute(level_query))
 
 flow_query = """
-SELECT DATE(MIN(f.date)) AS date, f.watershed, f.site, f.species, COUNT(DISTINCT f.tag_id_long) AS count
-FROM FIELD f
-INNER JOIN (
-    SELECT tag_id_long, MIN(DATE(date)) AS min_date
-    FROM FIELD
-    GROUP BY tag_id_long
-) AS subquery ON f.tag_id_long = subquery.tag_id_long AND DATE(f.date) = DATE(subquery.min_date)
-GROUP BY f.watershed, f.site, f.species, DATE(f.date)
-ORDER BY DATE(f.date);
+SELECT "STATION_NUMBER", "YEAR", "MONTH", "FLOW1", "FLOW2", "FLOW3", "FLOW4", "FLOW5", "FLOW6", "FLOW7", "FLOW8", "FLOW9", "FLOW10", 
+       "FLOW11", "FLOW12", "FLOW13", "FLOW14", "FLOW15", "FLOW16", "FLOW17", "FLOW18", "FLOW19", "FLOW20", 
+       "FLOW21", "FLOW22", "FLOW23", "FLOW24", "FLOW25", "FLOW26", "FLOW27", "FLOW28", "FLOW29", "FLOW30", 
+       "FLOW31"
+FROM hydat_fdw."DLY_FLOWS" 
+WHERE "STATION_NUMBER" IN ('08HA003', '08HA001')
+AND "YEAR" > 2012; 
 """
 
 flow = pd.DataFrame(plpy.execute(flow_query))
