@@ -58,6 +58,13 @@ ORDER BY DATE(f.date);
 
 flow = pd.DataFrame(plpy.execute(flow_query))
 
+temp_query = """
+SELECT "UTC_DATE", "RELATIVE_HUMIDITY", "WIND_SPEED", "TEMP", "WINDCHILL", "DEW_POINT_TEMP"
+FROM northcowichan_daily_temp;
+"""
+
+temp = pd.DataFrame(plpy.execute(temp_query))
+
 
 def preprocess_sql(salmon, cowichan_historic):
     # Filter and reset index for Cowichan watershed
@@ -84,6 +91,7 @@ def preprocess_sql(salmon, cowichan_historic):
     return df_expanded_1
     
 salmon_concat = preprocess_sql(salmon, cowichan_historic)
+
 
 def preprocessing(species, df_salmon, df_temp, df_level, df_flow):
     df_salmon = df_salmon[df_salmon[species] == True][["date", "count"]].groupby("date").sum().reset_index()
@@ -132,4 +140,4 @@ def preprocessing(species, df_salmon, df_temp, df_level, df_flow):
     comb_df.fillna(comb_df.median(), inplace=True)
     return comb_df
 
-preprocessed = preprocessing("ck", salmon_concat, ,level, flow)
+preprocessed = preprocessing("ck", salmon_concat, temp, level, flow)
