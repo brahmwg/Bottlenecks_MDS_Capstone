@@ -28,3 +28,17 @@ SELECT tag_id_long, date, watershed, river, site, method, local, fork_length_mm,
 FROM field A
 WHERE NOT EXISTS (SELECT 1 FROM table_1 B WHERE B.tag_id_long = A.tag_id_long)
 ```
+
+Extracting truth table for microtroll
+```
+select tag_id_long, river, year, date, stock, pfma, latregion, fork_length_mm, species as annotated_species, species_id as confirmed_species
+from all_tagging 
+where source = 'microtroll' and species_id IN ('chinook', 'coho', 'none') and stock IS NOT NULL
+```
+
+Extracting microtroll data to predict for:
+```
+select tag_id_long, river, year, date, stock, stock_group, pfma, latregion, fork_length_mm, species as annotated_species, species_id as confirmed_species
+from all_tagging 
+where source = 'microtroll' and species_id IS NULL and stock is not null
+```
