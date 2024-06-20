@@ -146,7 +146,7 @@ preprocessed = preprocessing("ck", salmon_concat, temp, level, flow)
 
 for row in preprocessed.itertuples(index=False):
     insert_query = """
-    INSERT INTO staging.species ({})
+    INSERT INTO staging.outmigration ({})
     VALUES ({})
     """.format(
         ", ".join(preprocessed.columns),
