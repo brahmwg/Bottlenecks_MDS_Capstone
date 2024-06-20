@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import pyarrow 
 
 staging_query = """
-SELECT * FROM outMigration_staging;
+SELECT * FROM staging.outmigration;
 """
 
 staging = pd.DataFrame(plpy.execute(cowichan_historic_query))
