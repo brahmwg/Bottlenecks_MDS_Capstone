@@ -1,0 +1,16 @@
+model {
+  for (j in 1:J) {
+    p[j] ~ dbeta(1, 1)
+  }
+  b0 ~ dnorm(0, 0.001)
+  mu_b1 ~ dnorm(0, 0.001)
+  for (i in 1:N) {
+    for (j in (f[i] + 1):J) {
+      b1[i] ~ dnorm(mu_b1, 0.01)
+      logit_phi[i] <- b0 + b1[i] * y[i, 1]
+      phi[j] <- ilogit(logit_phi[i])
+      z[i, j] ~ dbern(phi[j] * z[i, j - 1])
+      y[i, j] ~ dbern(p[j] * z[i, j])
+    }
+  }
+}
