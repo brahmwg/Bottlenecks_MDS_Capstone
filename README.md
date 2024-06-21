@@ -67,7 +67,7 @@ dependencies:
 3. Run the following command below to install the dependencies.
 
 ```
-conda env create -f environment.yml
+conda env create -f environment_ml.yml
 ```
 
 4. Activate the environment using `conda` as below.
