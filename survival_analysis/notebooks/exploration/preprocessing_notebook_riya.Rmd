@@ -1,0 +1,132 @@
+---
+title: "Trail for preprocessing - Survival Analysis"
+output: pdf_notebook
+---
+
+# Imports
+
+```{r}
+library(readr)
+```
+
+# Data reading
+
+```{r}
+hatchery <- read_csv("../raw_data/hatchery.csv", show_col_types = FALSE)
+
+downstream_hatch <- read_csv("../raw_data/downstream_hatch.csv", 
+                             show_col_types = FALSE)
+
+downstream_wild <- read_csv("../raw_data/downstream_wild.csv", 
+                             show_col_types = FALSE)
+estuary <- read_csv("../raw_data/estuary.csv", show_col_types = FALSE)
+
+microtroll_hatch <- read_csv("../raw_data/microtroll_hatch.csv", 
+                             show_col_types = FALSE)
+
+microtroll_wild <- read_csv("../raw_data/microtroll_wild.csv", 
+                            show_col_types = FALSE)
+return <- read_csv("../raw_data/return.csv", show_col_types = FALSE)
+```
+
+The columns we want the final dataset to have is the following:
+
+```{r}
+columns <- colnames(microtroll_hatch)
+columns
+```
+
+### Note on `action` column
+
+`Action` can be taken care only after combining the whole dataset. The first instance of a tag_id is "tag" and the following instances is "detect".
+
+# Pre-processing
+
+## Stage 1: Hatchery
+
+Notes: Clean
+
+```{r}
+head(hatchery)
+```
+
+## Stage 2: Downstream
+
+Notes: Clean
+
+```{r}
+head(downstream_hatch)
+```
+
+Notes: Clean
+
+```{r}
+head(downstream_wild)
+```
+
+## Stage 3: Estuary
+
+```{r}
+estuary$origin <- ifelse(estuary$origin == "hatchery", "hatch", "wild")
+head(estuary)
+```
+
+## Stage 4: Microtroll
+
+Notes: action - change clip/unclip to tag/detect
+
+```{r}
+head(microtroll_hatch)
+```
+
+```{r}
+head(microtroll_wild)
+```
+
+## Stage 5: Return
+
+```{r}
+head(return)
+```
+
+(I'm making a table return with 2 tables i extracted seperately so that the dataset has values for both wild and hatch, this will not be seen in preprocessing.R because we'll use the entire dataset)
+
+```{r}
+return_hatch <- read_csv("../raw_data/return_hatch.csv", 
+                             show_col_types = FALSE)
+return_wild <- read_csv("../raw_data/return_wild.csv", 
+                             show_col_types = FALSE)
+return <- rbind(return_hatch, return_wild)
+```
+
+```{r}
+return$origin <- ifelse(return$origin == "hatch_tag", "hatch", "wild")
+head(return)
+```
+
+```{r}
+
+```
+
+# Combining cleaned dfs
+
+```{r}
+combined <- rbind(hatchery, downstream_hatch, downstream_wild, estuary,
+                  microtroll_hatch, microtroll_wild, return)
+head(combined)
+```
+
+## `Action` column
+
+1.  Sometimes there is a data entry error, write script to make sure of tag and detect.
+2.  Change "recap" to "detect"
+
+```{r}
+combined$action[combined$action == 'recap'] <- 'detect'
+```
+
+# Save the dataset
+
+```{r}
+write.csv(combined, "../preprocessed_data/survival_analysis_small.csv")
+```
