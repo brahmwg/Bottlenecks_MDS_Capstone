@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 import random
 import warnings
+import numpy as np
 
 
 warnings.filterwarnings("ignore")
@@ -32,25 +33,30 @@ class VotingClassifier:
                     'spotting_characteristic_variable']
         
         # RIYA ADD YOUR COLUMNS HERE
-        prob_cols = ['water_temp_start', 'fork_length_mm', 'watershed_cowichan',
-                    'watershed_englishman', 'watershed_nanaimo', 'watershed_puntledge',
-                    'river_center creek', 'river_cowichan', 'river_englishman',
-                    'river_haslam creek', 'river_nanaimo', 'river_puntledge',
-                    'river_shelly creek', 'site_70.2', 'site_above tsolum',
-                    'site_cedar bridge', 'site_center creek', 'site_condensory bridge',
-                    'site_cow bay', 'site_hamilton ave', 'site_jack point',
-                    'site_little mexico', 'site_living forest', 'site_mainstem fence',
-                    'site_martindale rd', 'site_newcastle', 'site_side channel',
-                    'site_skutz', 'site_snuneymuxw beach', 'site_t-bone road',
-                    'site_tsolum confluence', 'site_vimy pool', 'method_beach seine',
-                    'method_g-trap', 'method_rst', 'method_smolt trap', 'local_in-river',
-                    'local_marine', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
-                    'snout_shape_NA', 'snout_shape_long and pointy', 'snout_shape_pointy',
-                    'snout_shape_short and blunt', 'snout_shape_short and rounded',
-                    'parr_marks_NA', 'parr_marks_faded', 'parr_marks_slightly faded',
-                    'parr_marks_length_long', 'parr_marks_length_short',
-                    'spotting_density_high', 'spotting_density_medium', 'fin_type_anal fin',
-                    'fin_type_caudal fin']
+        prob_cols = ['fork_length_mm', 'watershed_cowichan', 'watershed_englishman',
+       'watershed_nanaimo', 'watershed_puntledge', 'river_center creek',
+       'river_cowichan', 'river_englishman', 'river_haslam creek',
+       'river_nanaimo', 'river_puntledge', 'river_shelly creek', 'site_70.2',
+       'site_above tsolum', 'site_cedar bridge', 'site_center creek',
+       'site_condensory bridge', 'site_cow bay', 'site_hamilton ave',
+       'site_jack point', 'site_little mexico', 'site_living forest',
+       'site_mainstem fence', 'site_martindale rd', 'site_newcastle',
+       'site_side channel', 'site_skutz', 'site_t-bone road',
+       'site_tsolum confluence', 'site_vimy pool', 'method_beach seine',
+       'method_g-trap', 'method_rst', 'method_smolt trap', 'local_in-river',
+       'local_marine', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
+       'snout_shape_NA', 'snout_shape_long and pointy', 'snout_shape_pointy',
+       'snout_shape_short and blunt', 'snout_shape_short and rounded',
+       'parr_marks_NA', 'parr_marks_faded', 'parr_marks_slightly faded',
+       'parr_marks_length_long', 'parr_marks_length_short',
+       'spotting_density_high', 'spotting_density_medium', 'fin_type_anal fin',
+       'fin_type_caudal fin', 'parr_marks_spacing_NA',
+       'parr_marks_spacing_narrower than interspaces',
+       'parr_marks_spacing_variable',
+       'parr_marks_spacing_wider than interspaces',
+       'spotting_characteristic_NA', 'spotting_characteristic_circle',
+       'spotting_characteristic_irregular',
+       'spotting_characteristic_variable']
 
         det_data = data[det_cols].values
         prob_data = data[prob_cols].values
