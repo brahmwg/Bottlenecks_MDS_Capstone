@@ -15,6 +15,7 @@ Our data is modeled using hierarchical modeling to estimate survival and detecti
 | $p_j$ | Describes the detection probability of salmon at stage $j$. |
 
 $$\phi_j \sim \text{Beta}(1,1)$$
+
 $$p_j \sim \text{Beta}(1,1)$$
 
 Both parameters are modeled using the beta distribution with fixed shape parameters of $\alpha=1$ and $\beta=1$. Hence, this corresponds to a uniform distribution over the interval [0, 1]. This means that before observing any data, every possible value of $\phi_j$ and $p_j$ is between 0 and 1 in an equally likely manner.
@@ -23,9 +24,10 @@ Both parameters are modeled using the beta distribution with fixed shape paramet
 | Variable | Description | 
 | --- | --- | 
 | $z_{i,j}$ | A variable that indicates whether salmon $i$ is alive $(z_{i,j} = 0)$ or not at stage $j$. |
-| $y_{i,j}$ | A variable that indicates whether salmon $i$ is detected $(z_{i,j} = 0)$ or not at stage $j$. |
+| $y_{i,j}$ | A variable that indicates whether salmon $i$ is detected $(y_{i,j} = 0)$ or not at stage $j$. |
 
 $$z_{i,j} \sim \text{Bernoulli}(\phi_j, z_{i,j-1})$$
+
 $$y_{i,j} \sim \text{Bernoulli}(p_j, z_{i,j-1})$$
 
 These Bernoulli distributions model the probability of survival $z_{i,j}$ and detection $y_{i,j}$ at each stage $j$. $z_{i,j}$ depends on $\phi_j$, the survival probability, and possibly $z_{i, j-1}$, the survival status at the previous stage $j-1$. $y_{i,j}$ depends on $p_j$, the detection probability, and $z_{i,j-1}$, the survival status at stage $j$.
@@ -33,7 +35,8 @@ These Bernoulli distributions model the probability of survival $z_{i,j}$ and de
 ### 2.3 Cumulative Survival Probability
 The cumulative survival probability $\text{Survship}_j$ can be calculated as the product of survival probabilities up to stage $j$:
 
-$\text{Survship}$
+$$\text{Survship}_j = \prod_{k=1}  \times \phi_$$
+
 $_j = \prod_{k=1}^{i=1} \times \phi_k$
 
 This product represents the overall probability that a salmon survives from the initial stage up to stage $j$, considering the survival probabilities $\phi_k$ across all stages from 1 to $j$.
@@ -42,12 +45,10 @@ This product represents the overall probability that a salmon survives from the 
 Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted with 95% credible intervals. 
 
 <img src="plots/phi_p.png" alt="phi and p" style="width: 700px;">
-<br>Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval
+Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval
 
 <img src="plots/p_plot.png" alt="phi and p" style="width: 700px;">
-<br>Figure 2. Posterior Distributions of $p$ and $p$ with 95% Credible Interval
+Figure 2. Posterior Distributions of $p$ and $p$ with 95% Credible Interval
 
 <img src="plots/surv_p.png" alt="phi and p" style="width: 700px;">
-<br>Figure 3. Posterior Distributions of $\text{Survship}$ and $p$ with 95% Credible Interval
-
-Something....
+Figure 3. Posterior Distributions of $\text{Survship}$ and $p$ with 95% Credible Interval
