@@ -14,3 +14,5 @@ dependencies:
   - vegafusion-python-embed  
   - vegafusion-jupyter
   - pytorch 
+  - ipykernel
+  - xgboost
