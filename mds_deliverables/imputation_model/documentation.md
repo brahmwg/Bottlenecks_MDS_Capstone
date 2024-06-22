@@ -19,22 +19,30 @@ Since the data pulled from the data center is not in a model ingestable format, 
 2. Added 2 new features extracted from date: day of the year (a  whole number between 1 and 365) and the year (2021-2023)
 3. Removed tag_id (since it is unique), applied standard scaling to fork length and day of the year and one-hot encoded the rest of the features to make it in a model ingestible format.
    
-### Model training and prediction
+### 2.3 Model training 
 The model employed is a deep learning neural network consisting of four layers: one input layer, two hidden layers, and one output layer. The architecture is defined using TensorFlow's Keras API, with the following configuration: `dl_model = tf.keras.Sequential([ layers.Input(shape=(num_features,)), layers.Dense(128, activation='relu'), layers.Dense(64, activation='relu'), layers.Dense(3, activation='softmax') ])`. The ReLU (Rectified Linear Unit) activation function is applied after the input layer and between the hidden layers to introduce non-linearity, enabling the model to learn complex patterns. The softmax activation function is used in the output layer to convert the output into a probability distribution over the possible classes, facilitating multi-class classification.
 
 <img width="359" alt="dl model params" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/d76280b0-93ee-4a99-91e1-abdcb4afab74">
 
 The model is compiled using the Adam optimizer with a learning rate of 0.0001. Adam (Adaptive Moment Estimation) is a popular optimizer in deep learning due to its ability to adapt the learning rate for each parameter, combining the advantages of both RMSProp and SGD with momentum. This results in faster convergence and improved performance on complex tasks. The loss function used is categorical crossentropy, which is suitable for multi-class classification problems as it measures the difference between the predicted probability distribution and the true distribution. Additionally, accuracy is used as a metric to evaluate the model's performance during training.
 
-After training, the model is saved in an .h5 format, a versatile file format that allows for the storage of the complete architecture, weights, and optimizer state, ensuring the model can be easily loaded and used for future predictions.
+After training, the model is [saved](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/tree/main/mds_deliverables/imputation_model/model) in an .h5 format, a versatile file format that allows for the storage of the complete architecture, weights, and optimizer state, ensuring the model can be easily loaded and used for future predictions.
+
 
 
 <img width="492" alt="dl model" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/439ab833-0a29-4e3f-a0f0-1340db0ee164">
+
 
 The model tested with a 95% accuracy, where the accuracy is defined as the number of correct predictions in comparison to the results from the genetics lab. The model training was steady along 20 epochs. The accuracy and loss for both train and validation sets can be seen here.
 
 
 ![accuracy and loss curves](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/896fe244-7559-4bb2-9be6-847b3d04460c)
+
+### 2.4 Model prediction
+
+
+
+
 
 
 
