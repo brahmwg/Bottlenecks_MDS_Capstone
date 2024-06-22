@@ -1,0 +1,149 @@
+---
+title: "survival_model_guide"
+output:
+  pdf_document: default
+  html_document: default
+date: "2024-06-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Survival Analysis Installation & Running Guideline
+
+## 1. Installation
+
+### 1.1 Required Package
+
+```         
+library(devtools)
+library(postpack)
+library(coda)
+library(remotes)
+library(rjags)
+library(telemetyr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(car)
+library(lme4)
+library(FactoMineR)
+library(factoextra)
+library(corrplot)
+library(gridExtra)
+library(mvnormtest)
+library(MVN)
+library(vegan)
+library(permute)
+library(lattice)
+library(emmeans)
+library(tidyr)
+library(cluster)
+library(ggrepel)
+library(lmerTest)
+library(survival)
+library(survminer)
+library(MuMIn)
+library(CRM)
+library(TMB)
+library(RMark)
+library(marked)
+library(mra)
+library(tidyverse)
+library(knitr)
+library(MCMCvis)
+library(purrr)
+```
+
+If a package is yet to be installed, install it by copy and pasting the command below onto your R console.
+
+```         
+install.packages("package_name")
+```
+
+### 1.2 Installation through `renv` 
+
+#### 1.2.1 Initialization
+
+If `renv` is not yet initialized for your project, you need to initialize it first. Open RStudio or an R console, navigate to your project directory, and run:
+
+```         
+renv::init()
+```
+
+#### 1.2.2 `renv.lock`
+
+The `renv.lock` file contains a record of all the packages that were used in your cloned project. It specifies exact versions of each package, ensuring that these versions are reproducible across different machines.
+
+#### 1.2.3 Activation
+
+Before installing packages, activate `renv` by copying and pasting the command below onto your R console. This is to ensure that you're working within the project-specific environment.
+
+```         
+renv::activate()
+```
+
+#### 1.2.4 Package Installation
+
+Install all packages that are stored in `renv.lock` file by copying and pasting the command below onto your R console. This command reads through `renv.lock` and installs listed packages. By doing this, your project environment will match that of the cloned repository.
+
+```         
+renv::restore()
+```
+
+### 1.3 Special Instruction
+
+From the above, `rjags` package needs to be manually downloaded from [JAGS SourceForge website](https://sourceforge.net/projects/mcmc-jags/) and `telemetyr` package needs to be installed through [Devtools](https://rdrr.io/github/mackerman44/telemetyr/f/README.md). To install `telemetyr`, copy and paste the command below onto your R console.
+
+```         
+devtools::install_github("BiomarkABS/telemetyr", build_vignettes = FALSE)
+```
+
+### 1.4 Folder Structure
+
+Your working directory must have a corresponding folder structure.
+
+```         
+- data
+  |- raw             
+  |- preprocessed    
+- scripts
+  |- preprocessing.R  
+  |- survival_analysis_model.R  
+- plots                
+- queries
+  |- queries_for_data_extraction.md  
+```
+
+## 2. Data Extraction
+
+Your data will need to first be collected and placed under `data/raw` folder. Follow instructions on `queries/queries_for_data_extraction.md` to run the SQL queries in the Strait of Georgia Data Center.
+
+## 3. Preprocessing
+
+To preprocess your data, navigate to the `scripts/preprocessing.R` file. In this file, locate *line 7* where the working directory is set. Update this line to reflect your desired directory path. Make sure that the specified directory contains a `data/raw` sub-folder, which should include the CSV data frames obtained from the previous data extraction step. Click `Run All`.
+
+To be more specific, the line that needs to be updated is:
+
+```         
+setwd("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/")
+```
+
+### 3.1 Outcome
+
+Your preprocessed CSV file will be stored under `data/preprocessed` folder.
+
+## 4. Survival Analysis and Monte-Carlo Markov Chains
+
+To run the Cormack-Jolly-Seber (CJS) survival modelling that are built using Bayesian modelling, navigate through `scripts/survival_analysis_model.R`. In this file, locate *line 39* where the working directory is set. Make sure to keep the working directory the same as before. Click `Run All`.
+
+To be more specific, the line that needs to be updated is:
+
+```         
+setwd("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/")
+```
+
+#### 4.1 Outcome
+
+After conducting survival analysis, you will find the results summarized in the `param_summ.csv` data frame located in the `data` folder. Additionally, visual representations of the 95% credible intervals for all variables of interest can be found in the `plots` folder.
