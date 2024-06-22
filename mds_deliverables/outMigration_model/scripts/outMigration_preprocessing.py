@@ -81,17 +81,17 @@ def preprocessing(species, salmon_df_name, temp_df_name, level_df_name, flow_df_
 
 # data path not final yet 
 if __name__ == "__main__":
-    salmon2 = pd.read_csv('data/data_salmon2.csv') 
-    cow = pd.read_csv('data/cowichan_historic.csv')  
-    output_file = 'data/salmon_concat.csv'
+    salmon2 = pd.read_csv('../data/raw/data_salmon2.csv') 
+    cow = pd.read_csv('../data/raw/cowichan_historic.csv')  
+    output_file = '../data/raw/salmon_concat.csv'
 
     preprocess_sql(salmon2, cow, output_file)
     
-    salmon_path = "data/salmon_concat.csv"
-    temp_path = "data/northcochiwan_daily_temp.csv"
-    flow_path = "data/flow_2023.csv"
-    level_path = "data/level_2023.csv"
+    salmon_path = "../data/raw/salmon_concat.csv"
+    temp_path = "../data/raw/northcochiwan_daily_temp.csv"
+    flow_path = "../data/raw/flow_2023.csv"
+    level_path = "../data/raw/level_2023.csv"
 
     final_df = preprocessing("ck", salmon_path, temp_path, level_path, flow_path)
-    final_df.to_csv("data/preprocessed_ck.csv", index=False)
+    final_df.to_csv("../data/preprocessed/preprocessed_ck.csv", index=False)
     print("Final preprocessed data saved to data/preprocessed_ck.csv")
