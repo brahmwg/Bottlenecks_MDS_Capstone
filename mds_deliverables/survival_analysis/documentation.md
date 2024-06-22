@@ -9,29 +9,30 @@ Our study implemented the Cormack-Jolly-Seber (CJS) model (Cormack, 1964; Jolly,
 Our data is modeled using hierarchical modeling to estimate survival and detection probabilities across multiple stages of the fish's outmigration-return path. The model combines elements of the CJS model with Bayesian techniques to handle sparse recapture data effectively. This method was chosen and was originally implemented by Dr. Laura Elmar at the Pacific Salmon Foundation.
 
 ### 2.1 Prior Distribution
+
 | Parameter | Description | 
 | --- | --- | 
-| $\phi_j$ | Describes the survival probability of salmon at stage $j$. |
-| $p_j$ | Describes the detection probability of salmon at stage $j$. |
+| \(\phi_j\) | Describes the survival probability of salmon at stage \(j\). |
+| \(p_j\) | Describes the detection probability of salmon at stage \(j\). |
 
-Both parameters are modeled using the beta distribution with fixed shape parameters of $\alpha=1$ and $\beta=1$. Hence, this corresponds to a uniform distribution over the interval [0, 1]. This means that before observing any data, every possible value of $\phi_j$ and $p_j$ is between 0 and 1 in an equally likely manner.
-$$\phi_j \sim \text{Beta}(1,1)$$
-$$p_j \sim \text{Beta}(1,1)$$
+Both parameters are modeled using the Beta distribution with fixed shape parameters of \(\alpha = 1\) and \(\beta = 1\), which corresponds to a uniform distribution over the interval [0, 1]. This implies that before observing any data, every possible value of \(\phi_j\) and \(p_j\) is considered equally likely.
 
 ### 2.2 Likelihood
+
 | Latent Variable | Description | 
 | --- | --- | 
-| $\phi_j$ | Describes the survival probability of salmon at stage $j$. |
-| $p_j$ | Describes the detection probability of salmon at stage $j$. |
+| \(z_{i,j}\) | Latent variable indicating the survival status of salmon \(i\) at stage \(j\), where \(z_{i,j} = 0\) indicates the salmon is alive. |
+| \(y_{i,j}\) | Latent variable indicating the detection status of salmon \(i\) at stage \(j\), where \(y_{i,j} = 0\) indicates the salmon is not detected. |
 
-Our likelihood distributions are as follows, where $i$ indicates individual salmon. returns a binary value of either  or  to depict survival status of the fish, and 
- depicts the binary value of either  or  to depict tagging status of the fish
-$$\phi_j \sim \text{Beta}(1,1)$$
-$$p_j \sim \text{Beta}(1,1)$$
+The likelihood functions are defined as follows:
+\[ z_{i,j} \sim \text{Bernoulli}(\phi_j) \]
+\[ y_{i,j} \sim \text{Bernoulli}(p_j \cdot z_{i,j}) \]
 
-$$z_{i,j} \sim \text{Bernoulli}(\phi_j, z_{i,j-1})$$
-$$y_{i,j} \sim \text{Bernoulli}(p_j, z_{i,j-1})$$
+These Bernoulli distributions model the probability of survival \(z_{i,j}\) and detection \(y_{i,j}\) at each stage \(j\). \(z_{i,j}\) depends on \(\phi_j\), the survival probability, and possibly \(z_{i,j-1}\), the survival status at the previous stage \(j-1\). \(y_{i,j}\) depends on \(p_j\), the detection probability, and \(z_{i,j-1}\), the survival status at stage \(j\).
 
-$$\text{Survship}_j = \prod_{k=1}^{i=1} \phi_k$$
+### 2.3 Cumulative Survival Probability
 
-## 2. Results
+The cumulative survival probability \( \text{Survship}_j \) can be calculated as the product of survival probabilities up to stage \( j \):
+\[ \text{Survship}_j = \prod_{k=1}^{j} \phi_k \]
+
+This product represents the overall probability that a salmon survives from the initial stage up to stage \( j \), considering the survival probabilities \(\phi_k\) across all stages from 1 to \( j \).
