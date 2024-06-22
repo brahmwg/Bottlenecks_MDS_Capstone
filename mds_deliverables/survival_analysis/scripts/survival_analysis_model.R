@@ -36,8 +36,8 @@ library(knitr)
 library(MCMCvis)
 library(purrr)
 
-setwd("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/")
-survdata <- read_csv("data/preprocessed/preprocessed.csv")
+setwd("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/mds_deliverables/survival_analysis/")
+survdata <- read_csv("data/preprocessed/preprocessed_subset.csv")
 
 survdata <- survdata[,2:8]
 survdata <- survdata[survdata$species %in% c("co", "ck"), ]
