@@ -79,7 +79,6 @@ def preprocessing(species, salmon_df_name, temp_df_name, level_df_name, flow_df_
     comb_df.fillna(comb_df.median(), inplace=True)
     return comb_df
 
-# data path not final yet 
 if __name__ == "__main__":
     salmon2 = pd.read_csv('../data/raw/data_salmon2.csv') 
     cow = pd.read_csv('../data/raw/cowichan_historic.csv')  
