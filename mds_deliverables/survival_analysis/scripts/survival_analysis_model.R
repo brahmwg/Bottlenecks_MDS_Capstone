@@ -167,7 +167,7 @@ write_bayes_cjs = function(file_path = NULL) {
   postpack::write_model(jags_model, file_path)
 }
 
-write_bayes_cjs(file_path = 'CJS_model_edited.txt')
+write_bayes_cjs(file_path = 'models/CJS_model_edited.txt')
 
 jags_data = prep_jags_cjs(
   cap_hist_wide = hatchsimple_clean,
@@ -177,7 +177,7 @@ jags_data = prep_jags_cjs(
 )
 
 
-cjs_post = run_jags_cjs(file_path = 'CJS_model_edited.txt',
+cjs_post = run_jags_cjs(file_path = 'models/CJS_model_edited.txt',
                         jags_data = jags_data,
                         n_chains = 4,
                         n_adapt = 1000,
