@@ -42,10 +42,12 @@ This product represents the overall probability that a salmon survives from the 
 Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted with 95% credible intervals. 
 
 <img src="plots/phi_p.png" alt="phi and p" style="width: 700px;">
-<span style="color: gray;">Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval</span>
+<br>Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval
 
 <img src="plots/p_plot.png" alt="phi and p" style="width: 700px;">
-<span style="color: gray;">Figure 2. Posterior Distributions of $p$ and $p$ with 95% Credible Interval</span>
+<br>Figure 2. Posterior Distributions of $p$ and $p$ with 95% Credible Interval
 
 <img src="plots/surv_p.png" alt="phi and p" style="width: 700px;">
-<span style="color: gray;">Figure 3. Posterior Distributions of $\text{Survship}$ and $p$ with 95% Credible Interval</span>
+<br>Figure 3. Posterior Distributions of $\text{Survship}$ and $p$ with 95% Credible Interval
+
+Something....
