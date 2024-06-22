@@ -32,13 +32,14 @@ These Bernoulli distributions model the probability of survival $z_{i,j}$ and de
 
 ### 2.3 Cumulative Survival Probability
 The cumulative survival probability $\text{Survship}_j$ can be calculated as the product of survival probabilities up to stage $j$:
-$$\text{Survship}_j = \prod_{k=1}^{i=1} \phi_k$$
+
+$$\text{Survship}_j = \prod_{k=1}^{i=1} \times \phi_k$$
 
 This product represents the overall probability that a salmon survives from the initial stage up to stage $j$, considering the survival probabilities $\phi_k$ across all stages from 1 to $j$.
 
 ## 3. Results
 Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted with 95% credible intervals. 
 
-![phi](plots/phi_p.png)
+<img src="plots/phi_p.png" alt="phi and p" width="600">
 <span style="color: gray;">Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval</span>
 
