@@ -1,0 +1,1001 @@
+date,watershed,site,species,count
+2021-04-07,englishman,martindale rd,co,2
+2021-04-07,englishman,martindale rd,rbt,1
+2021-04-09,englishman,martindale rd,co,1
+2021-04-09,englishman,martindale rd,rbt,1
+2021-04-12,englishman,martindale rd,co,3
+2021-04-14,englishman,martindale rd,co,7
+2021-04-14,englishman,martindale rd,rbt,7
+2021-04-15,englishman,martindale rd,co,20
+2021-04-15,englishman,martindale rd,rbt,1
+2021-04-16,englishman,martindale rd,co,25
+2021-04-16,englishman,martindale rd,rbt,6
+2021-04-18,englishman,martindale rd,co,53
+2021-04-18,englishman,martindale rd,rbt,6
+2021-04-20,englishman,center creek,co,28
+2021-04-20,englishman,center creek,ct,3
+2021-04-20,englishman,center creek,rbt,34
+2021-04-20,englishman,martindale rd,co,90
+2021-04-20,englishman,martindale rd,rbt,1
+2021-04-22,englishman,martindale rd,co,44
+2021-04-23,englishman,center creek,co,62
+2021-04-23,englishman,center creek,ct,5
+2021-04-23,englishman,center creek,rbt,21
+2021-04-23,englishman,martindale rd,co,75
+2021-04-23,englishman,martindale rd,ct,2
+2021-04-24,campbell river,hatchery fence,stl,1
+2021-04-25,campbell river,hatchery fence,stl,1
+2021-04-26,black creek,sturgess bridge rd,co,265
+2021-04-26,black creek,sturgess bridge rd,ct,2
+2021-04-26,black creek,sturgess bridge rd,,2
+2021-04-26,campbell river,hatchery fence,stl,2
+2021-04-26,englishman,center creek,co,30
+2021-04-26,englishman,center creek,rbt,13
+2021-04-26,englishman,center creek,stl,9
+2021-04-26,englishman,martindale rd,co,200
+2021-04-26,englishman,martindale rd,rbt,2
+2021-04-27,campbell river,hatchery fence,stl,2
+2021-04-27,englishman,martindale rd,co,77
+2021-04-28,campbell river,hatchery fence,stl,1
+2021-04-28,englishman,center creek,co,118
+2021-04-28,englishman,center creek,ct,1
+2021-04-29,campbell river,hatchery fence,stl,4
+2021-04-29,cowichan,70.2,bt,29
+2021-04-29,cowichan,70.2,ck,2
+2021-04-29,cowichan,70.2,co,59
+2021-04-29,cowichan,70.2,rbt,8
+2021-04-29,cowichan,mainstem fence,co,8
+2021-04-29,englishman,martindale rd,co,67
+2021-04-30,campbell river,hatchery fence,stl,8
+2021-04-30,cowichan,70.2,bt,28
+2021-04-30,cowichan,70.2,co,16
+2021-04-30,cowichan,70.2,rbt,2
+2021-04-30,cowichan,mainstem fence,co,6
+2021-04-30,englishman,center creek,co,216
+2021-04-30,englishman,center creek,ct,1
+2021-04-30,englishman,center creek,rbt,5
+2021-04-30,englishman,center creek,stl,1
+2021-04-30,englishman,martindale rd,co,155
+2021-04-30,englishman,martindale rd,rbt,2
+2021-05-01,campbell river,hatchery fence,stl,11
+2021-05-02,campbell river,hatchery fence,stl,12
+2021-05-03,campbell river,hatchery fence,stl,4
+2021-05-03,cowichan,70.2,bt,6
+2021-05-03,cowichan,70.2,co,10
+2021-05-03,cowichan,70.2,rbt,2
+2021-05-03,cowichan,mainstem fence,ck,1
+2021-05-03,cowichan,mainstem fence,co,26
+2021-05-03,cowichan,skutz,rbt,1
+2021-05-03,englishman,center creek,co,97
+2021-05-03,englishman,center creek,ct,1
+2021-05-03,englishman,center creek,rbt,1
+2021-05-03,englishman,center creek,,1
+2021-05-03,englishman,martindale rd,co,83
+2021-05-04,campbell river,hatchery fence,stl,9
+2021-05-05,campbell river,hatchery fence,stl,10
+2021-05-05,cowichan,70.2,ck,1
+2021-05-05,cowichan,70.2,co,36
+2021-05-05,cowichan,70.2,rbt,2
+2021-05-05,cowichan,mainstem fence,ck,5
+2021-05-05,cowichan,mainstem fence,co,29
+2021-05-05,cowichan,skutz,co,4
+2021-05-05,englishman,center creek,co,120
+2021-05-05,englishman,martindale rd,co,74
+2021-05-05,englishman,martindale rd,rbt,2
+2021-05-06,campbell river,hatchery fence,stl,13
+2021-05-07,campbell river,hatchery fence,stl,14
+2021-05-07,cowichan,70.2,co,13
+2021-05-07,cowichan,70.2,rbt,1
+2021-05-07,cowichan,mainstem fence,co,333
+2021-05-07,cowichan,mainstem fence,ct,2
+2021-05-07,cowichan,mainstem fence,rbt,3
+2021-05-07,cowichan,mainstem fence,stl,50
+2021-05-07,englishman,center creek,co,160
+2021-05-07,englishman,martindale rd,co,24
+2021-05-07,nanaimo,haslam creek,co,2
+2021-05-07,nanaimo,haslam creek,rbt,5
+2021-05-08,campbell river,hatchery fence,stl,24
+2021-05-08,cowichan,mainstem fence,ck,288
+2021-05-08,cowichan,mainstem fence,co,470
+2021-05-08,cowichan,mainstem fence,stl,39
+2021-05-09,campbell river,hatchery fence,stl,16
+2021-05-09,cowichan,mainstem fence,ck,1
+2021-05-10,campbell river,hatchery fence,stl,16
+2021-05-10,cowichan,70.2,bt,1
+2021-05-10,cowichan,70.2,co,33
+2021-05-10,cowichan,70.2,rbt,1
+2021-05-10,cowichan,mainstem fence,ck,249
+2021-05-10,cowichan,mainstem fence,co,569
+2021-05-10,cowichan,mainstem fence,ct,1
+2021-05-10,cowichan,mainstem fence,rbt,3
+2021-05-10,cowichan,mainstem fence,stl,36
+2021-05-10,cowichan,mainstem fence,,2
+2021-05-10,englishman,center creek,co,158
+2021-05-10,englishman,center creek,ct,2
+2021-05-10,englishman,center creek,rbt,5
+2021-05-10,englishman,martindale rd,co,24
+2021-05-10,englishman,martindale rd,ct,1
+2021-05-11,black creek,sturgess bridge rd,co,288
+2021-05-11,black creek,sturgess bridge rd,ct,1
+2021-05-11,black creek,sturgess bridge rd,,1
+2021-05-11,campbell river,hatchery fence,stl,18
+2021-05-11,campbell river,hatchery fence,,4
+2021-05-11,cowichan,mainstem fence,ck,307
+2021-05-11,cowichan,mainstem fence,co,391
+2021-05-11,cowichan,mainstem fence,stl,33
+2021-05-12,campbell river,hatchery fence,stl,24
+2021-05-12,cowichan,70.2,co,84
+2021-05-12,cowichan,mainstem fence,ck,90
+2021-05-12,cowichan,mainstem fence,co,163
+2021-05-12,cowichan,mainstem fence,ct,3
+2021-05-12,cowichan,mainstem fence,rbt,1
+2021-05-12,cowichan,mainstem fence,stl,28
+2021-05-12,englishman,center creek,co,217
+2021-05-12,englishman,center creek,rbt,2
+2021-05-12,englishman,center creek,stl,3
+2021-05-12,englishman,martindale rd,co,109
+2021-05-12,englishman,side channel,co,18
+2021-05-12,englishman,side channel,rbt,1
+2021-05-13,campbell river,hatchery fence,stl,44
+2021-05-13,campbell river,hatchery fence,,3
+2021-05-13,cowichan,mainstem fence,ck,337
+2021-05-13,cowichan,mainstem fence,co,770
+2021-05-13,cowichan,mainstem fence,rbt,5
+2021-05-13,cowichan,mainstem fence,stl,58
+2021-05-13,cowichan,mainstem fence,,1
+2021-05-13,englishman,center creek,co,258
+2021-05-13,englishman,center creek,ct,3
+2021-05-13,englishman,center creek,rbt,2
+2021-05-13,englishman,center creek,stl,1
+2021-05-13,englishman,side channel,co,40
+2021-05-14,campbell river,hatchery fence,stl,46
+2021-05-14,cowichan,70.2,bt,8
+2021-05-14,cowichan,70.2,ck,24
+2021-05-14,cowichan,70.2,co,94
+2021-05-14,cowichan,mainstem fence,ck,376
+2021-05-14,cowichan,mainstem fence,cm,6
+2021-05-14,cowichan,mainstem fence,co,427
+2021-05-14,cowichan,mainstem fence,ct,1
+2021-05-14,cowichan,mainstem fence,rbt,2
+2021-05-14,cowichan,mainstem fence,stl,24
+2021-05-14,cowichan,skutz,ck,8
+2021-05-14,cowichan,skutz,co,28
+2021-05-14,cowichan,skutz,rbt,1
+2021-05-14,cowichan,skutz,stl,1
+2021-05-14,englishman,center creek,co,267
+2021-05-14,englishman,center creek,ct,2
+2021-05-14,englishman,center creek,rbt,4
+2021-05-14,englishman,center creek,stl,1
+2021-05-14,englishman,martindale rd,co,25
+2021-05-14,englishman,martindale rd,ct,1
+2021-05-15,campbell river,hatchery fence,stl,43
+2021-05-15,cowichan,mainstem fence,ck,121
+2021-05-15,cowichan,mainstem fence,co,115
+2021-05-15,cowichan,mainstem fence,ct,1
+2021-05-15,cowichan,mainstem fence,stl,9
+2021-05-16,campbell river,hatchery fence,stl,38
+2021-05-17,campbell river,hatchery fence,stl,24
+2021-05-17,cowichan,70.2,bt,3
+2021-05-17,cowichan,70.2,ck,25
+2021-05-17,cowichan,70.2,co,49
+2021-05-17,cowichan,mainstem fence,ck,152
+2021-05-17,cowichan,mainstem fence,co,325
+2021-05-17,cowichan,mainstem fence,rbt,3
+2021-05-17,cowichan,mainstem fence,stl,41
+2021-05-17,cowichan,skutz,ck,22
+2021-05-17,cowichan,skutz,co,40
+2021-05-17,cowichan,skutz,stl,1
+2021-05-17,englishman,center creek,co,137
+2021-05-17,englishman,center creek,stl,1
+2021-05-18,campbell river,hatchery fence,stl,29
+2021-05-18,cowichan,70.2,ck,25
+2021-05-18,cowichan,70.2,co,41
+2021-05-18,cowichan,mainstem fence,ck,710
+2021-05-18,cowichan,mainstem fence,co,339
+2021-05-18,cowichan,mainstem fence,rbt,1
+2021-05-18,cowichan,mainstem fence,stl,43
+2021-05-18,cowichan,mainstem fence,,1
+2021-05-19,campbell river,hatchery fence,stl,17
+2021-05-19,cowichan,mainstem fence,ck,425
+2021-05-19,cowichan,mainstem fence,co,257
+2021-05-19,cowichan,mainstem fence,ct,3
+2021-05-19,cowichan,mainstem fence,rbt,2
+2021-05-19,cowichan,mainstem fence,stl,25
+2021-05-19,cowichan,vimy pool,ck,438
+2021-05-19,cowichan,vimy pool,co,23
+2021-05-19,englishman,center creek,co,233
+2021-05-19,englishman,center creek,ct,1
+2021-05-19,englishman,center creek,stl,1
+2021-05-20,campbell river,hatchery fence,stl,18
+2021-05-20,cowichan,mainstem fence,ck,744
+2021-05-20,cowichan,mainstem fence,co,215
+2021-05-20,cowichan,mainstem fence,stl,9
+2021-05-20,cowichan,vimy pool,ck,255
+2021-05-20,cowichan,vimy pool,co,33
+2021-05-20,cowichan,vimy pool,,2
+2021-05-21,campbell river,hatchery fence,stl,11
+2021-05-21,englishman,center creek,co,182
+2021-05-21,englishman,center creek,ct,2
+2021-05-21,englishman,center creek,rbt,1
+2021-05-22,campbell river,hatchery fence,stl,10
+2021-05-23,campbell river,hatchery fence,stl,8
+2021-05-24,campbell river,hatchery fence,stl,6
+2021-05-25,campbell river,hatchery fence,stl,3
+2021-05-26,campbell river,hatchery fence,stl,2
+2021-05-26,englishman,center creek,co,16
+2021-05-26,englishman,center creek,rbt,1
+2021-05-27,black creek,sturgess bridge rd,co,300
+2021-05-27,campbell river,hatchery fence,stl,2
+2021-05-27,cowichan,mainstem fence,ck,188
+2021-05-27,cowichan,mainstem fence,rbt,1
+2021-05-27,cowichan,mainstem fence,stl,12
+2021-05-28,cowichan,mainstem fence,ck,200
+2021-05-28,cowichan,mainstem fence,stl,1
+2021-05-28,cowichan,mainstem fence,,1
+2021-05-28,englishman,center creek,co,129
+2021-05-28,englishman,center creek,rbt,2
+2021-05-31,campbell river,hatchery fence,stl,1
+2021-06-01,cowichan,cow bay,ck,755
+2021-06-01,cowichan,cow bay,co,2
+2021-06-02,nanaimo,cedar bridge,ck,17
+2021-06-02,nanaimo,cedar bridge,stl,19
+2021-06-02,puntledge,above tsolum,ck,155
+2021-06-02,puntledge,above tsolum,co,2
+2021-06-02,puntledge,above tsolum,rbt,6
+2021-06-02,puntledge,condensory bridge,ck,71
+2021-06-02,puntledge,condensory bridge,rbt,1
+2021-06-03,cowichan,cow bay,ck,915
+2021-06-04,nanaimo,living forest,ck,47
+2021-06-04,nanaimo,living forest,co,1
+2021-06-04,nanaimo,living forest,ct,10
+2021-06-04,nanaimo,living forest,rbt,2
+2021-06-04,nanaimo,living forest,stl,5
+2021-06-04,puntledge,above tsolum,ck,90
+2021-06-04,puntledge,above tsolum,co,1
+2021-06-04,puntledge,above tsolum,ct,1
+2021-06-04,puntledge,above tsolum,rbt,5
+2021-06-04,puntledge,condensory bridge,ck,107
+2021-06-04,puntledge,condensory bridge,co,1
+2021-06-04,puntledge,tsolum confluence,ck,70
+2021-06-04,puntledge,tsolum confluence,co,9
+2021-06-04,puntledge,tsolum confluence,rbt,1
+2021-06-07,nanaimo,jack point,ck,332
+2021-06-07,nanaimo,jack point,co,1
+2021-06-08,cowichan,cow bay,ck,420
+2021-06-08,cowichan,cow bay,stl,2
+2021-06-08,puntledge,little mexico,ck,6
+2021-06-08,puntledge,little mexico,co,63
+2021-06-09,englishman,hamilton ave,ct,6
+2021-06-09,nanaimo,jack point,ck,288
+2021-06-09,nanaimo,jack point,co,1
+2021-06-10,cowichan,cow bay,ck,313
+2021-06-10,cowichan,cow bay,ct,3
+2021-06-10,puntledge,little mexico,ck,149
+2021-06-10,puntledge,little mexico,co,70
+2021-06-10,puntledge,little mexico,ct,4
+2021-06-10,puntledge,little mexico,stl,3
+2021-06-10,puntledge,little mexico,,1
+2021-06-11,nanaimo,cedar bridge,ck,90
+2021-06-11,nanaimo,cedar bridge,co,1
+2021-06-11,nanaimo,cedar bridge,rbt,10
+2021-06-14,nanaimo,jack point,ck,364
+2021-06-14,nanaimo,jack point,cm,1
+2021-06-14,nanaimo,jack point,co,1
+2021-06-15,cowichan,cow bay,ck,302
+2021-06-16,nanaimo,jack point,ck,69
+2021-06-16,puntledge,little mexico,ck,55
+2021-06-16,puntledge,little mexico,co,27
+2021-06-16,puntledge,little mexico,ct,3
+2021-06-16,puntledge,little mexico,rbt,2
+2021-06-17,cowichan,cow bay,ck,216
+2021-06-17,englishman,hamilton ave,ct,15
+2021-06-18,nanaimo,living forest,ck,86
+2021-06-18,nanaimo,living forest,co,2
+2021-06-18,nanaimo,living forest,ct,14
+2021-06-18,nanaimo,living forest,rbt,37
+2021-06-18,nanaimo,living forest,stl,10
+2021-06-22,nanaimo,newcastle,ck,11
+2021-06-22,puntledge,little mexico,ck,21
+2021-06-23,nanaimo,newcastle,ck,42
+2021-06-23,nanaimo,newcastle,co,2
+2021-06-23,puntledge,little mexico,ck,171
+2021-06-23,puntledge,little mexico,cm,1
+2021-06-23,puntledge,little mexico,co,29
+2021-06-23,puntledge,little mexico,rbt,1
+2021-06-24,puntledge,little mexico,ck,41
+2021-09-01,englishman,hamilton ave,ct,14
+2021-10-30,englishman,hamilton ave,ct,17
+2022-04-11,englishman,martindale rd,co,4
+2022-04-11,englishman,martindale rd,rbt,2
+2022-04-14,englishman,martindale rd,co,7
+2022-04-14,englishman,martindale rd,rbt,3
+2022-04-18,englishman,martindale rd,co,10
+2022-04-18,englishman,martindale rd,ct,2
+2022-04-18,englishman,martindale rd,rbt,3
+2022-04-20,englishman,martindale rd,co,7
+2022-04-20,englishman,martindale rd,rbt,2
+2022-04-25,englishman,martindale rd,co,10
+2022-04-25,englishman,martindale rd,rbt,1
+2022-04-28,englishman,martindale rd,co,30
+2022-04-28,englishman,martindale rd,rbt,2
+2022-05-02,englishman,center creek,co,13
+2022-05-02,englishman,martindale rd,co,102
+2022-05-02,englishman,martindale rd,rbt,1
+2022-05-03,cowichan,mainstem fence,ck,1
+2022-05-03,cowichan,mainstem fence,co,99
+2022-05-04,cowichan,mainstem fence,co,60
+2022-05-04,cowichan,mainstem fence,ct,1
+2022-05-04,cowichan,mainstem fence,stl,1
+2022-05-04,cowichan,mainstem fence,,1
+2022-05-04,englishman,center creek,co,21
+2022-05-04,englishman,center creek,ct,4
+2022-05-04,englishman,center creek,rbt,17
+2022-05-04,englishman,martindale rd,co,195
+2022-05-04,englishman,martindale rd,ct,1
+2022-05-04,englishman,martindale rd,rbt,1
+2022-05-05,campbell river,hatchery fence,stl,1
+2022-05-05,cowichan,mainstem fence,ck,6
+2022-05-05,cowichan,mainstem fence,co,99
+2022-05-05,cowichan,mainstem fence,rbt,2
+2022-05-05,cowichan,mainstem fence,stl,2
+2022-05-05,englishman,center creek,co,28
+2022-05-05,englishman,center creek,ct,2
+2022-05-05,englishman,center creek,rbt,15
+2022-05-06,campbell river,hatchery fence,stl,1
+2022-05-06,cowichan,mainstem fence,ck,22
+2022-05-06,cowichan,mainstem fence,co,163
+2022-05-06,cowichan,mainstem fence,rbt,1
+2022-05-06,cowichan,mainstem fence,stl,4
+2022-05-06,englishman,center creek,co,53
+2022-05-06,englishman,center creek,ct,5
+2022-05-06,englishman,center creek,rbt,8
+2022-05-06,englishman,center creek,stl,2
+2022-05-06,englishman,martindale rd,co,96
+2022-05-06,englishman,martindale rd,rbt,1
+2022-05-06,englishman,side channel,co,2
+2022-05-07,campbell river,hatchery fence,stl,3
+2022-05-07,cowichan,mainstem fence,ck,16
+2022-05-07,cowichan,mainstem fence,co,192
+2022-05-07,cowichan,mainstem fence,ct,2
+2022-05-07,cowichan,mainstem fence,rbt,1
+2022-05-07,cowichan,mainstem fence,stl,18
+2022-05-08,campbell river,hatchery fence,stl,2
+2022-05-09,black creek,sturgess bridge rd,co,400
+2022-05-09,campbell river,hatchery fence,stl,2
+2022-05-09,cowichan,mainstem fence,bt,1
+2022-05-09,cowichan,mainstem fence,ck,37
+2022-05-09,cowichan,mainstem fence,co,298
+2022-05-09,cowichan,mainstem fence,ct,1
+2022-05-09,cowichan,mainstem fence,stl,19
+2022-05-09,englishman,center creek,co,37
+2022-05-09,englishman,center creek,ct,4
+2022-05-09,englishman,center creek,rbt,10
+2022-05-09,englishman,martindale rd,co,321
+2022-05-09,englishman,martindale rd,rbt,5
+2022-05-10,campbell river,hatchery fence,stl,2
+2022-05-11,campbell river,hatchery fence,stl,1
+2022-05-11,cowichan,mainstem fence,ck,46
+2022-05-11,cowichan,mainstem fence,co,334
+2022-05-11,cowichan,mainstem fence,ct,2
+2022-05-11,cowichan,mainstem fence,rbt,2
+2022-05-11,cowichan,mainstem fence,stl,8
+2022-05-11,englishman,center creek,co,51
+2022-05-11,englishman,center creek,ct,19
+2022-05-11,englishman,center creek,rbt,9
+2022-05-11,englishman,martindale rd,co,113
+2022-05-11,englishman,martindale rd,ct,1
+2022-05-11,englishman,martindale rd,rbt,1
+2022-05-11,englishman,side channel,co,7
+2022-05-11,englishman,side channel,rbt,1
+2022-05-11,nanaimo,t-bone road,rbt,1
+2022-05-12,campbell river,hatchery fence,stl,1
+2022-05-13,campbell river,hatchery fence,stl,3
+2022-05-13,cowichan,mainstem fence,ck,47
+2022-05-13,cowichan,mainstem fence,co,225
+2022-05-13,cowichan,mainstem fence,ct,2
+2022-05-13,cowichan,mainstem fence,rbt,1
+2022-05-13,cowichan,mainstem fence,stl,8
+2022-05-13,englishman,center creek,co,73
+2022-05-13,englishman,center creek,ct,3
+2022-05-13,englishman,center creek,rbt,4
+2022-05-13,englishman,martindale rd,co,306
+2022-05-13,englishman,martindale rd,ct,1
+2022-05-13,englishman,martindale rd,rbt,2
+2022-05-13,englishman,side channel,co,9
+2022-05-13,puntledge,tsolum,ck,1
+2022-05-13,puntledge,tsolum,co,5
+2022-05-14,campbell river,hatchery fence,stl,9
+2022-05-15,campbell river,hatchery fence,stl,5
+2022-05-16,campbell river,hatchery fence,stl,15
+2022-05-16,englishman,center creek,co,80
+2022-05-16,englishman,center creek,ct,1
+2022-05-16,englishman,martindale rd,co,156
+2022-05-17,campbell river,hatchery fence,stl,7
+2022-05-18,campbell river,hatchery fence,stl,9
+2022-05-18,englishman,center creek,co,47
+2022-05-18,englishman,center creek,ct,1
+2022-05-18,englishman,center creek,rbt,1
+2022-05-18,englishman,center creek,,1
+2022-05-18,englishman,martindale rd,co,55
+2022-05-18,englishman,side channel,co,20
+2022-05-18,puntledge,above tsolum,co,85
+2022-05-18,puntledge,above tsolum,ct,1
+2022-05-18,puntledge,above tsolum,rbt,3
+2022-05-19,black creek,sturgess bridge rd,co,300
+2022-05-19,campbell river,hatchery fence,stl,25
+2022-05-20,campbell river,hatchery fence,stl,21
+2022-05-20,englishman,center creek,co,21
+2022-05-20,englishman,center creek,ct,1
+2022-05-20,englishman,martindale rd,co,79
+2022-05-20,englishman,martindale rd,rbt,3
+2022-05-20,englishman,side channel,co,36
+2022-05-20,puntledge,little mexico,co,115
+2022-05-20,puntledge,little mexico,stl,1
+2022-05-21,campbell river,hatchery fence,stl,22
+2022-05-22,campbell river,hatchery fence,stl,26
+2022-05-22,englishman,center creek,co,12
+2022-05-22,englishman,center creek,ct,1
+2022-05-22,englishman,center creek,rbt,1
+2022-05-22,englishman,side channel,co,20
+2022-05-23,campbell river,hatchery fence,stl,15
+2022-05-24,campbell river,hatchery fence,stl,31
+2022-05-24,englishman,center creek,co,18
+2022-05-24,englishman,center creek,ct,2
+2022-05-24,englishman,martindale rd,co,24
+2022-05-24,englishman,martindale rd,rbt,1
+2022-05-24,englishman,side channel,co,15
+2022-05-25,campbell river,hatchery fence,stl,16
+2022-05-25,cowichan,mainstem fence,ck,19
+2022-05-25,cowichan,mainstem fence,co,26
+2022-05-25,cowichan,mainstem fence,stl,1
+2022-05-25,koksilah,mainstem fence,co,4
+2022-05-25,puntledge,little mexico,ck,7
+2022-05-25,puntledge,little mexico,co,73
+2022-05-26,campbell river,hatchery fence,stl,21
+2022-05-26,englishman,center creek,co,108
+2022-05-26,englishman,center creek,rbt,3
+2022-05-26,englishman,martindale rd,co,11
+2022-05-26,englishman,side channel,co,13
+2022-05-26,koksilah,mainstem fence,co,13
+2022-05-26,nanaimo,living forest,ck,327
+2022-05-26,nanaimo,living forest,co,6
+2022-05-27,campbell river,hatchery fence,stl,15
+2022-05-27,cowichan,mainstem fence,ck,73
+2022-05-27,cowichan,mainstem fence,co,19
+2022-05-27,cowichan,mainstem fence,stl,1
+2022-05-27,englishman,center creek,co,293
+2022-05-27,englishman,center creek,ct,12
+2022-05-27,englishman,side channel,co,17
+2022-05-27,koksilah,mainstem fence,co,10
+2022-05-27,koksilah,mainstem fence,rbt,3
+2022-05-28,campbell river,hatchery fence,stl,13
+2022-05-29,campbell river,hatchery fence,stl,18
+2022-05-29,englishman,center creek,co,68
+2022-05-29,englishman,center creek,ct,4
+2022-05-30,campbell river,hatchery fence,stl,11
+2022-05-30,cowichan,mainstem fence,bt,1
+2022-05-30,cowichan,mainstem fence,ck,182
+2022-05-30,cowichan,mainstem fence,co,54
+2022-05-30,cowichan,mainstem fence,,1
+2022-05-30,koksilah,mainstem fence,co,11
+2022-05-30,puntledge,little mexico,ck,20
+2022-05-30,puntledge,little mexico,co,113
+2022-05-31,campbell river,hatchery fence,stl,5
+2022-05-31,cowichan,mainstem fence,ck,255
+2022-05-31,cowichan,mainstem fence,co,98
+2022-05-31,cowichan,mainstem fence,stl,4
+2022-05-31,englishman,center creek,co,142
+2022-05-31,englishman,center creek,ct,2
+2022-05-31,englishman,center creek,rbt,1
+2022-05-31,koksilah,mainstem fence,co,10
+2022-05-31,koksilah,mainstem fence,rbt,1
+2022-06-01,campbell river,hatchery fence,stl,11
+2022-06-01,cowichan,mainstem fence,ck,308
+2022-06-01,cowichan,mainstem fence,co,85
+2022-06-01,cowichan,mainstem fence,stl,3
+2022-06-01,koksilah,mainstem fence,co,7
+2022-06-01,nanaimo,jack point,ck,419
+2022-06-01,nanaimo,jack point,co,47
+2022-06-01,puntledge,little mexico,ck,14
+2022-06-01,puntledge,little mexico,co,307
+2022-06-01,puntledge,little mexico,ct,5
+2022-06-02,black creek,sturgess bridge rd,co,224
+2022-06-02,campbell river,hatchery fence,stl,3
+2022-06-02,cowichan,mainstem fence,ck,228
+2022-06-02,cowichan,mainstem fence,co,74
+2022-06-02,cowichan,mainstem fence,ct,1
+2022-06-02,cowichan,mainstem fence,stl,6
+2022-06-02,englishman,center creek,co,72
+2022-06-02,englishman,center creek,ct,4
+2022-06-02,englishman,center creek,rbt,2
+2022-06-02,englishman,side channel,co,2
+2022-06-02,koksilah,mainstem fence,co,10
+2022-06-02,koksilah,mainstem fence,rbt,4
+2022-06-03,campbell river,hatchery fence,stl,5
+2022-06-03,cowichan,mainstem fence,ck,236
+2022-06-03,cowichan,mainstem fence,co,52
+2022-06-03,cowichan,mainstem fence,stl,1
+2022-06-03,englishman,center creek,co,36
+2022-06-03,englishman,center creek,ct,1
+2022-06-03,englishman,side channel,co,28
+2022-06-03,englishman,side channel,ct,1
+2022-06-03,koksilah,mainstem fence,co,10
+2022-06-03,koksilah,mainstem fence,rbt,1
+2022-06-04,campbell river,hatchery fence,stl,3
+2022-06-04,cowichan,mainstem fence,ck,262
+2022-06-04,cowichan,mainstem fence,co,56
+2022-06-04,cowichan,mainstem fence,stl,1
+2022-06-05,cowichan,mainstem fence,ck,466
+2022-06-05,cowichan,mainstem fence,co,94
+2022-06-05,cowichan,mainstem fence,stl,1
+2022-06-06,campbell river,hatchery fence,stl,3
+2022-06-06,cowichan,mainstem fence,ck,88
+2022-06-06,cowichan,mainstem fence,co,25
+2022-06-06,cowichan,mainstem fence,stl,1
+2022-06-06,koksilah,mainstem fence,ck,1
+2022-06-06,koksilah,mainstem fence,co,5
+2022-06-06,koksilah,mainstem fence,rbt,2
+2022-06-06,nanaimo,jack point,ck,494
+2022-06-06,nanaimo,jack point,co,26
+2022-06-06,puntledge,little mexico,ck,16
+2022-06-06,puntledge,little mexico,co,257
+2022-06-06,puntledge,little mexico,ct,26
+2022-06-06,puntledge,little mexico,rbt,1
+2022-06-07,campbell river,hatchery fence,stl,4
+2022-06-07,cowichan,mainstem fence,ck,409
+2022-06-07,cowichan,mainstem fence,co,55
+2022-06-07,cowichan,mainstem fence,so,2
+2022-06-07,cowichan,mainstem fence,stl,3
+2022-06-07,koksilah,mainstem fence,rbt,2
+2022-06-08,cowichan,mainstem fence,ck,159
+2022-06-08,cowichan,mainstem fence,co,41
+2022-06-08,cowichan,mainstem fence,rbt,1
+2022-06-08,koksilah,mainstem fence,co,1
+2022-06-08,koksilah,mainstem fence,rbt,2
+2022-06-08,nanaimo,jack point,ck,86
+2022-06-08,nanaimo,jack point,co,2
+2022-06-08,puntledge,little mexico,ck,37
+2022-06-08,puntledge,little mexico,co,38
+2022-06-08,puntledge,little mexico,ct,4
+2022-06-09,campbell river,hatchery fence,stl,5
+2022-06-09,cowichan,mainstem fence,ck,400
+2022-06-09,cowichan,mainstem fence,co,71
+2022-06-09,englishman,center creek,co,5
+2022-06-09,englishman,center creek,ct,3
+2022-06-09,englishman,side channel,ck,1
+2022-06-09,englishman,side channel,co,4
+2022-06-10,campbell river,hatchery fence,stl,2
+2022-06-10,cowichan,mainstem fence,ck,437
+2022-06-10,cowichan,mainstem fence,co,33
+2022-06-10,englishman,center creek,co,3
+2022-06-10,englishman,center creek,ct,3
+2022-06-10,englishman,center creek,rbt,1
+2022-06-10,englishman,side channel,co,3
+2022-06-10,englishman,side channel,ct,1
+2022-06-11,campbell river,hatchery fence,stl,1
+2022-06-11,cowichan,mainstem fence,ck,258
+2022-06-11,cowichan,mainstem fence,co,31
+2022-06-12,campbell river,hatchery fence,stl,1
+2022-06-12,englishman,center creek,co,1
+2022-06-12,englishman,side channel,co,4
+2022-06-13,cowichan,mainstem fence,ck,208
+2022-06-13,cowichan,mainstem fence,co,35
+2022-06-13,cowichan,mainstem fence,stl,1
+2022-06-13,puntledge,little mexico,ck,149
+2022-06-13,puntledge,little mexico,co,39
+2022-06-13,puntledge,little mexico,ct,6
+2022-06-15,cowichan,mainstem fence,ck,188
+2022-06-15,cowichan,mainstem fence,co,30
+2022-06-15,cowichan,mainstem fence,ct,1
+2022-06-15,nanaimo,jack point,ck,233
+2022-06-15,nanaimo,jack point,co,1
+2022-06-15,puntledge,little mexico,ck,435
+2022-06-15,puntledge,little mexico,co,19
+2022-06-15,puntledge,little mexico,ct,5
+2022-06-16,nanaimo,snuneymuxw beach,ck,29
+2022-06-17,cowichan,mainstem fence,ck,384
+2022-06-17,cowichan,mainstem fence,co,20
+2022-06-17,cowichan,mainstem fence,ct,1
+2022-06-17,cowichan,mainstem fence,stl,1
+2022-06-17,koksilah,mainstem fence,ck,7
+2022-06-17,puntledge,little mexico,ck,724
+2022-06-17,puntledge,little mexico,co,11
+2022-06-17,puntledge,little mexico,ct,13
+2022-06-20,cowichan,mainstem fence,ck,400
+2022-06-20,cowichan,mainstem fence,co,17
+2022-06-20,koksilah,mainstem fence,ck,1
+2022-06-20,puntledge,little mexico,ck,163
+2022-06-20,puntledge,little mexico,co,21
+2022-06-20,puntledge,little mexico,ct,7
+2022-06-21,koksilah,mainstem fence,ck,3
+2022-06-21,nanaimo,jack point,ck,191
+2022-06-21,nanaimo,newcastle,ck,163
+2022-06-21,nanaimo,newcastle,co,20
+2022-06-22,cowichan,mainstem fence,ck,423
+2022-06-22,cowichan,mainstem fence,co,22
+2022-06-22,cowichan,mainstem fence,ct,1
+2022-06-22,koksilah,mainstem fence,ck,4
+2022-06-22,nanaimo,newcastle,ck,1
+2022-06-22,puntledge,little mexico,ck,118
+2022-06-22,puntledge,little mexico,co,1
+2022-06-22,puntledge,little mexico,ct,7
+2022-06-23,koksilah,mainstem fence,ck,10
+2022-06-23,koksilah,mainstem fence,rbt,1
+2022-06-23,nanaimo,living forest,ck,98
+2022-06-23,nanaimo,living forest,co,2
+2022-06-23,nanaimo,living forest,rbt,3
+2022-06-24,cowichan,mainstem fence,ck,452
+2022-06-24,cowichan,mainstem fence,co,14
+2022-06-24,cowichan,mainstem fence,ct,1
+2022-06-24,cowichan,mainstem fence,so,1
+2022-06-24,cowichan,mainstem fence,stl,1
+2022-06-24,koksilah,mainstem fence,ck,13
+2022-06-24,koksilah,mainstem fence,rbt,1
+2022-06-27,koksilah,mainstem fence,ck,12
+2022-06-27,puntledge,little mexico,ck,136
+2022-06-27,puntledge,little mexico,co,2
+2022-06-27,puntledge,little mexico,ct,2
+2022-06-28,koksilah,mainstem fence,ck,38
+2022-06-28,nanaimo,newcastle,ck,7
+2022-06-28,puntledge,little mexico,ck,230
+2022-06-28,puntledge,little mexico,co,1
+2022-06-28,puntledge,little mexico,ct,7
+2022-06-29,koksilah,mainstem fence,ck,15
+2022-06-29,koksilah,mainstem fence,rbt,2
+2022-06-30,koksilah,mainstem fence,ck,38
+2022-06-30,koksilah,mainstem fence,co,2
+2022-06-30,nanaimo,newcastle,ck,79
+2022-06-30,nanaimo,newcastle,co,2
+2022-07-01,koksilah,mainstem fence,ck,34
+2022-07-01,koksilah,mainstem fence,co,2
+2022-07-01,koksilah,mainstem fence,rbt,1
+2022-07-04,koksilah,mainstem fence,ck,30
+2022-07-04,koksilah,mainstem fence,rbt,3
+2022-07-05,koksilah,mainstem fence,ck,21
+2022-07-05,koksilah,mainstem fence,rbt,4
+2022-07-06,koksilah,mainstem fence,ck,15
+2022-07-06,koksilah,mainstem fence,co,1
+2022-07-06,koksilah,mainstem fence,rbt,1
+2022-07-07,koksilah,mainstem fence,ck,11
+2022-07-07,koksilah,mainstem fence,co,2
+2022-07-08,koksilah,mainstem fence,ck,10
+2022-07-11,koksilah,mainstem fence,ck,7
+2022-07-11,koksilah,mainstem fence,rbt,1
+2022-07-12,koksilah,mainstem fence,ck,3
+2022-07-12,koksilah,mainstem fence,rbt,1
+2022-07-13,koksilah,mainstem fence,co,1
+2022-07-14,koksilah,mainstem fence,ck,6
+2022-07-14,koksilah,mainstem fence,co,1
+2022-07-14,koksilah,mainstem fence,rbt,1
+2022-07-15,koksilah,mainstem fence,ck,2
+2023-03-16,koksilah,mainstem fence,rbt,1
+2023-03-20,koksilah,mainstem fence,rbt,1
+2023-03-21,koksilah,mainstem fence,co,1
+2023-03-22,koksilah,mainstem fence,rbt,1
+2023-03-23,koksilah,mainstem fence,rbt,1
+2023-03-24,koksilah,mainstem fence,rbt,1
+2023-03-28,koksilah,mainstem fence,co,5
+2023-03-28,koksilah,mainstem fence,rbt,1
+2023-03-30,koksilah,mainstem fence,co,2
+2023-03-30,koksilah,mainstem fence,rbt,1
+2023-03-31,koksilah,mainstem fence,co,3
+2023-03-31,koksilah,mainstem fence,rbt,1
+2023-04-01,koksilah,mainstem fence,co,3
+2023-04-02,koksilah,mainstem fence,co,1
+2023-04-03,koksilah,mainstem fence,co,1
+2023-04-04,koksilah,mainstem fence,co,2
+2023-04-04,koksilah,mainstem fence,rbt,1
+2023-04-05,koksilah,mainstem fence,co,2
+2023-04-05,koksilah,mainstem fence,rbt,1
+2023-04-07,koksilah,mainstem fence,co,1
+2023-04-08,koksilah,mainstem fence,co,1
+2023-04-08,koksilah,mainstem fence,rbt,1
+2023-04-12,koksilah,mainstem fence,co,15
+2023-04-12,koksilah,mainstem fence,rbt,18
+2023-04-13,koksilah,mainstem fence,rbt,3
+2023-04-14,koksilah,mainstem fence,co,1
+2023-04-14,koksilah,mainstem fence,rbt,8
+2023-04-15,koksilah,mainstem fence,co,2
+2023-04-15,koksilah,mainstem fence,rbt,4
+2023-04-16,koksilah,mainstem fence,rbt,7
+2023-04-17,koksilah,mainstem fence,co,3
+2023-04-17,koksilah,mainstem fence,rbt,6
+2023-04-18,koksilah,mainstem fence,co,5
+2023-04-18,koksilah,mainstem fence,rbt,14
+2023-04-20,koksilah,mainstem fence,co,9
+2023-04-20,koksilah,mainstem fence,rbt,6
+2023-04-21,koksilah,mainstem fence,rbt,1
+2023-04-22,koksilah,mainstem fence,co,3
+2023-04-22,koksilah,mainstem fence,rbt,1
+2023-04-24,koksilah,mainstem fence,co,2
+2023-04-24,koksilah,mainstem fence,rbt,3
+2023-04-25,englishman,martindale rd,co,14
+2023-04-25,englishman,martindale rd,ct,2
+2023-04-25,englishman,martindale rd,rbt,1
+2023-04-25,koksilah,mainstem fence,co,8
+2023-04-25,koksilah,mainstem fence,rbt,4
+2023-04-26,koksilah,mainstem fence,co,14
+2023-04-26,koksilah,mainstem fence,rbt,10
+2023-04-27,englishman,center creek,co,9
+2023-04-27,englishman,center creek,ct,6
+2023-04-27,englishman,center creek,rbt,6
+2023-04-27,englishman,center creek,stl,4
+2023-04-27,englishman,martindale rd,co,13
+2023-04-27,englishman,martindale rd,ct,1
+2023-04-27,englishman,martindale rd,rbt,7
+2023-04-27,koksilah,mainstem fence,co,20
+2023-04-27,koksilah,mainstem fence,rbt,18
+2023-04-28,englishman,center creek,co,3
+2023-04-28,englishman,center creek,ct,8
+2023-04-28,englishman,center creek,rbt,6
+2023-04-28,englishman,center creek,stl,1
+2023-04-28,englishman,martindale rd,co,13
+2023-04-28,englishman,martindale rd,ct,2
+2023-04-28,englishman,martindale rd,rbt,2
+2023-04-28,koksilah,mainstem fence,co,36
+2023-04-28,koksilah,mainstem fence,rbt,21
+2023-04-30,englishman,center creek,co,15
+2023-04-30,englishman,center creek,ct,7
+2023-04-30,englishman,center creek,rbt,16
+2023-04-30,englishman,center creek,stl,7
+2023-04-30,koksilah,mainstem fence,co,2
+2023-04-30,koksilah,mainstem fence,rbt,3
+2023-05-01,englishman,martindale rd,co,5
+2023-05-01,englishman,martindale rd,ct,2
+2023-05-01,koksilah,mainstem fence,co,18
+2023-05-01,koksilah,mainstem fence,rbt,40
+2023-05-02,black creek,sturgess bridge rd,co,300
+2023-05-02,englishman,center creek,co,9
+2023-05-02,englishman,center creek,ct,13
+2023-05-02,englishman,center creek,rbt,4
+2023-05-02,englishman,center creek,stl,1
+2023-05-02,englishman,martindale rd,co,3
+2023-05-02,englishman,martindale rd,rbt,1
+2023-05-02,koksilah,mainstem fence,co,22
+2023-05-02,koksilah,mainstem fence,rbt,49
+2023-05-03,cowichan,mainstem fence,co,20
+2023-05-03,koksilah,mainstem fence,co,36
+2023-05-03,koksilah,mainstem fence,rbt,32
+2023-05-04,englishman,center creek,co,16
+2023-05-04,englishman,center creek,ct,8
+2023-05-04,englishman,center creek,rbt,1
+2023-05-04,englishman,martindale rd,co,7
+2023-05-04,englishman,martindale rd,ct,1
+2023-05-04,englishman,side channel,co,22
+2023-05-04,englishman,side channel,rbt,2
+2023-05-04,koksilah,mainstem fence,co,31
+2023-05-04,koksilah,mainstem fence,rbt,22
+2023-05-05,cowichan,mainstem fence,co,43
+2023-05-05,cowichan,mainstem fence,ct,1
+2023-05-05,cowichan,mainstem fence,stl,2
+2023-05-05,englishman,center creek,co,22
+2023-05-05,englishman,center creek,ct,18
+2023-05-05,englishman,center creek,rbt,5
+2023-05-05,englishman,center creek,stl,12
+2023-05-05,englishman,martindale rd,co,67
+2023-05-05,englishman,martindale rd,ct,5
+2023-05-05,englishman,side channel,co,41
+2023-05-07,campbell river,hatchery fence,co,2
+2023-05-07,englishman,center creek,co,131
+2023-05-07,englishman,center creek,ct,2
+2023-05-07,englishman,center creek,rbt,1
+2023-05-08,campbell river,hatchery fence,co,8
+2023-05-08,cowichan,mainstem fence,co,104
+2023-05-08,cowichan,mainstem fence,ct,1
+2023-05-08,cowichan,mainstem fence,stl,2
+2023-05-08,englishman,center creek,co,228
+2023-05-08,englishman,center creek,ct,9
+2023-05-08,englishman,center creek,rbt,4
+2023-05-08,englishman,martindale rd,co,18
+2023-05-08,englishman,martindale rd,ct,2
+2023-05-08,englishman,martindale rd,rbt,1
+2023-05-08,englishman,side channel,co,11
+2023-05-08,koksilah,mainstem fence,co,48
+2023-05-08,koksilah,mainstem fence,rbt,15
+2023-05-09,campbell river,hatchery fence,co,5
+2023-05-09,englishman,center creek,co,143
+2023-05-09,englishman,martindale rd,co,6
+2023-05-09,englishman,martindale rd,ct,1
+2023-05-09,koksilah,mainstem fence,co,36
+2023-05-09,koksilah,mainstem fence,rbt,13
+2023-05-09,nanaimo,cedar bridge,co,40
+2023-05-09,nanaimo,cedar bridge,rbt,1
+2023-05-10,campbell river,hatchery fence,co,7
+2023-05-10,cowichan,mainstem fence,ck,2
+2023-05-10,cowichan,mainstem fence,co,159
+2023-05-10,cowichan,mainstem fence,stl,1
+2023-05-10,englishman,center creek,co,253
+2023-05-10,englishman,center creek,ct,10
+2023-05-10,englishman,center creek,rbt,1
+2023-05-10,englishman,center creek,stl,3
+2023-05-10,koksilah,mainstem fence,co,48
+2023-05-10,koksilah,mainstem fence,rbt,12
+2023-05-10,nanaimo,cedar bridge,co,64
+2023-05-10,nanaimo,cedar bridge,stl,1
+2023-05-11,campbell river,hatchery fence,co,75
+2023-05-11,campbell river,hatchery fence,stl,3
+2023-05-11,englishman,center creek,co,180
+2023-05-11,englishman,center creek,ct,2
+2023-05-11,englishman,martindale rd,co,2
+2023-05-11,koksilah,mainstem fence,co,21
+2023-05-11,koksilah,mainstem fence,rbt,5
+2023-05-11,nanaimo,cedar bridge,co,50
+2023-05-11,nanaimo,cedar bridge,ct,1
+2023-05-12,campbell river,hatchery fence,co,123
+2023-05-12,campbell river,hatchery fence,stl,3
+2023-05-12,cowichan,mainstem fence,ck,1
+2023-05-12,cowichan,mainstem fence,co,196
+2023-05-12,cowichan,mainstem fence,rbt,1
+2023-05-12,cowichan,mainstem fence,stl,2
+2023-05-12,englishman,center creek,co,111
+2023-05-12,englishman,center creek,ct,3
+2023-05-12,englishman,martindale rd,co,12
+2023-05-12,nanaimo,cedar bridge,co,35
+2023-05-12,nanaimo,cedar bridge,ct,2
+2023-05-13,campbell river,hatchery fence,co,76
+2023-05-13,campbell river,hatchery fence,stl,2
+2023-05-15,campbell river,hatchery fence,co,63
+2023-05-15,campbell river,hatchery fence,stl,9
+2023-05-15,cowichan,mainstem fence,co,162
+2023-05-15,cowichan,mainstem fence,stl,2
+2023-05-15,englishman,center creek,co,159
+2023-05-15,englishman,center creek,ct,4
+2023-05-15,englishman,center creek,rbt,1
+2023-05-15,englishman,center creek,,15
+2023-05-15,koksilah,mainstem fence,co,49
+2023-05-15,koksilah,mainstem fence,rbt,1
+2023-05-15,nanaimo,cedar bridge,ck,1
+2023-05-15,nanaimo,cedar bridge,co,53
+2023-05-15,nanaimo,cedar bridge,rbt,1
+2023-05-15,nanaimo,cedar bridge,stl,1
+2023-05-16,campbell river,hatchery fence,co,232
+2023-05-16,campbell river,hatchery fence,stl,9
+2023-05-16,englishman,center creek,co,259
+2023-05-16,englishman,center creek,ct,2
+2023-05-16,englishman,martindale rd,co,1
+2023-05-16,koksilah,mainstem fence,co,44
+2023-05-16,koksilah,mainstem fence,rbt,6
+2023-05-16,nanaimo,cedar bridge,co,42
+2023-05-16,nanaimo,cedar bridge,rbt,2
+2023-05-17,campbell river,hatchery fence,co,266
+2023-05-17,campbell river,hatchery fence,stl,15
+2023-05-17,cowichan,mainstem fence,co,45
+2023-05-17,cowichan,mainstem fence,ct,1
+2023-05-17,cowichan,mainstem fence,stl,2
+2023-05-17,englishman,center creek,co,518
+2023-05-17,englishman,center creek,ct,5
+2023-05-17,koksilah,mainstem fence,co,43
+2023-05-17,koksilah,mainstem fence,rbt,12
+2023-05-17,nanaimo,cedar bridge,co,20
+2023-05-18,black creek,sturgess bridge rd,co,300
+2023-05-18,campbell river,hatchery fence,co,193
+2023-05-18,campbell river,hatchery fence,stl,15
+2023-05-18,englishman,center creek,co,271
+2023-05-18,englishman,center creek,ct,1
+2023-05-18,koksilah,mainstem fence,co,53
+2023-05-18,koksilah,mainstem fence,rbt,20
+2023-05-18,nanaimo,cedar bridge,co,15
+2023-05-19,campbell river,hatchery fence,co,155
+2023-05-19,campbell river,hatchery fence,stl,22
+2023-05-19,cowichan,mainstem fence,ck,2
+2023-05-19,cowichan,mainstem fence,co,71
+2023-05-19,englishman,center creek,co,20
+2023-05-19,nanaimo,cedar bridge,co,35
+2023-05-19,nanaimo,cedar bridge,rbt,2
+2023-05-19,puntledge,little mexico,ck,6
+2023-05-19,puntledge,little mexico,co,211
+2023-05-20,campbell river,hatchery fence,stl,9
+2023-05-21,campbell river,hatchery fence,stl,15
+2023-05-22,campbell river,hatchery fence,co,31
+2023-05-22,campbell river,hatchery fence,stl,9
+2023-05-22,koksilah,mainstem fence,co,11
+2023-05-22,koksilah,mainstem fence,rbt,4
+2023-05-23,campbell river,hatchery fence,co,11
+2023-05-23,campbell river,hatchery fence,stl,5
+2023-05-23,cowichan,mainstem fence,co,34
+2023-05-23,cowichan,mainstem fence,ct,1
+2023-05-23,cowichan,mainstem fence,rbt,1
+2023-05-23,koksilah,mainstem fence,co,12
+2023-05-23,koksilah,mainstem fence,rbt,10
+2023-05-24,campbell river,hatchery fence,co,22
+2023-05-24,campbell river,hatchery fence,stl,2
+2023-05-24,englishman,center creek,co,12
+2023-05-24,englishman,center creek,stl,1
+2023-05-24,koksilah,mainstem fence,co,3
+2023-05-24,koksilah,mainstem fence,rbt,6
+2023-05-25,campbell river,hatchery fence,co,4
+2023-05-25,campbell river,hatchery fence,stl,2
+2023-05-25,koksilah,mainstem fence,co,7
+2023-05-25,koksilah,mainstem fence,rbt,6
+2023-05-25,nanaimo,cedar bridge,co,5
+2023-05-26,campbell river,hatchery fence,co,12
+2023-05-26,campbell river,hatchery fence,stl,3
+2023-05-26,cowichan,mainstem fence,ck,195
+2023-05-26,cowichan,mainstem fence,co,422
+2023-05-26,cowichan,mainstem fence,rbt,5
+2023-05-26,cowichan,mainstem fence,stl,13
+2023-05-26,englishman,center creek,,18
+2023-05-26,puntledge,little mexico,ck,29
+2023-05-26,puntledge,little mexico,co,56
+2023-05-26,puntledge,little mexico,ct,7
+2023-05-27,campbell river,hatchery fence,co,9
+2023-05-27,campbell river,hatchery fence,stl,3
+2023-05-27,koksilah,mainstem fence,co,2
+2023-05-27,koksilah,mainstem fence,rbt,5
+2023-05-29,koksilah,mainstem fence,co,2
+2023-05-29,koksilah,mainstem fence,rbt,7
+2023-05-30,cowichan,mainstem fence,ck,623
+2023-05-30,cowichan,mainstem fence,co,353
+2023-05-30,cowichan,mainstem fence,ct,3
+2023-05-30,cowichan,mainstem fence,rbt,1
+2023-05-30,cowichan,mainstem fence,stl,14
+2023-05-30,koksilah,mainstem fence,ck,1
+2023-05-30,koksilah,mainstem fence,co,4
+2023-05-30,koksilah,mainstem fence,rbt,4
+2023-05-30,nanaimo,cedar bridge,ck,1
+2023-05-30,nanaimo,cedar bridge,co,7
+2023-05-30,nanaimo,cedar bridge,ct,1
+2023-05-30,nanaimo,cedar bridge,rbt,3
+2023-05-31,campbell river,hatchery fence,co,2
+2023-05-31,campbell river,hatchery fence,stl,1
+2023-05-31,cowichan,mainstem fence,ck,496
+2023-05-31,cowichan,mainstem fence,co,139
+2023-05-31,cowichan,mainstem fence,stl,10
+2023-05-31,englishman,center creek,co,22
+2023-05-31,englishman,center creek,rbt,1
+2023-05-31,koksilah,mainstem fence,rbt,3
+2023-05-31,nanaimo,cedar bridge,co,7
+2023-05-31,nanaimo,cedar bridge,rbt,3
+2023-05-31,nanaimo,cedar bridge,stl,1
+2023-05-31,puntledge,little mexico,ck,120
+2023-05-31,puntledge,little mexico,co,159
+2023-05-31,puntledge,little mexico,ct,11
+2023-06-01,black creek,sturgess bridge rd,co,43
+2023-06-01,campbell river,hatchery fence,co,2
+2023-06-01,campbell river,hatchery fence,stl,1
+2023-06-01,cowichan,mainstem fence,ck,729
+2023-06-01,cowichan,mainstem fence,co,65
+2023-06-01,cowichan,mainstem fence,stl,2
+2023-06-01,koksilah,mainstem fence,ck,2
+2023-06-01,koksilah,mainstem fence,rbt,4
+2023-06-01,nanaimo,cedar bridge,ck,1
+2023-06-01,nanaimo,cedar bridge,co,2
+2023-06-01,nanaimo,cedar bridge,ct,1
+2023-06-01,nanaimo,cedar bridge,rbt,13
+2023-06-02,cowichan,mainstem fence,ck,474
+2023-06-02,cowichan,mainstem fence,co,26
+2023-06-02,cowichan,mainstem fence,rbt,1
+2023-06-02,cowichan,mainstem fence,stl,5
+2023-06-02,englishman,center creek,co,6
+2023-06-02,nanaimo,cedar bridge,ck,1
+2023-06-02,nanaimo,cedar bridge,co,1
+2023-06-02,nanaimo,cedar bridge,ct,1
+2023-06-02,nanaimo,cedar bridge,rbt,5
+2023-06-02,nanaimo,cedar bridge,stl,1
+2023-06-02,puntledge,little mexico,ck,154
+2023-06-02,puntledge,little mexico,co,88
+2023-06-02,puntledge,little mexico,ct,2
+2023-06-04,cowichan,mainstem fence,ck,696
+2023-06-04,cowichan,mainstem fence,co,66
+2023-06-04,cowichan,mainstem fence,stl,2
+2023-06-05,campbell river,hatchery fence,co,3
+2023-06-05,campbell river,hatchery fence,stl,1
+2023-06-05,cowichan,mainstem fence,ck,529
+2023-06-05,cowichan,mainstem fence,co,31
+2023-06-05,cowichan,mainstem fence,rbt,2
+2023-06-05,cowichan,mainstem fence,so,1
+2023-06-05,cowichan,mainstem fence,stl,3
+2023-06-05,koksilah,mainstem fence,rbt,1
+2023-06-05,puntledge,little mexico,ck,235
+2023-06-05,puntledge,little mexico,co,34
+2023-06-06,cowichan,mainstem fence,ck,590
+2023-06-06,cowichan,mainstem fence,co,27
+2023-06-06,cowichan,mainstem fence,ct,2
+2023-06-06,cowichan,mainstem fence,stl,1
+2023-06-06,nanaimo,cedar bridge,ck,2
+2023-06-07,cowichan,mainstem fence,ck,604
+2023-06-07,cowichan,mainstem fence,co,36
+2023-06-07,cowichan,mainstem fence,stl,5
+2023-06-07,koksilah,mainstem fence,rbt,2
+2023-06-07,puntledge,little mexico,ck,532
+2023-06-07,puntledge,little mexico,co,16
