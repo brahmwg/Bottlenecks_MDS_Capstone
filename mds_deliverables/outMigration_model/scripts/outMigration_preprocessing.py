@@ -2,6 +2,32 @@ import pandas as pd
 import numpy as np
 import pyarrow
 
+def preprocess_sql(salmon2, cow, output_file):
+    # Filter and reset index for Cowichan watershed
+    salmon2_cow_temp = salmon2[salmon2['watershed'] == 'cowichan'].reset_index()
+    salmon2_cow = salmon2_cow_temp[['date', 'species', 'site', 'count']]
+    salmon2_cow = salmon2_cow[salmon2_cow['species'].isin(['co', 'ck'])]
+
+    # Create dummy variables for sites
+    site_dummies = pd.get_dummies(salmon2_cow['site'])
+    df_expanded = pd.concat([salmon2_cow, site_dummies], axis=1)
+    df_expanded = df_expanded.drop('site', axis=1)
+
+    # Standardize species names and concatenate datasets
+    cow['species'] = cow['species'].str.lower()
+    df_long = pd.concat([cow, df_expanded]).reset_index(drop=True)
+    df_long['species'] = df_long['species'].replace('cn', 'ck')
+
+    # Filter and create dummy variables for species
+    df_long_filter = df_long[df_long['species'].isin(['co', 'ck'])]
+    species_dummies = pd.get_dummies(df_long_filter['species'])
+    df_expanded_1 = pd.concat([df_long_filter, species_dummies], axis=1)
+    df_expanded_1 = df_expanded_1.drop('species', axis=1)
+
+    # Save the final dataframe to a CSV file
+    df_expanded_1.to_csv(output_file, index=False)
+    print(f"Data saved to {output_file}")
+    
 def preprocessing(species, salmon_df_name, temp_df_name, level_df_name, flow_df_name):
     df_salmon = pd.read_csv(salmon_df_name)
     df_salmon = df_salmon[df_salmon[species] == True][["date", "count"]].groupby("date").sum().reset_index()
@@ -53,11 +79,19 @@ def preprocessing(species, salmon_df_name, temp_df_name, level_df_name, flow_df_
     comb_df.fillna(comb_df.median(), inplace=True)
     return comb_df
 
+# data path not final yet 
 if __name__ == "__main__":
-    salmon_path = "../data/salmon_concat.csv"
-    temp_path = "../data/northcochiwan_daily_temp-2.csv"
-    flow_path = "../data/flow_2023.csv"
-    level_path = "../data/level_2023.csv"
+    salmon2 = pd.read_csv('data/data_salmon2.csv') 
+    cow = pd.read_csv('data/cowichan_historic.csv')  
+    output_file = 'data/salmon_concat.csv'
+
+    preprocess_sql(salmon2, cow, output_file)
+    
+    salmon_path = "data/salmon_concat.csv"
+    temp_path = "data/northcochiwan_daily_temp.csv"
+    flow_path = "data/flow_2023.csv"
+    level_path = "data/level_2023.csv"
 
     final_df = preprocessing("ck", salmon_path, temp_path, level_path, flow_path)
-    final_df.to_csv("../data/jenny/preprocessed_ck.csv", index=False)
+    final_df.to_csv("data/preprocessed_ck.csv", index=False)
+    print("Final preprocessed data saved to data/preprocessed_ck.csv")
