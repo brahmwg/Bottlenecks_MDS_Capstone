@@ -1,0 +1,23 @@
+{
+    "field_data": {
+        "watershed": ["cowichan", "englishman"],
+        "river": ["river1", "river2"],
+        "site": ["site1", "site2"],
+        "method": ["method1", "method2"],
+        "local": ["local1", "local2"],
+        "water_temp_start": [10, 20],
+        "fork_length_mm": [100, 200],
+        "species": ["ck", "co"]
+    },
+    "det_table": {
+        "species": ["ck", "co"],
+        "eye_size": ["large", "large"],
+        "snout_shape": ["pointy", "short and blunt"],
+        "parr_marks": ["slightly faded", "slightly faded"],
+        "parr_marks_length": ["long", "long"],
+        "spotting_density": ["medium", "medium"],
+        "fin_type": ["anal fin", "anal fin"],
+        "parr_marks_spacing": ["wider than interspaces", "narrower than interspaces"],
+        "spotting_characteristic": ["circle", "circle"]
+    }
+}

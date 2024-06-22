@@ -1,0 +1,38 @@
+{
+    "salmon_data": {
+        "date": ["2023-01-01", "2023-01-02"],
+        "watershed": ["cowichan", "cowichan"],
+        "site": ["site1", "site2"],
+        "species": ["co", "ck"],
+        "count": [10, 20]
+    },
+    "cowichan_historic_data": {
+        "date": ["2023-01-01", "2023-01-02"],
+        "species": ["co", "ck"],
+        "count": [5, 15]
+    },
+    "field_data": {
+        "date": ["2023-01-01", "2023-01-02"],
+        "ck": [1, 0],
+        "co": [0, 1],
+        "count": [10, 20]
+    },
+    "temp_data": {
+        "UTC_DATE": ["2023-01-01", "2023-01-02"],
+        "TEMP": [15, 16]
+    },
+    "level_data": {
+        "STATION_NUMBER": ["08HA003", "08HA001"],
+        "YEAR": [2023, 2023],
+        "MONTH": [1, 1],
+        "LEVEL1": [1.0, 1.1],
+        "LEVEL2": [1.2, 1.3]
+    },
+    "flow_data": {
+        "STATION_NUMBER": ["08HA003", "08HA001"],
+        "YEAR": [2023, 2023],
+        "MONTH": [1, 1],
+        "FLOW1": [2.0, 2.1],
+        "FLOW2": [2.2, 2.3]
+    }
+}
