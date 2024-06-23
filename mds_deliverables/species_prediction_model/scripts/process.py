@@ -26,7 +26,7 @@ def processing(data, det_data):
     df = data.merge(det_df, how='outer', on='species')
 
     for col in df.columns:
-        if col != 'species' and col != 'fork_length_mm' and col != 'water_temp_start':
+        if col != 'species' and col != 'fork_length_mm' and col != 'water_temp_start' and col!='tag_id_long':
             df = one_hot_encoding(df, col, col)
     
     return df
