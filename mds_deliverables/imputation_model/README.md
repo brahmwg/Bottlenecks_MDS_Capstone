@@ -29,8 +29,9 @@ The goals of the model are:
 
 | Folder Name | Stored File Formats | Description |
 | --- | --- | --- |
-|Data|csv|The data used for training the field model - `field_genetics_species.csv`, predictions were made on `sql_field_imputation.csv`. `microtroll_train and `microtroll_test` are for training and testing a microtroll model in the future.|
-|Data/raw_data/sql_for_data.md| markdown file | Stores all the queries used to pull the data for training and testing from the Strait of Georgia Data Center|
+|data/raw_data|csv|The data used for training the field model - `field_genetics_species.csv`, predictions were made on `sql_field_imputation.csv`. `microtroll_train and `microtroll_test` are for training and testing a microtroll model in the future.|
+|data/raw_data/sql_for_data.md| markdown file | Stores all the queries used to pull the data for training and testing from the Strait of Georgia Data Center|
+|data/result|
 
 ## 2. Installation (ENV)
 how to reproduce
