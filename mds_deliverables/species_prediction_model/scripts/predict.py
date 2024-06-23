@@ -1,6 +1,10 @@
 import pandas as pd
 import numpy as np
 import pickle
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+import json
+
 
 def preprocess_data(data):
     det_cols = ['species', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
@@ -48,8 +52,8 @@ def preprocess_data(data):
 def voting_classifier_deterministic(data):
     random_numbers = [42, 231, 351, 701, 996, 523, 710, 686, 568, 268]
 
-    X = det_data.drop('species', axis=1)
-    y = det_data['species']
+    X = data.drop(['species','tag_id_long'], axis=1)
+    y = data['species']
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
 
     models = []
@@ -70,9 +74,9 @@ def voting_classifier_deterministic(data):
         prediction = max(set(row_predictions), key=row_predictions.count)
         final_predictions.append(prediction)
 
-    det_data['prediction'] = final_predictions
+    data['prediction'] = final_predictions
 
-    return det_data
+    return data[['tag_id_long','prediction']]
 
 def voting_classifier_probabilistic(data, probabilistic_models, pred_1):
     _, prob_data = preprocess_data(data)
@@ -91,6 +95,31 @@ def voting_classifier_probabilistic(data, probabilistic_models, pred_1):
     else:
         prediction = max(set(predictions), key=predictions.count)
         return predictions, prediction
+
+
+def voting_classifier(det_results,prob_results):
+    df = det_results.merge(prob_results,on='tag_id_long',how='left')
+    df.columns = ['tag_id_long','pred_1','pred_2','pred_3']
+
+    ensemble_pred = []
+    for row in range(len(df)):
+        predictions = []
+        prediction = [df.iloc[row]['pred_1'],
+                      df.iloc[row]['pred_2'],
+                      df.iloc[row]['pred_3']]
+        if 'pink' in predictions:
+            ensemble_pred.append('pink')
+        elif 'so' in predictions:
+            ensemble_pred.append('so')
+        else:
+            ensemble_pred.append(max(set(prediction), key=prediction.count))
+
+
+    df['prediction'] = ensemble_pred
+    
+    return df
+        
+        
 
 deterministic_models = {'model_42': '/content/model_42.pkl',
                         'model_231': '/content/model_231.pkl',
