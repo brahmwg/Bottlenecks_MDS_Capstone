@@ -35,8 +35,50 @@ Here are some descriptions for our folders to better understand the files:
 |Model|h5|The deep learning model and its weights, trained on field data is saved in a .h5 file in order to facilitate predictions. Predictions on field data can be made by calling this model.| 
 |Scripts|ipynb|`model_training.ipynb` is the training script needed to understand, replicate or re-train the model for future use. `model_prediction.ipynb` has the script using which we have predicted species for the test data.|
 
-## 2. Installation (ENV)
-how to reproduce
+## 2. Installation 
+### 2.1 Packages needed
+The packages needed to run these scripts are
+```
+import pandas as pd
+from tensorflow.keras.models import load_model
+import numpy as np 
+
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import (
+    OneHotEncoder,
+    OrdinalEncoder,
+    StandardScaler,
+    LabelEncoder
+)
+
+from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier
+
+import tensorflow as tf
+from tensorflow.keras import layers
+from tensorflow.keras.optimizers import Adam
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+### 2.2 Setting up your environment
+The results for this model are defined and complete. It is saved as `field_imputation_species.csv`. If you wish to run these notebooks locally, follow these steps:
+1. Clone the repository
+```git clone https://github.com/brahmwg/Bottlenecks_MDS_Capstone.git
+cd Bottlenecks_MDS_Capstone```
+2. Create a virtual environment
+```
+conda env create -f environment_ml.yml
+```
+3. Activate this environment
+```
+conda activate mds_bottleneck
+```
+4. Run the ipynb scripts using Jupyter Lab or any similar IDE
+5. When complete, deactivate the environment
+```
+conda deactivate
+```
 ## 3. Running scripts
 which order, where are things
 ## 4. Expected outcome
