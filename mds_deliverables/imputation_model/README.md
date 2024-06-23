@@ -82,6 +82,16 @@ conda activate mds_bottleneck
 conda deactivate
 ```
 ## 3. Running scripts
-which order, where are things
+
+The order in which you would generally run these scripts is starting at the training script, saving the trained model and then move on to the prediction script using the saved h5 model. 
+
 ## 4. Expected outcome
-results
+The expected result of the prediction script is a CSV file with the following four columns; tag ID, species, predicted species and prediction probability.
+An example output is:
+**|tag_id_long|species|prediction|prediction probability|**
+| --- | --- | --- |
+|989.001038747135|	co|	chinook|	0.536905|
+|989.001042042947|	ck|	chinook	|0.648501|
+|989.001042516590|	ck|	chinook	|0.739064|
+|989.001042048086|	co|	coho	|0.427051|
+|989.001038855867|	co|	chinook	|0.471850|
