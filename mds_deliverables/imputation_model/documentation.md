@@ -31,6 +31,7 @@ After training, the model is [saved](https://github.com/brahmwg/Bottlenecks_MDS_
 
 
 <img width="492" alt="dl model" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/439ab833-0a29-4e3f-a0f0-1340db0ee164">
+
 Here, we show an example output of the model. The prediction probability of the fish being a coho is 87%, meaning that the model, based on the data it has seen, think that the new fish may be a coho, with 87% confidence.
 
 
