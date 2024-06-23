@@ -1,6 +1,12 @@
 import pandas as pd
 import numpy as np
 import pickle
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+import tensorflow as tf
+from tensorflow.keras import layers
+from tensorflow.keras.optimizers import Adam
 
 def preprocess_data(data):
     det_cols = ['species', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
@@ -21,7 +27,7 @@ def preprocess_data(data):
                'spotting_characteristic_variable']
 
     # This is bound to change
-    prob_cols = ['water_temp_start', 'fork_length_mm', 'watershed_cowichan',
+    prob_cols = ['species','water_temp_start', 'fork_length_mm', 'watershed_cowichan',
                 'watershed_englishman', 'watershed_nanaimo', 'watershed_puntledge',
                 'river_center creek', 'river_cowichan', 'river_englishman',
                 'river_haslam creek', 'river_nanaimo', 'river_puntledge',
@@ -74,23 +80,61 @@ def voting_classifier_deterministic(data):
 
     return det_data
 
-def voting_classifier_probabilistic(data, probabilistic_models, pred_1):
-    _, prob_data = preprocess_data(data)
-    predictions = [pred_1]
-    print(prob_data)
+def voting_classifier_probabilistic(data): 
 
-    for key, value in probabilistic_models.items():
-        print(key)
-        model = pickle.load(open(value, 'rb'))
-        predictions.append(model.predict(prob_data.reshape(1, -1))[0])
+    X = prob_data.drop('species', axis=1)
+    y = prob_data['species']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    if pred_1 == 'pink':
-        return predictions, 'pink'
-    elif pred_1 == 'so':
-        return predictions, 'so'
-    else:
-        prediction = max(set(predictions), key=predictions.count)
-        return predictions, prediction
+
+    dt = DecisionTreeClassifier(max_depth = 7, min_samples_split = 6, min_samples_leaf = 4, 
+                                random_state = 42)
+    dt.fit(X_train, y_train)
+
+    scaler = StandardScaler()
+    X['fork_length_mm'] = scaler.fit_transform(X[['fork_length_mm']])
+    le = LabelEncoder()
+    y_enc = le.fit_transform(y)
+    y_label = tf.keras.utils.to_categorical(y_enc)
+    X_train, X_test, y_train, y_test = train_test_split(X, y_label, test_size=0.2, random_state=42)
+
+    num_features = X.shape[1]
+    dl_model = tf.keras.Sequential([
+        layers.Input(shape=(num_features,)),
+        layers.Dense(128, activation='relu'),
+        layers.Dense(64, activation='relu'),
+        layers.Dense(8, activation='softmax')  #change based on number of labels
+    ])
+    dl_model.compile(optimizer=Adam(learning_rate=0.0001),        
+    loss='categorical_crossentropy',  
+    metrics=['accuracy']) 
+    dl_model.fit(X_train, y_train, 
+                    epochs = 20, 
+                    batch_size = 32, 
+                    validation_split=0.2)
+
+
+    dt_pred = dt.predict(X)
+
+    dl_pred = dl_model.predict(X) 
+    dl_pred_df = pd.DataFrame(dl_pred, columns=le.classes_) # in a table format showing all the confidences for each label
+    max_label = [] # to extract the label with highest confidence
+    for i in range(dl_pred_df.shape[0]):
+        max_label.append(dl_pred_df.iloc[i].idxmax())
+
+
+    prob_data['dt_prediction'] = dt_pred
+    prob_data['dl_prediction'] = max_label
+
+    return prob_data
+
+    # if pred_1 == 'pink':
+    #     return predictions, 'pink'
+    # elif pred_1 == 'so':
+    #     return predictions, 'so'
+    # else:
+    #     prediction = max(set(predictions), key=predictions.count)
+    #     return predictions, prediction
 
 deterministic_models = {'model_42': '/content/model_42.pkl',
                         'model_231': '/content/model_231.pkl',
