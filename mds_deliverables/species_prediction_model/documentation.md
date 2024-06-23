@@ -42,8 +42,8 @@ Since all the deterministic features are categorical and non-ordinal, the only r
 ## 4. Ensemble Modeling
 The idea for the ensemble model was to create a voting classifier. As illustrated in the figure, there are two branches: the deterministic branch and the probabilistic branch.
 
-<img width="1200" alt="voting classifier" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/ba1ee2ac-9f12-4fbc-94f1-96aec6d24ef6">
 
+![voting classifier_1719182867119](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/8f99d959-7965-43e2-a945-8ea4b64b756e)
 
 ### 4.1 Deterministic Branch
 The deterministic branch consists of 10 decision trees, each randomly trained on different physical features of the fish. The prediction from each tree is combined using a majority vote, and the resulting prediction is used as the output of the deterministic branch.
