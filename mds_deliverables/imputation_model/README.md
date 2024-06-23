@@ -64,8 +64,10 @@ import seaborn as sns
 ### 2.2 Setting up your environment
 The results for this model are defined and complete. It is saved as `field_imputation_species.csv`. If you wish to run these notebooks locally, follow these steps:
 1. Clone the repository
-```git clone https://github.com/brahmwg/Bottlenecks_MDS_Capstone.git
-cd Bottlenecks_MDS_Capstone```
+```
+git clone https://github.com/brahmwg/Bottlenecks_MDS_Capstone.git
+cd Bottlenecks_MDS_Capstone
+```
 2. Create a virtual environment
 ```
 conda env create -f environment_ml.yml
