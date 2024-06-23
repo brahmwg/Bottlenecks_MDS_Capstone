@@ -17,7 +17,7 @@ The deterministic features for each species of fish are as follows:
 7. Parr marks spacing
 8. Spotting characteristic
 
-<img width="497" alt="fish feats" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/6b2a605b-afe5-4cfa-83f7-15f8262c81a3">
+<img width="600" alt="fish feats" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/6b2a605b-afe5-4cfa-83f7-15f8262c81a3">
 
 
 ### 2.2 Non-deterministic Features 
@@ -26,7 +26,7 @@ The deterministic features for each species of fish are as follows:
 2. Site method
 3. Locality
 
-<img width="449" alt="field feats" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/d1360dbb-e245-4ec2-9fd7-1ea4356a99e2">
+<img width="600" alt="field feats" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/d1360dbb-e245-4ec2-9fd7-1ea4356a99e2">
 
 
 These two sets of features are merged to create a complete dataset that is processed and fed into the probabilistic models. For the deterministic decision trees, only the deterministic features of the fish were used.
@@ -42,7 +42,7 @@ Since all the deterministic features are categorical and non-ordinal, the only r
 ## 4. Ensemble Modeling
 The idea for the ensemble model was to create a voting classifier. As illustrated in the figure, there are two branches: the deterministic branch and the probabilistic branch.
 
-<img width="496" alt="voting classifier" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/ba1ee2ac-9f12-4fbc-94f1-96aec6d24ef6">
+<img width="600" alt="voting classifier" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/ba1ee2ac-9f12-4fbc-94f1-96aec6d24ef6">
 
 
 ### 4.1 Deterministic Branch
