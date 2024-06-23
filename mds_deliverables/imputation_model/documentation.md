@@ -31,6 +31,7 @@ After training, the model is [saved](https://github.com/brahmwg/Bottlenecks_MDS_
 
 
 <img width="492" alt="dl model" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/439ab833-0a29-4e3f-a0f0-1340db0ee164">
+Here, we show an example output of the model. The prediction probability of the fish being a coho is 87%, meaning that the model, based on the data it has seen, think that the new fish may be a coho, with 87% confidence.
 
 
 The model tested with a 95% accuracy, where the accuracy is defined as the number of correct predictions in comparison to the results from the genetics lab. The model training was steady along 20 epochs. The accuracy and loss for both train and validation sets can be seen here.
@@ -38,7 +39,22 @@ The model tested with a 95% accuracy, where the accuracy is defined as the numbe
 
 ![accuracy and loss curves](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/896fe244-7559-4bb2-9be6-847b3d04460c)
 
-### 2.4 Model prediction
+### 2.4 Model prediction and result
+
+Using the .h5 model we saved after training the model, we predicted the species of all the fishes that have never been tested at the lab. The final output was a csv file that had the Tag ID of a fish, the field identified label, the predicted label and the predicted probability.
+The CSV file has been saved in the [data/results folder](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/tree/main/mds_deliverables/imputation_model/data/result).
+Here is an example snapshot of the CSV we produced:
+| tag_id_long     | species | predicted_label | confidence |
+|-----------------|---------|-----------------|------------|
+| 989.001038747135 | co      | chinook         | 0.536905   |
+| 989.001042042947 | ck      | chinook         | 0.648501   |
+| 989.001042516590 | ck      | chinook         | 0.739064   |
+| 989.001042048086 | co      | coho            | 0.427051   |
+| 989.001038855867 | co      | chinook         | 0.471850   |
+
+## 3. Future recommendations
+### 3.1 Microtroll data imputation 
+This model currently has been trained on data collected from the field table in the Strait of Georgia Data Center. The columns on which the model is trained is almost exclusive to the field table. This same task can be carried for `microtroll` data. The data needed for [training](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/main/mds_deliverables/imputation_model/data/raw_data/microtroll_train.csv) has been extracted and so has the [test](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/main/mds_deliverables/imputation_model/data/raw_data/microtroll_test.csv) data. Both can be found in `/data/raw_data`. The model can be trained in the exact same fashin, just changing the column names wherever necessary. The model can be trained and tested using the notebooks added in '/scripts`. The output of the `model_prediction.ipynb` will be a CSV file, very similar to the [field imputation result](https://github.com/brahmwg/Bottlenecks_MDS_Capstone/blob/main/mds_deliverables/imputation_model/data/result/field_species_imputation.csv).
 
 
 
