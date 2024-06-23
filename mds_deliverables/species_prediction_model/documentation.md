@@ -42,7 +42,7 @@ Since all the deterministic features are categorical and non-ordinal, the only r
 ## 4. Ensemble Modeling
 The idea for the ensemble model was to create a voting classifier. As illustrated in the figure, there are two branches: the deterministic branch and the probabilistic branch.
 
-<img width="600" alt="voting classifier" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/ba1ee2ac-9f12-4fbc-94f1-96aec6d24ef6">
+<img width="1200" alt="voting classifier" src="https://github.com/brahmwg/Bottlenecks_MDS_Capstone/assets/85408127/ba1ee2ac-9f12-4fbc-94f1-96aec6d24ef6">
 
 
 ### 4.1 Deterministic Branch
