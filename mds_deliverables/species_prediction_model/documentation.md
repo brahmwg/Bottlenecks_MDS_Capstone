@@ -33,9 +33,10 @@ These two sets of features are merged to create a complete dataset that is proce
 
 ## 3. Pre-processing
 ### 3.1 Probabilistic Models
-1. **Numerical Features**: The numerical features were kept as they were for the decision trees but were standard-scaled for the deep learning model.
+1. **Numerical Features**: The numerical features were kept as they were for the decision trees and random forest.
 2. **Categorical Features**: All the categorical features were one-hot encoded.
 3. **Features Count**: Finally, we had 61 features for the probabilistic models.
+4. **Handling NA**: Random forest cannot handle NAs, so those rows are dropped.
 ### 3.2 Deterministic Models
 Since all the deterministic features are categorical and non-ordinal, the only required processing is to transform the features into binary features using the OneHot encoding technique.
 
@@ -49,13 +50,13 @@ The deterministic branch consists of 10 decision trees, each randomly trained on
 
 ### 4.2 Probabilistic Branch
 The probabilistic branch includes two models:
-1. **Decision Tree Classifier**: This model is trained on the entire feature set, including both deterministic features (physical features of the fish) and non-deterministic features (location, water temperature, site, method, etc.).
-2. **Deep Learning Neural Network**: This model, implemented on a TensorFlow framework, consists of 4 layers. It uses ReLU activations for the input and hidden layers, and a softmax activation for the output layer. This model is also trained on the complete feature set.
+1. **Decision Tree Classifier**: A decision tree is a tree-like model used in machine learning that makes predictions by recursively partitioning the input space into regions and assigning a label to each region based on the majority class of the training examples in that region. This model is trained on the entire feature set, including both deterministic features (physical features of the fish) and non-deterministic features (location, water temperature, site, method, etc.).
+2. **Random forest**: Random Forest classifier with 100 decision trees (n_estimators=100) and a fixed random state for reproducibility (random_state=42) is trained. This model is also trained on the complete feature set.
 
 ### 4.3 Voting Mechanism
 The final prediction is made by the voting classifier, which combines the outputs from both branches:
 - The output from the deterministic branch contributes 1/3 of the total vote.
-- The outputs from the two probabilistic models (the decision tree and the deep learning model) each contribute 1/3 of the total vote.
+- The outputs from the two probabilistic models (the decision tree and random forest) each contribute 1/3 of the total vote.
 
 The final prediction is determined by taking the majority vote from these three contributions, ensuring a balanced consideration of both deterministic and probabilistic features. This approach leverages the strengths of both branches to improve the accuracy and robustness of the species prediction.
 
