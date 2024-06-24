@@ -1,4 +1,4 @@
-# Following are the schemas for the files in tha /data folder:
+# Following are the schemas for the files in the `/data` folder:
 ## `det.json`
 
 | Column Name           | Data Type   |
