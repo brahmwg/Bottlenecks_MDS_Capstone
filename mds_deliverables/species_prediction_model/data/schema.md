@@ -1,4 +1,5 @@
-# `det.json`
+# Following are the schemas for the files in tha /data folder:
+## `det.json`
 
 | Column Name           | Data Type   |
 |-----------------------|-------------|
@@ -12,7 +13,7 @@
 | parr_marks_spacing    | string      |
 | spotting_characteristic| string      |
 
-# `field.csv`
+## `field.csv`
 
 | Column Name       | Data Type |
 |--------------------|-----------|
@@ -25,7 +26,7 @@
 | fork_length_mm     | int       |
 | species            | string    |
 
-# 'new_field.csv`
+## `new_field.csv`
 
 | Column Name       | Data Type |
 |--------------------|-----------|
