@@ -35,7 +35,7 @@ These Bernoulli distributions model the probability of survival $z_{i,j}$ and de
 ### 2.3 Cumulative Survival Probability
 The cumulative survival probability $\text{Survship}_j$ can be calculated as the product of survival probabilities up to stage $j$:
 
-$$\text{Survship}_j = \prod_{k=1}^{i=1} \phi_k$$
+$$\text{Survship}_j = \prod{k=1}^{i=1} \phi_k$$
 
 $_j = \prod_{k=1}^{i=1} \times \phi_k$
 
@@ -57,3 +57,9 @@ Plots shown above are stored uner `plots` sub-folder.
 ### 3.2 Conclusion
 
 ## 4. Future Recommendations
+We worked towards incorporating the origin of the salmon (e.g., hatchery versus wild) as a covariate in our models. This addition will help us understand the differential survival probabilities between hatchery-reared and wild salmon. By examining the impact of origin, we can gain insights into the factors that contribute to the survival disparities and inform targeted conservation efforts.
+
+Mathematically, this can be represented by introducing an additional covariate $\text{origin}_i$ for each salmon $i$.  The model for survival probability $\phi_{i,j}$ at stage $j$ can be modified as:
+$$\log({\frac{\phi_{i,j}}{1-\phi_{i,j}}}) = \beta_0 + \beta_1 \cdot \text{origin}_i$$
+
+where $\beta_0$ is the intercept, and $\beta_1$ is the coefficient for the origin covariate.
