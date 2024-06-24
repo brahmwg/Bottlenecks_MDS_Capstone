@@ -1,0 +1,74 @@
+---
+title: "final_report"
+output: html_document
+date: "2024-06-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Survival Analysis of Salmon in Saline Sea
+> Jenny Lee, Arturo Rey, Rafe Chang, Riya Eliza
+
+## Contents
+1. [Executive Summary](#executive_summary)
+2. [Introduction](#introduction)
+<br> 2.1. [Motivation](#motivation)
+3. [Data Products](#data_product)
+<br> 3.1. [Survival Analysis](#survival_analysis)
+<br> 3.2. [Outmigration Model](#further-analysis)
+<br> 3.3. [Species Classification Model](#further-analysis)
+<br> 3.4. [PL/Python Pipeline](#further-analysis)
+4. [Conclusion and Recommendation](#further-analysis)
+5. References
+
+<a id='executive_summary'></a>
+## 1.0 Executive Summary
+Our collaboration with the Pacific Salmon Foundation on the Bottleneck project will yield comprehensive visual analysis tools and advanced statistical and machine learning models, directly enhancing biologists' ability to understand salmon survival trends. By leveraging techniques from the Master of Data Science program, we aim to gain deepeer understanding of salmon survival probability, considering factors like predation, body size, origin site, and others.
+
+<a id='introduction'></a>
+## 2.0 Introduction
+Salmons are critical to the ecosystem as they are food to 137 species (Rahr, 2023), such as grizzly bears. In British Columbia, there are over 9,000 distinct salmon populations ("State of Salmon", 2022). However, due to climate change and industrial development in the past 150 years, the population of Pacific salmon in BC has declined and their habitats have been facing unprecedented pressures.
+
+Pacific Salmon Foundation is a non-profit organization committed to guiding the sustainable future of Pacific salmon and its habitat. The organization has a wide range of work such as community investments and salmon health. As a part of the organization’s effort towards marine sciences, the Bottlenecks to Survival Projects investigate the survival bottlenecks, which refers to when a population size is reduced for at least one ("Understanding Evolution"), for salmon and steelhead throughout the Salish Sea and southern BC regions.
+
+<a id='motivation'></a>
+### 2.1 Motivation
+This project deeply interests us after learning about salmons’ crucial survival rate. We are doing a survival analysis to better understand their life cycle and two main models to assist the data collection process. 
+
+## 3.0 Data Products
+<a id='survival_analysis'></a>
+### 3.1 Survival Analysis
+#### 3.1.1 Objective
+In ecological terms, a bottleneck refers to a specific event that results in a sharp decline in a population over a period of time (Pacific Salmon Foundation, 2021). Identifying these bottleneck points throughout the various stages of a salmon’s life cycle is crucial, as it provides valuable insights into potential interventions to improve survival rates. Our study aimed to observe the survival and detection probabilities across five stages of the salmon’s outmigration-return path, as well as the cumulative survival probability from the first stage to the last. 
+
+#### 3.1.2 Preprocessing
+The data was extracted using SQL queries, stage-wise from the Strait of Georgia data center. The 5 stages identified were facility (hatchery), downstream, estuary, field (or microtroll) and return. For each of these stages, we wanted data of all wild and hatchery origin fishes. SQL queries were used to extract the required data from the data center. The columns extracted were the unique tag_id of a fish, the date on which it was detected, the “stage” at which this data is derived from, the origin of the fish (hatchery/ wild), the fork length of the fish, action (tag/ detect), species of the detected fish.
+![sample_table](img/survival_analysis_fig1.png)
+<img src="img/survival_analysis_fig1.png"> 
+After data from all 5 stages are extracted in this manner, the datasets then go into a preprocessing.R file to be combined together. At this stage, we make any nomenclature changes needed to mitigate the variations in data that may have happened during the collection process. Finally, we output a CSV file (survival_analysis.csv) containing the data of all detections from all 5 stages.
+
+#### 3.1.3 Data Science Method
+Our study implemented the Cormack-Jolly-Seber (CJS) model (Cormack, 1964; Jolly, 1965; Seber, 1965), which was originally designed for studying bird migration. However, due to the model's heavy reliance on recapture rates, we incorporated Bayesian modeling to address concerns arising from the lack of recapture events. By utilizing prior knowledge through Bayesian modeling, we aim to enhance the analytical power of our sparse recapture data. This approach allows us to obtain more precise and accurate parameter estimates, thereby improving the reliability of our findings.
+
+Our data is modeled using hierarchical modeling to estimate survival and detection probabilities across multiple stages of the fish's outmigration-return path. The model combines elements of the CJS model with Bayesian techniques to handle sparse recapture data effectively.
+
+Our prior distributions are as follows, where $j$ indicates probabilities between stages. $\phi_j$ depicts the survival probability of salmon across different stages, and $p_j$ depicts the detection probability of salmon across different stages. 
+
+$$\phi_j \sim \text{Beta}(1,1)$$
+$$p_j \sim \text{Beta}(1,1)$$
+
+Our likelihood distributions are as follows, where $i$ indicates individual salmon. $z_{i,j}$ returns a binary value of either $0$ or $1$ to depict survival status of the fish, and $y_{i,j}$ depicts the binary value of either $0$ or $1$ to depict tagging status of the fish.
+
+$$z_{i,j} \sim \text{Bernoulli}(\phi_j, z_{i,j-1})$$
+$$y_{i,j} \sim \text{Bernoulli}(p_j, z_{i,j-1})$$
+
+Lastly, to capture the cumulative survival rates of salmon across all stages, we recursively compute the cumulative probability through each stage based on the survival probability of the past stage. Note that $k$ represents a stage before the current stage $j$.
+$$\text{Survship}_j = \prod_{k=1}^{i=1} \phi_k$$
+
+#### 3.1.4 Conclusion and Future Recommendations
+We worked towards incorporating the origin of the salmon (e.g., hatchery versus wild) as a covariate in our models. This addition will help us understand the differential survival probabilities between hatchery-reared and wild salmon. By examining the impact of origin, we can gain insights into the factors that contribute to the survival disparities and inform targeted conservation efforts.
+
+Mathematically, this can be represented by introducing an additional covariate $\text{origin}_i$ for each salmon.
