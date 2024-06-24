@@ -15,4 +15,5 @@ dependencies:
   - vegafusion-jupyter
   - pytorch 
   - pyarrow
+  - ipykernel
   - xgboost
