@@ -3,8 +3,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 import tensorflow as tf
-from tensorflow.keras import layers
-from tensorflow.keras.optimizers import Adam
+#from tensorflow.keras import layers
+#from tensorflow.keras.optimizers import Adam
 
 def preprocess_data(data):
     det_cols = ['tag_id_long', 'species', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
@@ -98,12 +98,12 @@ def voting_classifier_probabilistic(data):
 
     num_features = X.shape[1]
     dl_model = tf.keras.Sequential([
-        layers.Input(shape=(num_features,)),
-        layers.Dense(128, activation='relu'),
-        layers.Dense(64, activation='relu'),
-        layers.Dense(8, activation='softmax')  #change based on number of labels
+        tf.keras.layers.Input(shape=(num_features,)),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(8, activation='softmax')  #change based on number of labels
     ])
-    dl_model.compile(optimizer=Adam(learning_rate=0.0001),        
+    dl_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),        
     loss='categorical_crossentropy',  
     metrics=['accuracy']) 
     dl_model.fit(X_train, y_train, 
@@ -121,10 +121,10 @@ def voting_classifier_probabilistic(data):
         max_label.append(dl_pred_df.iloc[i].idxmax())
 
 
-    prob_data['dt_prediction'] = dt_pred
-    prob_data['dl_prediction'] = max_label
+    data['dt_prediction'] = dt_pred
+    data['dl_prediction'] = max_label
 
-    return prob_data[['tag_id_long','dt_prediction', 'dl_prediction']]
+    return data[['tag_id_long','dt_prediction', 'dl_prediction']]
 
 
 
