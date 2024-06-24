@@ -35,7 +35,7 @@ These Bernoulli distributions model the probability of survival $z_{i,j}$ and de
 ### 2.3 Cumulative Survival Probability
 The cumulative survival probability $\text{Survship}_j$ can be calculated as the product of survival probabilities up to stage $j$:
 
-$$\text{Survship}_j = \prod  \times \phi_k$$
+$$\text{Survship}_j = \prod_{k=1}^{i=1} \phi_k$$
 
 $_j = \prod_{k=1}^{i=1} \times \phi_k$
 
