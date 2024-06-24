@@ -9,11 +9,12 @@ dependencies:
   - seaborn
   - scikit-learn
   - vl-convert-python
-  - altair 
-  - vegafusion  
-  - vegafusion-python-embed  
+  - altair
+  - vegafusion
+  - vegafusion-python-embed
   - vegafusion-jupyter
   - pytorch 
   - pyarrow
   - ipykernel
   - xgboost
+  - tensorflow
