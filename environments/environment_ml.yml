@@ -14,5 +14,6 @@ dependencies:
   - vegafusion-python-embed  
   - vegafusion-jupyter
   - pytorch 
+  - pyarrow
   - ipykernel
   - xgboost
