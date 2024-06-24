@@ -74,10 +74,7 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-import tensorflow as tf
-from tensorflow.keras import layers
-from tensorflow.keras.optimizers import Adam
+from sklearn.ensemble import RandomForestClassifier
 ```
 
 ## 3. Demo
