@@ -41,7 +41,7 @@ This product represents the overall probability that a salmon survives from the 
 
 ## 3. Results
 ### 3.1 Visualizations
-Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted with 95% credible intervals. 
+Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted with 95% credible intervals.
 
 <img src="plots/phi_p.png" alt="phi and p" style="width: 700px;"> Figure 1. Posterior Distributions of $\phi$ and $p$ with 95% Credible Interval
 
@@ -50,15 +50,20 @@ Posterior distribution of $\phi$, $p$, and $\text{Survship}$ can are depicted wi
 <img src="plots/surv_p.png" alt="phi and p" style="width: 700px;">
 Figure 3. Posterior Distributions of $\text{Survship}$ and $p$ with 95% Credible Interval
 
+
 Plots shown above are stored uner `plots` sub-folder.
 
 ### 3.2 Conclusion
+As a conclusion, our analysis reveals significant insights into the survival dynamics of salmon across different stages of their migration. The survival probability of salmon decreases notably as they progress from the hatchery stage ($j_0$) through to the estuary ($j_3$). This trend suggests a gradual reduction in survival as salmon transition from controlled environments to more natural habitats.
 
+Moreover, the most pronounced decline in survival probability occurs during the transition from the estuary to the microtroll stage. This sharp decrease indicates a potential bottleneck in the salmon population during this phase of their migration. The microtroll stage represents a critical juncture where environmental factors or challenges specific to this stage could significantly impact salmon survival rates.
+
+These findings underscore the importance of understanding and mitigating the challenges faced by salmon during their migration, particularly at critical transition points like the estuary and microtroll stages. Future research and conservation efforts should focus on identifying and addressing factors contributing to these observed bottlenecks to ensure the sustainable management and conservation of salmon populations.
 
 ## 4. Future Recommendations
 We worked towards incorporating the origin of the salmon (e.g., hatchery versus wild) as a covariate in our models. This addition will help us understand the differential survival probabilities between hatchery-reared and wild salmon. By examining the impact of origin, we can gain insights into the factors that contribute to the survival disparities and inform targeted conservation efforts.
 
-Mathematically, this can be represented by introducing an additional covariate $\text{origin}_i$ for each salmon $i$.  The model for survival probability $\phi_{i,j}$ at stage $j$ can be modified as:
+Mathematically, this can be represented by introducing an additional covariate $\text{origin}_i$ for each salmon $i$. The model for survival probability $\phi_{i,j}$ at stage $j$ can be modified as:
 $$\log({\frac{\phi_{i,j}}{1-\phi_{i,j}}}) = \beta_0 + \beta_1 \cdot \text{origin}_i$$
 
 where $\beta_0$ is the intercept, and $\beta_1$ is the coefficient for the origin covariate.
