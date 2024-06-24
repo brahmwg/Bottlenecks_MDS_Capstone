@@ -39,3 +39,16 @@
 | water_temp_start   | float     |
 | fork_length_mm     | float     |
 | species            | string    |
+
+
+## `predictions`
+
+| Column Name       | Data Type |
+|--------------------|-----------|
+| tag_id_long        | float     |
+| prediction_1       | string    |
+| prediction_2       | string    |
+| prediction_3       | string    |
+| prediction         | string    |
+
+
