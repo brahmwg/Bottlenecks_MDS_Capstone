@@ -104,7 +104,7 @@ def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plo
     print(f"{lower_percentile}% to {upper_percentile}% of salmon are predicted to be tagged between: {start_date_str} to {end_date_str}.")
 
 if __name__ == "__main__":
-    df_name = "../data/jenny/preprocessed_ck.csv"
+    df_name = "../data/preprocessed/preprocessed_ck.csv"
     prediction_year = 2022
     lower_percentile = 5
     upper_percentile = 10

@@ -13,7 +13,8 @@ dependencies:
   - vegafusion
   - vegafusion-python-embed
   - vegafusion-jupyter
-  - pytorch
+  - pytorch 
+  - pyarrow
   - ipykernel
   - xgboost
   - tensorflow
