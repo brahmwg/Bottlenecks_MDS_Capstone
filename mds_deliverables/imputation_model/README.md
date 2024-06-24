@@ -70,7 +70,7 @@ cd Bottlenecks_MDS_Capstone
 ```
 2. Create a virtual environment
 ```
-conda env create -f environment_ml.yml
+conda create -n mds-bottleneck -f environments/environment_ml.yml
 ```
 3. Activate this environment
 ```
