@@ -60,7 +60,7 @@ library(MCMCvis)
 
 ```{r}
 getwd()
-survdata <- read_csv("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/preprocessed_data/survival_analysis_small.csv")
+survdata <- read_csv("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/data/preprocessed/preprocessed.csv")
 # survdata <- read.delim("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/documentation/sample_code/data6.txt", sep = " ")
 
 survdata
@@ -84,6 +84,7 @@ nrow(survdata[which(survdata$species == "co"),])
 
 ```{r}
 survdata <- survdata[survdata$species %in% c("co", "ck"), ]
+survdata <- survdata[sample(nrow(survdata), 1000, replace = FALSE), ]
 nrow(survdata)
 ```
 
@@ -245,32 +246,19 @@ write_bayes_cjs = function(file_path = NULL) {
   # specify model in JAGS
   jags_model = function() {
     
-    b0 ~ dnorm(0, 1/100)
-    b1 ~ dnorm(0, 1 /100)
-    
-    for (i in 1:N) {
-      origin[i] ~ dnorm(0, 1)
-    }
-    
     # PRIORS AND CONSTRAINTS
     phi[1] <- 1
     p[1] <- 1
-
     
     for(j in 2:J) {
       phi[j] ~ dbeta(1,1) # survival probability between arrays
-      p[j] ~ dbeta(1,1)
     }
     
-    # for(j in 2:(J-1)) {
-    #   p[j] ~ dbeta(1,1) # detection probability between arrays
-    # }
-
-    # p[J] <- 0.95  # this constrains the model and allows user to input the known detection efficiency of final PIT receiver
-    
-    for (i in 1:N) {
-      logit_phi[i] <- b0 + b1 * origin[i]
+    for(j in 2:(J-1)) {
+      p[j] ~ dbeta(1,1) # detection probability between arrays
     }
+    
+    p[J] <- 0.95  # this constrains the model and allows user to input the known detection efficiency of final PIT receiver
     
     # LIKELIHOOD 
     for (i in 1:N) {
@@ -285,15 +273,14 @@ write_bayes_cjs = function(file_path = NULL) {
       }
     }
     
-    # survship[1] <- 1 # the tagging stage (stage 1)
-    # for (j in 2:J) { # the rest of the stages (stages 2-5)
-    #   survship[j] <- survship[j-1] * phi[j]
-    # }
+    survship[1] <- 1 # the tagging stage (stage 1)
+    for (j in 2:J) { # the rest of the stages (stages 2-5)
+      survship[j] <- survship[j-1] * phi[j]
+    }
   }
   
   postpack::write_model(jags_model, file_path)
 }
-
 
 write_bayes_cjs(file_path = 'CJS_model_edited.txt')
 ```
@@ -312,10 +299,6 @@ jags_data = prep_jags_cjs(
   drop_values = c("batch_2", "batch_3")
 )
 
-```
-
-```{r}
-jags_data
 ```
 
 ```{r}
@@ -340,13 +323,6 @@ param_summ
 ```{r}
 logit_subset = param_summ[which(param_summ$param_grp == "logit"),]
 logit_subset
-```
-
-```{r}
-logit_subset <- logit_subset[sample(1:nrow(logit_subset),30, replace=FALSE),]
-ggplot(logit_subset, aes(x=site_num, y=mean)) +         
-       geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`)) +
-      geom_point(size = 5, color="red")
 ```
 
 ```{r}
@@ -377,6 +353,7 @@ surv_p = param_summ %>%
   theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
 
 surv_p
+ggsave("~/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Personal/jel000-notes/Capstone/Bottlenecks_MDS_Capstone/survival_analysis/plots/surv_p.png", plot = surv_p, width = 8, height = 6, dpi = 300)
 ```
 
 ```{r}
@@ -528,34 +505,34 @@ for(i in 1:nsims){
 }
 
 
-dsims <- tibble(log_gest_c = (log(ds$gest)-mean(log(ds$gest)))/sd(log(ds$gest)))
-
-for(i in 1:nsims){
-  this_mu <- beta0[i] + beta1[i]*dsims$log_gest_c 
-  dsims[paste0(i)] <- this_mu + rnorm(nrow(dsims), 0, sigma[i])
-}
-
-dsl <- simd %>% 
-  pivot_longer(`1`:`10`, names_to = "sim", values_to = "sim_weight")
-
-dsl %>% 
-  ggplot(aes(sim_weight)) + geom_histogram(aes(y = ..density..), bins = 20, fill = "turquoise", color = "black") + 
-  xlim(c(-1000, 1000)) + 
-  geom_vline(xintercept = log(60), color = "purple", lwd = 1.2, lty = 2) + 
-  theme_bw(base_size = 16) + 
-  annotate("text", x=300, y=0.0022, label= "Monica's\ncurrent weight", 
-           color = "purple", size = 5) 
+# dsims <- tibble(log_gest_c = (log(ds$gest)-mean(log(ds$gest)))/sd(log(ds$gest)))
+# 
+# for(i in 1:nsims){
+#   this_mu <- beta0[i] + beta1[i]*dsims$log_gest_c 
+#   dsims[paste0(i)] <- this_mu + rnorm(nrow(dsims), 0, sigma[i])
+# }
+# 
+# dsl <- simd %>% 
+#   pivot_longer(`1`:`10`, names_to = "sim", values_to = "sim_weight")
+# 
+# dsl %>% 
+#   ggplot(aes(sim_weight)) + geom_histogram(aes(y = ..density..), bins = 20, fill = "turquoise", color = "black") + 
+#   xlim(c(-1000, 1000)) + 
+#   geom_vline(xintercept = log(60), color = "purple", lwd = 1.2, lty = 2) + 
+#   theme_bw(base_size = 16) + 
+#   annotate("text", x=300, y=0.0022, label= "Monica's\ncurrent weight", 
+#            color = "purple", size = 5) 
 
 ```
 
 ```{r}
 # Sample 10000 draws from Beta(45,55) prior
-prior_A <- rbeta(n = 50000, shape1 = 60, shape2 = 40)
-
-# Store the results in a data frame
-prior_sim <- data.frame(prior_A)
-
-# Construct a density plot of the prior sample
-ggplot(prior_sim, aes(x = prior_A)) + 
-  geom_density()
+# prior_A <- rbeta(n = 50000, shape1 = 60, shape2 = 40)
+# 
+# # Store the results in a data frame
+# prior_sim <- data.frame(prior_A)
+# 
+# # Construct a density plot of the prior sample
+# ggplot(prior_sim, aes(x = prior_A)) + 
+  # geom_density()
 ```
