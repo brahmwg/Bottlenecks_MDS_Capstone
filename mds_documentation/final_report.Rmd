@@ -25,18 +25,21 @@ knitr::opts_chunk$set(echo = TRUE)
 5. References
 
 <a id='executive_summary'></a>
-## 1.0 Executive Summary
+
+## 1. Executive Summary
 
 Our collaboration with the Pacific Salmon Foundation on the Bottleneck project will yield comprehensive visual analysis tools and advanced statistical and machine learning models, directly enhancing biologists' ability to understand salmon survival trends. By leveraging techniques from the Master of Data Science program, we aim to gain deepeer understanding of salmon survival probability, considering factors like predation, body size, origin site, and others.
 
 <a id='introduction'></a>
-## 2.0 Introduction
+
+## 2. Introduction
 
 Salmons are critical to the ecosystem as they are food to 137 species (Rahr, 2023), such as grizzly bears. In British Columbia, there are over 9,000 distinct salmon populations ("State of Salmon", 2022). However, due to climate change and industrial development in the past 150 years, the population of Pacific salmon in BC has declined and their habitats have been facing unprecedented pressures.
 
 Pacific Salmon Foundation is a non-profit organization committed to guiding the sustainable future of Pacific salmon and its habitat. The organization has a wide range of work such as community investments and salmon health. As a part of the organization’s effort towards marine sciences, the Bottlenecks to Survival Projects investigate the survival bottlenecks, which refers to when a population size is reduced for at least one ("Understanding Evolution"), for salmon and steelhead throughout the Salish Sea and southern BC regions.
 
 <a id='motivation'></a>
+
 ### 2.1 Motivation
 
 In ecological terms, a bottleneck refers to a specific event that results in a sharp decline in a population over a period of time (Pacific Salmon Foundation, 2021). Identifying these bottleneck points throughout the various stages of a salmon’s life cycle is crucial, as it provides valuable insights into potential interventions to improve survival rates. Our study aims to provide comprehensive insights into the survival rates of salmon by observing the survival and detection probabilities across five critical stages of the salmon’s outmigration-return path. This includes calculating the cumulative survival probability from the first stage to the last. By understanding these probabilities, we can identify where the most significant population declines occur and implement targeted measures to enhance survival rates.
@@ -45,13 +48,13 @@ In addition to the survival analysis, our study focuses on streamlining data pro
 
 In summary, our study not only aims to identify and address the critical bottlenecks in the salmon life cycle but also enhances the data processes to support more efficient and effective management practices. By combining survival analysis with advanced data modeling techniques, we provide a robust framework for improving the survival rates of salmon and ensuring the sustainability of their populations.
 
-## 3.0 Data Products
+## 3. Data Products
 <a id='survival_analysis'></a>
+
 ### 3.1 Survival Analysis
 In this study, we employ the survival analysis model of salmon augmented with Bayesian modeling, to estimate the survival and detection probabilities of salmon across five stages of their outmigration-return path. This approach enables us to derive precise and accurate parameter estimates, helping to identify critical bottlenecks in the salmon life cycle and providing valuable insights for potential interventions to improve survival rates.
 
 #### 3.1.1 Preprocessing
-
 The data was extracted using SQL queries, stage-wise from the Strait of Georgia data center. The 5 stages identified were facility (hatchery), downstream, estuary, field (or microtroll) and return. For each of these stages, we wanted data of all wild and hatchery origin fishes. SQL queries were used to extract the required data from the data center. The columns extracted were the unique tag_id of a fish, the date on which it was detected, the “stage” at which this data is derived from, the origin of the fish (hatchery/ wild), the fork length of the fish, action (tag/ detect), species of the detected fish.
 ![sample_table](img/survival_analysis_fig1.png)
 <img src="img/survival_analysis_fig1.png"> 
