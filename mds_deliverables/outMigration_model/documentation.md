@@ -1,4 +1,4 @@
-# Outmugration Model- Outmigration Date Prediction 
+# Outmigration Model- Outmigration Date Prediction 
 ## 1. Objective
 The goal of this model is to predict the outmigration timing of salmon. With accurate predictions, biologists at the Pacific Salmon Foundation will be able to conduct fieldwork tagging the salmon on the right day. 
 
