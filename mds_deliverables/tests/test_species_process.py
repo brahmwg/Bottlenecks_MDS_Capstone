@@ -9,7 +9,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from unittest.mock import patch
 from species_prediction_model.scripts.process import one_hot_encoding, processing
 
-
 def load_mock_data(file_path):
     with open(file_path, 'r') as file:
         data = json.load(file)

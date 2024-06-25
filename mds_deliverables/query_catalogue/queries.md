@@ -49,7 +49,7 @@ WITH hatchTagCount AS (
 
 2. For each stage (i.e. hatchery/river, estuary, microtroll, adult), what are the number of tags deployed to date or over a specific time frame?
 
-```
+```SQL
 SELECT CASE 
             WHEN h.stage IS NULL THEN 'Hatchery'
             ELSE h.stage
@@ -90,7 +90,7 @@ GROUP BY m.tag_status
 
 3. For each system/watershed, list all tags deployed that were subsequently redetected on the lowest mainstem array or in the estuary immediately after outmigration (to look at freshwater survival rather than overall survival and adult returns).
 
-```
+```SQL
 WITH 
     HATCH_TAG_FIELD AS (
         SELECT DISTINCT
@@ -171,7 +171,7 @@ SELECT tag_id_long, system, tag_date, encounter_date FROM FIELD_DETECTIONS;
 
 4. For each species in each system/watershed, create a summary of total tags deployed in each period (i.e. hatchery, river, estuary, microtroll - note assignment to stock/system for estuary and microtroll data will be limited to what genetics data we have available), total recaptured tags within each period, and #s of detections both on the outward migration to sea, and the return migration as adults. The goal being to have a summary of all the tags we’ve put out, and how many of them were subsequently redetected to give us our sample sizes for our survival models.
 
-```
+```SQL
 SELECT species,
        COALESCE(stage, 'Hatchery'),
        COUNT(DISTINCT(tag_id_long)) AS tags,
@@ -252,17 +252,3 @@ JOIN hatch_tag_count ON predator_counts.location = hatch_tag_count.system
 WHERE year > 2020;
 ```
 
-7. A query to produce a data frame that could be used for overwinter survival analysis for Chinook
-
-```
-```
-
-8. The “Stage specific survival” Query
-
-```
-```
-
-9. Origin (Hatchery vs wild)
-
-```
-```

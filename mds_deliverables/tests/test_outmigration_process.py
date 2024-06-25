@@ -52,3 +52,4 @@ def test_preprocessing():
 if __name__ == '__main__':
     test_preprocess_sql()
     test_preprocessing()
+    
