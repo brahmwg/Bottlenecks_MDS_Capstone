@@ -76,5 +76,5 @@ python outMigration_model_prediction.py
 
 #### 3.3 Outcome
 After running the preprocessing and modeling files, the script will output a file of outmigration prediction with two blue lines indicating when the 5 to 10% of the salmons will outmigrate in 2022. 
-![output](img/output.png)
+![output](plots/output.png)
 After closing the picture, the terminal will return "5% to 10% of salmon are predicted to be tagged between: 2022-05-08 to 2022-06-01." 
