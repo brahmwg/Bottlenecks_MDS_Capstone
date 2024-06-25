@@ -40,7 +40,7 @@ If you are proposing a feature:
 
 ## Get Started!
 
-Ready to contribute? Here's how to set up `Vancouver Airbnb Listing Prices Dashboard` for local development.
+Ready to contribute? Here's how to set up `Bottlenecks_MDS_Capstone` for local development.
 
 1. Use `git` (or similar) to create a branch for local development and make your changes:
 
@@ -62,5 +62,5 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ## Code of Conduct
 
-Please note that the `Vancouver Airbnb Listing Prices Dashboard` project is released with a
+Please note that the `Bottlenecks_MDS_capstone` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.
