@@ -469,8 +469,6 @@ The pipeline code will be delivered in two scripts:
 
 ### 3.5 Data Pipeline
 
-### 3.5 Data Pipeline
-
 The primary objective of implementing a pipeline is to streamline the execution of an 
 ETL (Extract, Transform, Load) procedure. ETL pipelines follow the sequential principle of
 extracting the data from the raw source, in this case the Strait of Georgia database. After this
