@@ -250,23 +250,34 @@ tagging date.
 ![preprocessing](img/outmigration_fig1.png)
 
 #### 3.2.4 Data Science Method
-With the preprocessed data, we used a standard scaler to scale all the features 
-with a similar scale. Next, we employed an XGBoost model to predict salmon 
-outmigration on specific dates. For feature selection, we used Lasso regression 
-to identify the most significant variables. Then we used cross-validation for 
-hyperparameter tuning. The model will train based on the user's input on 
-predicting year (e.g. if the user wants to predict for 2022, the model will use 
-everything prior to 2022 as the training set.) 
+We employed an XGBoost model (extreme gradient boosting) to predict salmon 
+outmigration on specific dates. XGBoost is used because of its high accuracy- 
+it creates models to fit the error of the previous model prediction. After 
+experiencing linear regression, logistic regression, and SARIMAX modeling, 
+XGBoost produces the most desirable outcome as it is able to work with sparse 
+data better than the other modeling methods. 
+
+Since we have more than 20 predictors, the model is likely to overfit the 
+training set. To avoid overfitting, we conducted feature selection where we used 
+Lasso regression to identify the most significant variables, as lasso is the most 
+widely used feature selection method. We also tune the alpha value (strength of 
+penalty) in Lasso with validation on 5 different splits; the splits were created 
+without shuffling, which fits the time series nature of the data. 
+
+The model will train based on the user's input on predicting the year (e.g. if the 
+the user wants to predict for 2022, the model will use everything prior to 2022 as 
+the training set.) 
 
 For prediction, we applied a function that will turn all negative predictions 
-to 0, which means that there were no outmigration on that date- then the model 
-will return a range of dates on the predicting year based on the lower and 
-upper quartile user decide. 
+to 0, which means that there was no outmigration on that date- then the model 
+will return a range of dates on the predicted year based on the lower and 
+upper quartile user decides. 
 
 #### 3.2.5 Conclusion and Future Recommendation
 We hope to better inform biologists on the outmigration date with this model. 
-The future improvement can be done with exploring different modeling approaches 
-and including different potential predictors. 
+As this model is created with time constraints and with only 10 years of data, 
+there is rooms of improvement in future work such as exploring different modeling 
+approaches and including different potential predictors. 
 
 
 ### 3.3 Species Imputation Model 
