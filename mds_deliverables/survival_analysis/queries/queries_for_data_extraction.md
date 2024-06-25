@@ -6,7 +6,7 @@ This document contains all the SQL queries used to extract data from the Data Ce
 
 Save the query below as `hatchery.csv`.
 
-```         
+```SQL         
 SELECT tag_id_long as tag_id, release_date as date, 'facility' AS stage, 'hatch' AS origin, fork_length_mm, 'tag' AS action, species  
 FROM HATCH_TAG
 ```
@@ -17,7 +17,7 @@ The juvinille salmons that from hatchary- maybe there are tagging events between
 
 All hatchery origin fish in downstream Save the query below as `downstream_hatch.csv`.
 
-```         
+```SQL         
 SELECT tagid as tag_id, DATE(datetime) as date, 'downstream' as stage, 'hatch' as origin, HATCH_TAG.avg_fork_length, 'detect' as action,
       HATCH_TAG.species 
 FROM downstream_detections  
@@ -26,7 +26,7 @@ INNER JOIN HATCH_TAG ON downstream_detections.tagid = HATCH_TAG.tag_id_long
 
 All wild origin fish in downstream Save the query below as `downstream_wild.csv`.
 
-```         
+```SQL        
 SELECT tagid as tag_id, DATE(datetime) as date, 'downstream' as stage, 'wild' as origin, field.fork_length_mm, tag_status as action, field.species 
 FROM downstream_detections
 INNER JOIN field ON downstream_detections.tagid = field.tag_id_long 
@@ -40,7 +40,7 @@ WHERE tagid NOT IN (
 
 Save the query below as `estuary.csv`.
 
-```         
+```SQL         
 SELECT tag_id_long AS tag_id, date, 'estuary' AS stage, wild_or_hatchery AS origin, fork_length_mm, tag_status AS action, species
 FROM field 
 WHERE river_or_estuary='estuary'
@@ -50,7 +50,7 @@ WHERE river_or_estuary='estuary'
 
 All hatchry origin fish from microtroll Save the query below as `microtroll_hatch.csv`.
 
-```         
+```SQL         
 SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'hatch' as origin,
         microtroll.fork_length_mm, 
         'detect' as action, microtroll.species
@@ -61,7 +61,7 @@ WHERE microtroll.tag_id_long IS NOT NULL
 
 All wild origin fish from microtroll Save the query below as `microtroll_wild.csv`.
 
-```         
+```SQL         
 SELECT DISTINCT microtroll.tag_id_long as tag_id, date, 'microtroll' as stage, 'wild' as origin,
         microtroll.fork_length_mm, 
         microtroll.tag_status as action, microtroll.species
@@ -77,7 +77,7 @@ WHERE tag_id_long NOT IN (
 
 Exclude those who were encountered in the first detection to make sure is return. Save the query below as `return.csv`.
 
-```         
+```SQL         
 SELECT o.tag_id_long AS tag_id, 
       earliest_detection_date as date, 
       'return' as stage,
