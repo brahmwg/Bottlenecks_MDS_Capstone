@@ -13,6 +13,32 @@ det_table = {
 }
 
 def one_hot_encoding(df, col, prefix):
+    """
+    Performs one-hot encoding on a specified column of the input DataFrame.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        The input DataFrame containing the column to be encoded.
+        
+    col : str
+        The name of the column to be one-hot encoded.
+        
+    prefix : str
+        The prefix to use for the new one-hot encoded column names.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with the specified column one-hot encoded and the original column dropped.
+
+    Notes
+    -----
+    - The function creates dummy variables for the unique values in the specified column.
+    - The new columns are added to the DataFrame with names prefixed by the original column name.
+    - This function already exists in sklearn but it's so much safer to write it on your own, trust me.
+    """
+
     df = df.copy()
     dummies = pd.get_dummies(df[col], prefix=col, dtype='int')
     df = pd.concat([df, dummies], axis=1)
@@ -20,6 +46,27 @@ def one_hot_encoding(df, col, prefix):
     return df
 
 def processing(data, det_data):
+    """
+    Processes the input data by replacing NaN values, merging with deterministic data, and applying one-hot encoding.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input DataFrame queried from database.
+        
+    det_data : array-like
+        Deterministic data.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with NaN values replaced, deterministic data merged, and categorical columns one-hot encoded.
+
+    Notes
+    -----
+    - The deterministic data is converted to a DataFrame and merged with the input data on the 'species' column.
+    - One-hot encoding is applied to all columns except 'species', 'fork_length_mm', 'water_temp_start', and 'tag_id_long' because these features are numerical.
+    """
     data = data.copy()
     data = data.replace(np.nan, None)
     det_df = pd.DataFrame(det_data)

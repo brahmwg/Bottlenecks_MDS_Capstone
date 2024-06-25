@@ -4,6 +4,26 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 
 def preprocess_data(data):
+    """
+    Splits the input data into two subsets: deterministic and probabilistic columns.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing all features.
+
+    Returns
+    -------
+    det_data : pandas.DataFrame
+        Subset of the input data containing only deterministic columns.
+        
+    prob_data : pandas.DataFrame
+        Subset of the input data containing only probabilistic columns.
+
+    Notes
+    -----
+    - This function assumes that the input data contains all necessary columns listed in `det_cols` and `prob_cols`.
+    """
     det_cols = ['tag_id_long', 'species', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
                'eye_size_very large', 'snout_shape_NA', 'snout_shape_long and pointy',
                'snout_shape_pointy', 'snout_shape_short and blunt',
@@ -47,6 +67,23 @@ def preprocess_data(data):
     return det_data, prob_data
 
 def voting_classifier_deterministic(data):
+    """
+    Applies an ensemble voting classifier to the input data using multiple deterministic decision trees.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing features and target labels.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' and the corresponding predicted species.
+
+    Notes
+    -----
+    - The final prediction for each sample is determined by majority vote among the individual trees.
+    """
     random_numbers = [42, 231, 351, 701, 996, 523, 710, 686, 568, 268]
 
     X = data.drop(['species','tag_id_long'], axis=1)
@@ -76,6 +113,23 @@ def voting_classifier_deterministic(data):
     return data[['tag_id_long','prediction']]
 
 def voting_classifier_probabilistic(data): 
+    """
+    Applies an ensemble voting classifier using a decision tree and a random forest on the input data.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing features and target labels.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' along with predictions from both the decision tree and the random forest classifiers.
+
+    Notes
+    -----
+    - Predictions from both classifiers are added to the input data as new columns: 'dt_prediction' and 'rf_prediction'.
+    """
 
     data = data.copy()
     data = data.dropna()
@@ -103,6 +157,30 @@ def voting_classifier_probabilistic(data):
 
 
 def voting_classifier(det_results,prob_results):
+    """
+    Combines deterministic and probabilistic classification results to return a final ensemble prediction.
+
+    Parameters
+    ----------
+    det_results : pandas.DataFrame
+        DataFrame containing deterministic classification results.
+        
+    prob_results : pandas.DataFrame
+        DataFrame containing probabilistic classification results.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' and the final ensemble prediction.
+
+    Notes
+    -----
+    - The two input DataFrames are merged on 'tag_id_long'.
+    - The final prediction is determined by the following rules:
+        - If 'pink' is among the predictions, the final prediction is 'pink'.
+        - If 'so' is among the predictions, the final prediction is 'so'.
+        - Otherwise, the final prediction is the most common prediction among the three.
+    """
     df = det_results.merge(prob_results,on='tag_id_long',how='left')
     df.columns = ['tag_id_long','pred_1','pred_2','pred_3']
 
