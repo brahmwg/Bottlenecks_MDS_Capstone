@@ -1,35 +1,23 @@
 ---
-title: "final_report"
-output: html_document
-date: "2024-06-24"
-editor_options: 
-  markdown: 
-    wrap: 72
+title: "Survival Analysis of Salmon in the Saline Sea"
+author: "Jenny Lee, Arturo Rey, Rafe Chang, Riya Eliza"
+date: "26/06/2024"
+output:
+  pdf_document:
+    toc: yes
+    toc_depth: '4'
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Survival Analysis of Salmon in Saline Sea
+\newpage
 
-> Jenny Lee, Arturo Rey, Rafe Chang, Riya Eliza
 
-## Contents
 
-1.  [Executive Summary](#executive_summary)
-2.  [Introduction](#introduction) <br> 2.1. [Motivation](#motivation)
-3.  [Data Products](#data_product) <br> 3.1. [Survival
-    Analysis](#survival_analysis) <br> 3.2. [Outmigration
-    Model](#further-analysis) <br> 3.3. [Species Classification
-    Model](#further-analysis) <br> 3.4. [PL/Python
-    Pipeline](#further-analysis)
-4.  [Conclusion](#further-analysis)
-5.  References
 
-<a id='executive_summary'></a>
-
-## 1. Executive Summary
+# 1. Executive Summary
 
 Our collaboration with the Pacific Salmon Foundation on the Bottleneck
 project will deliver visual analysis tools and statistical models to
@@ -42,9 +30,7 @@ will provide biologists with the tools to make informed decisions and
 implement targeted conservation efforts, supporting the long-term
 sustainability of salmon populations and ecosystems.
 
-<a id='introduction'></a>
-
-## 2. Introduction {#introduction}
+# 2. Introduction
 
 Salmons are critical to the ecosystem as they are food to 137 species
 (Rahr, 2023), such as grizzly bears. In British Columbia, there are over
@@ -62,9 +48,7 @@ bottlenecks, which refers to when a population size is reduced for at
 least one ("Understanding Evolution", 2024), for salmon and steelhead
 throughout the Salish Sea and southern BC regions.
 
-<a id='motivation'></a>
-
-### 2.1 Motivation {#motivation}
+## 2.1 Motivation
 
 In ecological terms, a bottleneck refers to a specific event that
 results in a sharp decline in a population over a period of time
@@ -98,7 +82,7 @@ By combining survival analysis with advanced data modeling techniques,
 we provide a robust framework for improving the survival rates of salmon
 and ensuring the sustainability of their populations.
 
-## 3. Data Products
+# 3. Data Products
 
 For this project, our goal is to develop four key models. First, a
 survival analysis model based on Bayesian modeling will be created to
@@ -111,9 +95,7 @@ Lastly, a species prediction model will be designed to predict the
 species of a fish in instances where there is ambiguity during
 fieldwork.
 
-<a id='survival_analysis'></a>
-
-### 3.1 Survival Analysis
+## 3.1 Survival Analysis
 
 In this study, we employ the survival analysis model of salmon augmented
 with Bayesian modeling, to estimate the survival and detection
@@ -123,7 +105,9 @@ estimates, helping to identify critical bottlenecks in the salmon life
 cycle and providing valuable insights for potential interventions to
 improve survival rates.
 
-#### 3.1.1 Preprocessing
+### 3.1.1 Preprocessing
+
+
 
 The data was extracted using SQL queries, stage-wise from the Strait of
 Georgia data center. The 5 stages identified were facility (hatchery),
@@ -134,16 +118,21 @@ columns extracted were the unique tag_id of a fish, the date on which it
 was detected, the "stage" at which this data is derived from, the origin
 of the fish (hatchery/ wild), the fork length of the fish, action (tag/
 detect), species of the detected fish.
-![sample_table](img/survival_analysis_fig1.png)
-<img src="img/survival_analysis_fig1.png"/> After data from all 5 stages
-are extracted in this manner, the datasets then go into a
+
+
+![Preprocessed data](img/survival_analysis_fig1.png)
+
+
+After data from all 5 stages are extracted in this manner, the datasets then go into a
 preprocessing.R file to be combined together. At this stage, we make any
 nomenclature changes needed to mitigate the variations in data that may
 have happened during the collection process. Finally, we output a CSV
 file (survival_analysis.csv) containing the data of all detections from
-all 5 stages. ![Proprocessing pipeline](img/preprocessing_survival.png)
+all 5 stages. 
 
-#### 3.1.2 Data Science Methods
+![Proprocessing pipeline](img/preprocessing_survival.png)
+
+### 3.1.2 Data Science Methods
 
 Our study implemented the Cormack-Jolly-Seber (CJS) model (Cormack,
 1964; Jolly, 1965; Seber, 1965), which was originally designed for
@@ -203,7 +192,7 @@ individual stage-wise survival probabilities into a single metric that
 reflects the compounded likelihood of survival across the entire
 migratory journey.
 
-#### 3.1.3 Conclusion and Future Recommendations
+### 3.1.3 Conclusion and Future Recommendations
 
 We worked towards incorporating the origin of the salmon (e.g., hatchery
 versus wild) as a covariate in our models. This addition will help us
@@ -220,9 +209,9 @@ $$\log({\frac{\phi_{i,j}}{1-\phi_{i,j}}}) = \beta_0 + \beta_1 \cdot \text{origin
 where $\beta_0$ is the intercept, and $\beta_1$ is the coefficient for
 the origin covariate.
 
-### 3.2 Outmigration Model
+## 3.2 Outmigration Model
 
-#### 3.2.1 Objective
+### 3.2.1 Objective
 
 The goal of this model is to accurately predict the outmigration timing of 
 salmon. This model will take in river information including flow, level, and 
@@ -231,7 +220,7 @@ of salmon. With this model, we hope to better inform the biologists at the
 Pacific Salmon Foundation on which day in the year that they should go out to 
 the field to tag salmon. 
 
-#### 3.2.2 Data Collection 
+### 3.2.2 Data Collection 
 
 The data used in this modeling is from three seperated source- the tagging 
 history from the Pacific Salmon Foundation, the river flow and level is from 
@@ -239,7 +228,8 @@ the National Water Data Archive: HYDAT and the temperature data is from
 ECCC/MSC’s National Climate Archive. The data used in for this model retrieved 
 from five queries and stored in the data folder. 
 
-#### 3.2.3 Preprocessing
+### 3.2.3 Preprocessing
+
 After using SQL to retrieve the data from the Strait of Georgia Data Center, we 
 used two functions to preprocess the data before using them to train the model. 
 The first function is used to contact the 2014-2020 data and 2021-2023 data. 
@@ -247,31 +237,48 @@ The output, along with flow, level, and temperature will then be preprocessed
 with the preprocessing function that merges the data frames together; the function 
 will also create the rolling mean of 30-35, 30-40, and 30-45 days prior to a given 
 tagging date.
+
+
 ![preprocessing](img/outmigration_fig1.png)
 
-#### 3.2.4 Data Science Method
-With the preprocessed data, we used a standard scaler to scale all the features 
-with a similar scale. Next, we employed an XGBoost model to predict salmon 
-outmigration on specific dates. For feature selection, we used Lasso regression 
-to identify the most significant variables. Then we used cross-validation for 
-hyperparameter tuning. The model will train based on the user's input on 
-predicting year (e.g. if the user wants to predict for 2022, the model will use 
-everything prior to 2022 as the training set.) 
+### 3.2.4 Data Science Method
+
+We employed an XGBoost model (extreme gradient boosting) to predict salmon 
+outmigration on specific dates. XGBoost is used because of its high accuracy- 
+it creates models to fit the error of the previous model prediction. After 
+experiencing linear regression, logistic regression, and SARIMAX modeling, 
+XGBoost produces the most desirable outcome as it is able to work with sparse 
+data better than the other modeling methods. 
+
+Since we have more than 20 predictors, the model is likely to overfit the 
+training set. To avoid overfitting, we conducted feature selection where we used 
+Lasso regression to identify the most significant variables, as lasso is the most 
+widely used feature selection method. We also tune the alpha value (strength of 
+penalty) in Lasso with validation on 5 different splits; the splits were created 
+without shuffling, which fits the time series nature of the data. 
+
+The model will train based on the user's input on predicting the year (e.g. if the 
+the user wants to predict for 2022, the model will use everything prior to 2022 as 
+the training set.) 
 
 For prediction, we applied a function that will turn all negative predictions 
-to 0, which means that there were no outmigration on that date- then the model 
-will return a range of dates on the predicting year based on the lower and 
-upper quartile user decide. 
+to 0, which means that there was no outmigration on that date- then the model 
+will return a range of dates on the predicted year based on the lower and 
+upper quartile user decides. 
 
-#### 3.2.5 Conclusion and Future Recommendation
+### 3.2.5 Conclusion and Future Recommendation
+
 We hope to better inform biologists on the outmigration date with this model. 
-The future improvement can be done with exploring different modeling approaches 
-and including different potential predictors. 
+As this model is created with time constraints and with only 10 years of data, 
+there is rooms of improvement in future work such as exploring different modeling 
+approaches and including different potential predictors. 
 
- 
-### 3.3 Species Imputation Model 
 
-#### 3.3.1 Objective
+
+## 3.3 Species Imputation Model 
+
+
+### 3.3.1 Objective
 
 The goal of this model was to make the data stored in the data center as
 complete as possible by imputing the species of the fish wherever
@@ -283,19 +290,21 @@ collected in the past by experts doing field work.
 
 2.  To detect and correct mislabeled species if any
 
-#### 3.3.2 Data Collection
+### 3.3.2 Data Collection
 
 The data for training had to be confirmed data. Out of the 57k data
 points (fishes) in the field table, 5000 of them had their species
 confirmed by the genetics lab. This became our training set. The
 extracted dataset (from the data center) had the following columns,
+
+
 ![Training table](img/SQL_imputation.png)
 
 Where `annotated_species` was the field detection and
 `confirmed_species` was the result from the lab. The train set had 5014
 rows.
 
-#### 3.3.3 Preprocessing
+### 3.3.3 Preprocessing
 
 In preprocessing the data, several steps were taken to prepare it for
 modeling. First, any null values present in the dataset were removed.
@@ -308,7 +317,7 @@ their values, and the remaining categorical features were one-hot
 encoded to convert them into a format suitable for ingestion into a
 machine learning model.
 
-#### 3.3.4 Deep Learning Model
+### 3.3.4 Deep Learning Model
 
 The model that we finally landed on was a Deep learning neural network
 on a tensorflow framework. The reason for finalizing this model was due
@@ -318,38 +327,43 @@ nuances in the dataset.
 The model had 4 layers; 1 input, 2 hidden and 1 output layer. The layers
 and parameters of the model is as shown below:
 
-![Parameters of the model](img/species_prediction_fig1.png) The model
-architecture consists of the input layer with a ReLU activation function
+![Parameters of the model](img/species_prediction_fig1.png) 
+
+The model architecture consists of the input layer with a ReLU activation function
 that takes in all the features, followed by two hidden layers and
 finally a softmax layer to output prediction probabilities for the
 species of each fish.
 
 The diagram below shows the model output given that the following
-features of one fish are identified and fed into the model. ![Deep
-learning prediction](img/species_prediction_fig2.png) The model tested
-with a 95% accuracy, where the accuracy is defined as the number of
+features of one fish are identified and fed into the model. 
+
+![Deep learning prediction](img/species_prediction_fig2.png) 
+
+The model tested with a 95% accuracy, where the accuracy is defined as the number of
 correct predictions in comparison to the results from the genetics lab.
 The model training was steady along 20 epochs, where an epoch is defined
 as one complete pass through the entire training dataset during machine
 learning model training. The accuracy and loss for both train and
-validation sets can be seen here. ![Accuracy and loss
-curves](img/species_prediction_fig3.png)
+validation sets can be seen here. 
 
-#### 3.3.5 Result
+![Accuracy and loss curves](img/species_prediction_fig3.png)
+
+### 3.3.5 Result
 
 The results of this model are finally delivered as a CSV file with the
 tag ID of a fish, the field identified label, the predicted label and
-the predicted probability. ![Prediction
-table](img/species_prediction_fig4.png)
+the predicted probability. 
 
-### 3.4 Species Prediction Model
+![Prediction table](img/species_prediction_fig4.png)
 
-#### 3.4.1 Objective
+## 3.4 Species Prediction Model
+
+### 3.4.1 Objective
 
 The goal of this model is to predict the species of a fish given its
 physical features, location, and site where it was detected.
 
-#### 3.4.2 About the data
+### 3.4.2 About the data
 
 The data needed to train this model is a combination of deterministic
 features (the physical features of the fish) and non-deterministic
@@ -373,22 +387,24 @@ The deterministic features for each species of fish are as follows:
 
 8.  Spotting characteristic
 
+
 ![Deterministic features](img/species_prediction_fig5.png)
 
 The non-deterministic features are as follows:
 
-1\. Location
+1. Location
 
-2\. Site method
+2. Site method
 
-3\. Locality
+3. Locality
 
-![Non-deterministic features](img/species_prediction_fig6.png) These two
-sets of features are merged to create a complete dataset that is
+![Non-deterministic features](img/species_prediction_fig6.png) 
+
+These two sets of features are merged to create a complete dataset that is
 processed and fed into the probabilistic models. For the deterministic
 decision trees, only the deterministic features of the fish were used.
 
-#### 3.4.3 Preprocessing
+### 3.4.3 Preprocessing
 
 For the probabilistic models, the following preprocessing techniques
 were carried out:
@@ -410,12 +426,13 @@ are categorical and non-ordinal, the only required processing is to
 transform the features into binary features using the OneHot encoding
 technique.
 
-#### 3.4.4 Ensemble modelling
+### 3.4.4 Ensemble modelling
 
 The idea for the ensemble model was to create a voting classifier. As
 illustrated in the figure, there are two branches: the deterministic
-branch and the probabilistic branch. ![Voting
-classifier](img/voting_classifier.png)
+branch and the probabilistic branch. 
+
+![Voting classifier](img/voting_classifier.png)
 
 Here, the deterministic branch consists of 10 decision trees, each
 randomly trained on different physical features of the fish. The
@@ -436,7 +453,7 @@ The probabilistic branch includes two models:
     (n_estimators=100) and a fixed random state for reproducibility is
     trained. This model is also trained on the complete feature set.
 
-#### 3.4.5 Voting mechanism
+### 3.4.5 Voting mechanism
 
 The final prediction is made by the voting classifier, which combines
 the outputs from both branches:
@@ -453,7 +470,7 @@ deterministic and probabilistic features. This approach leverages the
 strengths of both branches to improve the accuracy and robustness of the
 species prediction.
 
-#### 3.4.6 Final Product
+### 3.4.6 Final Product
 
 The final product delivered includes the pipeline code and a cron file.
 The pipeline code will be delivered in two scripts:
@@ -467,7 +484,7 @@ The pipeline code will be delivered in two scripts:
     internally since only they have the knowledge of when to schedule
     each of the pipelines.
 
-### 3.5 Data Pipeline
+## 3.5 Data Pipeline
 
 The primary objective of implementing a pipeline is to streamline the execution of an 
 ETL (Extract, Transform, Load) procedure. ETL pipelines follow the sequential principle of
@@ -483,7 +500,7 @@ reducing the need for manual intervention.
 
 The pipeline adheres to the following schema:
 
-![Flow chart of the pipeline](../mds_deliverables/pipeline/img/pipeline.png)
+![Flow chart of the pipeline](img/pipeline.png)
 
 
 where:
@@ -498,7 +515,7 @@ where:
 
 5. Results table corresponds to where all the results from the model prediction will be stored.
 
-## 4. Conclusion
+# 4. Conclusion
 
 The number of adult salmon returning based on observed and recorded data
 is critically low, posing a significant threat not only to the species
@@ -513,7 +530,7 @@ model, we enable the completion and accuracy of the database to ensure
 clear future analysis. We aim to empower scientists with robust data to
 better confirm their hypotheses and make efficient decisions.
 
-## 5. References
+# 5. References
 
 -   Rahr, Guido. \"Why Protect Salmon.\" Wild Salmon Center, 7 Nov.
     2023, wildsalmoncenter.org/why-protect-salmon/.
