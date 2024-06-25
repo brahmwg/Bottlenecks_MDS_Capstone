@@ -268,7 +268,7 @@ We hope to better inform biologists on the outmigration date with this model.
 The future improvement can be done with exploring different modeling approaches 
 and including different potential predictors. 
 
-
+ 
 ### 3.3 Species Imputation Model 
 
 #### 3.3.1 Objective
