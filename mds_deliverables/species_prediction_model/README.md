@@ -22,10 +22,8 @@ The goal of this model is to accurately predict the species of a fish based on i
 - img
   |- Decision_tree.png
 - model
-  |- dl_riya_new.h5
-  |- dt_riya_new.pkl
-  |- dt_riya.h5
-  |- dl_riya.h5            
+  |- dl.h5
+  |- dt.pkl         
 - scripts
   |- __init__.py
   |- ensenble.py
