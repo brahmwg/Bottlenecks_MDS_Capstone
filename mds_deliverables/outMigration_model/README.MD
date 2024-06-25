@@ -19,8 +19,9 @@ Every year, the Pacific Salmon Foundation conducts field activity of tagging sal
 Within this folder, users will find a few sub-folders as described in the table below. 
 | Folder Name | Stored File Formats | Description |
 | --- | --- | --- |
-| Data | csv | The data directory contains CSV files used for running the scripts stored in the scripts folder. This directory is divided into two sub-folders: `raw`, which stores data extracted from the Strait of Georgia Data Center, and `processed`, which stores preprocessed data generated after executing the `scripts/outMigration_preprocessing.R` script.|
+| Data | .csv | The data directory contains CSV files used for running the scripts stored in the scripts folder. This directory is divided into two sub-folders: `raw`, which stores data extracted from the Strait of Georgia Data Center, and `processed`, which stores preprocessed data generated after executing the `scripts/outMigration_preprocessing.R` script.|
 | Scripts | .py | The scripts directory contains python scripts used for both preprocessing data and conducting outmigration prediction. These scripts include necessary steps to clean, transform, and predict outmigration timing. |
+| Demo | .ipynb | The demo directory contains a notebook file of demonstrating how the functions should be used.|
 
 ## 2. Installation
 ### 2.1 Required Pakcages
