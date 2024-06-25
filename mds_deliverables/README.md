@@ -42,7 +42,7 @@ When opening the issue, ensure to go through the appropriate labeling step to ca
 ![label_issues](../mds_documentation/img/label_issue.png)
 
 ## License
-Licenses used in this project is the **MIT License**. More detailed information can be found at [LICENSE.txt](LICENSE.txt).
+Licenses used in this project is the **MIT License**. More detailed information can be found at [LICENSE](LICENSE).
 
 ### MIT License
 The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology (MIT). It grants users the rights to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software. Additionally, it permits any person to whom the software is furnished to do so, subject to the following conditions:
