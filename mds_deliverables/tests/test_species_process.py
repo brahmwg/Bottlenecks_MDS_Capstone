@@ -3,7 +3,7 @@ import numpy as np
 import json
 from unittest.mock import patch
 
-from src.species_prediction import one_hot_encoding, processing
+from species_prediction_model.scripts.process import *
 
 def load_mock_data(file_path):
     with open(file_path, 'r') as file:

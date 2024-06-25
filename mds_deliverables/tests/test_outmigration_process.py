@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
-from src.species_prediction import preprocess_sql, preprocessing
+from outmigration_model.scripts.outMigration_preprocessing import *
 
 def load_mock_data(file_path):
     with open(file_path, 'r') as file:
@@ -48,3 +48,4 @@ def test_preprocessing():
 if __name__ == '__main__':
     test_preprocess_sql()
     test_preprocessing()
+    
