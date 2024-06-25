@@ -469,7 +469,36 @@ The pipeline code will be delivered in two scripts:
 
 ### 3.5 Data Pipeline
 
-ADD INFO HERE
+### 3.5 Data Pipeline
+
+The primary objective of implementing a pipeline is to streamline the execution of an 
+ETL (Extract, Transform, Load) procedure. ETL pipelines follow the sequential principle of
+extracting the data from the raw source, in this case the Strait of Georgia database. After this
+transforming the data to the desired format, and then loading it into a cleaner database, or table within
+the same database. By doing this, the pipeline automates the flow of data from extraction 
+all the way to transformation to loading, ensuring an efficient process. 
+The pipeline reads data from a database, processes it, and then utilizes a model to 
+make predictions based on the processed data. After that, it dumps the prediction 
+results into a specified table. This automation not only enhances efficiency of the 
+process but also allows for up-to-date data processing, providing timely insights and 
+reducing the need for manual intervention.
+
+The pipeline adheres to the following schema:
+
+![img1](../mds_deliverables/pipeline/img/pipeline.png)
+
+
+where:
+
+1. Raw table corresponds to the tables the pipelines will be reading from. These tables come from the Marine Science database.
+
+2. Process corresponds the processing script where, depending on the pipeline, different transformations of the data will be performed.
+
+3. Staging table corresponds the table where all the transformed data will be stored, in order to be read again by the Predict script. Having a staging table is very standard in the industry because it helps separate the extraction and transformation from the loading part of the pipeline, ensuring an easier debugging process.
+
+4. Predict corresponds the script that will be performed on the transformed data. This will run the models and get a prediction which will then be stored in the Results table.
+
+5. Results table corresponds where all the results from the model prediction will be stored.
 
 ## 4. Conclusion
 
