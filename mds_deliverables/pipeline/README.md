@@ -83,4 +83,5 @@ After having the `staging.species` table populated with data, you should run the
 Alternatively, this can be automated with a simple cron script.
 
 ## 4. Documentation
+There is no specific documentation for these scripts.
 All the relevant documentation can be found in their respective scripts files. This is done in order to avoid clutter and facilitate debugging.
