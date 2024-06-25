@@ -490,13 +490,13 @@ where:
 
 1. Raw table corresponds to the tables the pipelines will be reading from. These tables come from the Marine Science database.
 
-2. Process corresponds the processing script where, depending on the pipeline, different transformations of the data will be performed.
+2. Process corresponds to the processing script where, depending on the pipeline, different transformations of the data will be performed.
 
-3. Staging table corresponds the table where all the transformed data will be stored, in order to be read again by the Predict script. Having a staging table is very standard in the industry because it helps separate the extraction and transformation from the loading part of the pipeline, ensuring an easier debugging process.
+3. Staging table corresponds to the table where all the transformed data will be stored, in order to be read again by the Predict script. Having a staging table is very standard in the industry because it helps separate the extraction and transformation from the loading part of the pipeline, ensuring an easier debugging process.
 
-4. Predict corresponds the script that will be performed on the transformed data. This will run the models and get a prediction which will then be stored in the Results table.
+4. Predict corresponds to the script that will be performed on the transformed data. This will run the models and get a prediction which will then be stored in the Results table.
 
-5. Results table corresponds where all the results from the model prediction will be stored.
+5. Results table corresponds to where all the results from the model prediction will be stored.
 
 ## 4. Conclusion
 
