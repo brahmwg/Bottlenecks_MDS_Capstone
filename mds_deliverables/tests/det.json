@@ -1,0 +1,11 @@
+{
+    "species": ["ck", "co", "cm", "pink", "so", "stl", "ct", "rbt"],
+    "eye_size": ["large", "large", "medium", "medium", "very large", "small", "small", "small"],
+    "snout_shape": ["pointy", "short and blunt", "NA", "NA", "NA", "short and rounded", "long and pointy", "short and rounded"],
+    "parr_marks": ["slightly faded", "slightly faded", "faded", "NA", "slightly faded", "faded", "faded", "NA"],
+    "parr_marks_length": ["long", "long", "short", "NA", "irregular", "short", "short", "short"],
+    "spotting_density": ["medium", "medium", "medium", "NA", "NA", "high", "high", "high"],
+    "fin_type": ["anal fin", "anal fin", "caudal fin", "caudal fin", "caudal fin", "caudal fin", "caudal fin", "caudal fin"],
+    "parr_marks_spacing": ["wider than interspaces", "narrower than interspaces", "NA", "half", "variable", "variable", "variable", "NA"],
+    "spotting_characteristic": ["circle", "circle", "variable", "NA", "row", "irregular", "irregular", "NA"]
+}
