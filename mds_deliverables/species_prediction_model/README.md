@@ -8,6 +8,7 @@ The goal of this model is to accurately predict the species of a fish based on i
 - data
   |- det.json      
   |- new_field.csv
+  |- schema.md
 - demo
   |- __init__.py
   |- demo.ipynb
