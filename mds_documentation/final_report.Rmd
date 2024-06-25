@@ -224,13 +224,32 @@ the origin covariate.
 
 #### 3.2.1 Objective
 
-#### 3.2.2 Preprocessing
+The goal of this model is to accurately predict the outmigration timing of salmon. This model will take in river information including flow, level, and temperature, and then use these predictors to predict the outmigration timing of salmon. With this model, we hope to better inform the biologists at the Pacific Salmon Foundation on which day in the year that they should go out to the field to tag salmon. 
 
-#### 3.2.3 Data Science Method
+#### 3.2.2 Data Collection 
 
-#### 3.2.4 Conclusion and Future Recommendation
+The data used in this modeling is from three seperated source- the tagging history from the Pacific Salmon Foundation, the river flow and level is from the National Water Data Archive: HYDAT and the temperature data is from ECCC/MSC’s National Climate Archive. 
+The data used in for this model retrieved from five queries, they are stored in the data folder as: 
+- cowichan_historic.csv
+- data_salmon2.csv
+- flow_2023.csv
+- level_2023.csv
+- northcochiwan_daily_temp.csv
 
-### 3.3 Species Imputation model
+#### 3.2.3 Preprocessing
+After using SQL to retrieve the data from the Strait of Georgia Data Center, we used two functions to preprocess the data before using them to train the model. Function `preprocess_sql` is used to contact the 2014-2020 data stored in the cowichan_historic.csv file with the 2021-2023 data stored in the data_salmon2.csv file. The output, along with flow, level, and temperature will then be preprocessed with the preprocessing function that merges the data frames together; this function will also create the rolling mean of 30-35, 30-40, and 30-45 days prior to a given tagging date.
+![preprocessing](img/outmigration_fig1.png)
+
+#### 3.2.4 Data Science Method
+With the preprocessed data, we used a standard scaler to scale all the features with a similar scale, then we used a xgboost model to predict the salmons that will outmigrate on a given date with Lasso regression for feature selection and cross-validation for hyperparameter tuning. The model will train based on the user's input on predicting year (e.g. if the user wants to predict for 2022, the model will use everything prior to 2022 as the training set.) 
+For prediction, we applied a function that will turn all negative predictions to 0, which means that there were no outmigration on that date- then the model will return a range of dates on the predicting year based on the lower and upper quartile user decide. 
+
+#### 3.2.5 Conclusion and Future Recommendation
+We hope to better inform biologists on the outmigration date with this model. The future improvement can be done with exploring different modeling approaches and including different potential predictors. 
+
+
+
+### 3.3 Species Imputation Model 
 
 #### 3.3.1 Objective
 
