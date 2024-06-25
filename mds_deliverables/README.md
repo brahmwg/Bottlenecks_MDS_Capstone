@@ -28,7 +28,7 @@ Although our deliverables serve different purposes, we have organized the folder
 | `documentation.md` | Contains a thorough documentation that recorded our thought process at deriving the model and how to interpret the results obtained from running our models. |
 
 ## Contributing
-We welcome contributions to our project, whether it's proposing new features or modifying existing ones. To get involved, please refer to our [How To Contribute](../CONTRIBUTING.md) documentation.
+We welcome contributions to our project, whether it's proposing new features or modifying existing ones. To get involved, please refer to our [How To Contribute](CONTRIBUTING.md) documentation.
 
 This project is open-source, meaning anyone interested in its further development is encouraged to participate.
 
@@ -42,4 +42,15 @@ When opening the issue, ensure to go through the appropriate labeling step to ca
 ![label_issues](../mds_documentation/img/label_issue.png)
 
 ## License
-Licenses used in this project are listed below. More detailed information can be found at LICENSE.md. - MIT License - Copyright (c) 2023 Master of Data Science at the University of British Columbia.
+Licenses used in this project is the **MIT License**. More detailed information can be found at [LICENSE.txt](LICENSE.txt).
+
+### MIT License
+The MIT License is a permissive free software license originating at the Massachusetts Institute of Technology (MIT). It grants users the rights to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software. Additionally, it permits any person to whom the software is furnished to do so, subject to the following conditions:
+
+- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the software.
+- The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages, or other liability, whether in an action of contract, tort, or otherwise, arising from, out of, or in connection with the software or the use or other dealings in the software.
+
+### Copyright Information
+- **Copyright (c) 2023 Master of Data Science at the University of British Columbia**
+
+This license allows for broad usage and modification of the project, encouraging active collaboration and innovation while protecting the original authors from liability.
