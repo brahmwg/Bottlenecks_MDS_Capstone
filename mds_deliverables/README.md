@@ -10,8 +10,7 @@ Our data is sourced from the [Strait of Georgia Data Center](https://marinescien
 | Survival Analysis of Salmon in Saline Sea | `survival_analysis` | Contains an inference model to provide insights for the survival probabilities of salmon throughout their life stages. Employed the Cormack-Jolly-Seber survival modelling in combination with bayesian approach. |
 | Outmigration Model | `outMigration_model` | Contains a machine learning model designed to predict the outmigration dates of salmon, categorized by species ("coho" or "chinook"). |
 | Species Prediction Model (Imputation on Historical Data) | `imputation_model` | Contains a machine learning model designed to impute missing information regarding the species of salmon in historically collected data. |
-| Species Prediction Model (Prediction on Cureent Data) |
-`species_prediction_model` | Contains a machine learning model developed to predict the species of salmon based on various input features. |
+| Species Prediction Model (Prediction on Cureent Data) | `species_prediction_model` | Contains a machine learning model developed to predict the species of salmon based on various input features. |
 | SQL Queries | `query_catalogue` | Contains a comprehensive list of SQL queries requested by our partner. Each query is followed by detailed instructions outlining the specific information or insights the query aims to retrieve. |
 
 ## Common Folder Structure
@@ -23,6 +22,7 @@ Although our deliverables serve different purposes, we have organized the folder
 | `scripts` | Contains a `.py` or `.R` file with end-to-end scripts, from data preprocessing to model evaluation. |
 | `demo` | Contains a Jupyter notebook (`.ipynb`) file demonstrating how to use the model. |
 | `data` | Contains raw input data (`data/raw`) and preprocessed data frames from previous steps (`data/preprocessed`). |
+| `plots` | Contains plots that are generated during the model training or evaluation purposes. |
 | `notebooks` | Contains exploration notebooks (`.ipynb`) that document the steps leading to the current model. |
 | `environment.yml` | Contains an environment file (`.yml` or `renv.lock`) that can be used to install all prerequisite libraries needed to run the model. |
 | `documentation.md` | Contains a thorough documentation that recorded our thought process at deriving the model and how to interpret the results obtained from running our models. |
