@@ -81,3 +81,6 @@ After having the `staging.species` table populated with data, you should run the
 ### 3.3 Alternative ways of running the pipeline
 
 Alternatively, this can be automated with a simple cron script.
+
+## 4. Documentation
+All the relevant documentation can be found in their respective scripts files. This is done in order to avoid clutter and facilitate debugging.
