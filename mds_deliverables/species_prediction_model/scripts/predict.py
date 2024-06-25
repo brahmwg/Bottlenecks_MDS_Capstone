@@ -1,12 +1,29 @@
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-import tensorflow as tf
-from tensorflow.keras import layers
-from tensorflow.keras.optimizers import Adam
+from sklearn.ensemble import RandomForestClassifier
 
 def preprocess_data(data):
+    """
+    Splits the input data into two subsets: deterministic and probabilistic columns.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing all features.
+
+    Returns
+    -------
+    det_data : pandas.DataFrame
+        Subset of the input data containing only deterministic columns.
+        
+    prob_data : pandas.DataFrame
+        Subset of the input data containing only probabilistic columns.
+
+    Notes
+    -----
+    - This function assumes that the input data contains all necessary columns listed in `det_cols` and `prob_cols`.
+    """
     det_cols = ['tag_id_long', 'species', 'eye_size_large', 'eye_size_medium', 'eye_size_small',
                'eye_size_very large', 'snout_shape_NA', 'snout_shape_long and pointy',
                'snout_shape_pointy', 'snout_shape_short and blunt',
@@ -50,6 +67,23 @@ def preprocess_data(data):
     return det_data, prob_data
 
 def voting_classifier_deterministic(data):
+    """
+    Applies an ensemble voting classifier to the input data using multiple deterministic decision trees.
+
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing features and target labels.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' and the corresponding predicted species.
+
+    Notes
+    -----
+    - The final prediction for each sample is determined by majority vote among the individual trees.
+    """
     random_numbers = [42, 231, 351, 701, 996, 523, 710, 686, 568, 268]
 
     X = data.drop(['species','tag_id_long'], axis=1)
@@ -79,7 +113,26 @@ def voting_classifier_deterministic(data):
     return data[['tag_id_long','prediction']]
 
 def voting_classifier_probabilistic(data): 
+    """
+    Applies an ensemble voting classifier using a decision tree and a random forest on the input data.
 
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        The input data containing features and target labels.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' along with predictions from both the decision tree and the random forest classifiers.
+
+    Notes
+    -----
+    - Predictions from both classifiers are added to the input data as new columns: 'dt_prediction' and 'rf_prediction'.
+    """
+
+    data = data.copy()
+    data = data.dropna()
     X = data.drop(['species', 'tag_id_long'], axis=1)
     y = data['species']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -89,46 +142,45 @@ def voting_classifier_probabilistic(data):
                                 random_state = 42)
     dt.fit(X_train, y_train)
 
-    scaler = StandardScaler()
-    X['fork_length_mm'] = scaler.fit_transform(X[['fork_length_mm']])
-    le = LabelEncoder()
-    y_enc = le.fit_transform(y)
-    y_label = tf.keras.utils.to_categorical(y_enc)
-    X_train, X_test, y_train, y_test = train_test_split(X, y_label, test_size=0.2, random_state=42)
-
-    num_features = X.shape[1]
-    dl_model = tf.keras.Sequential([
-        layers.Input(shape=(num_features,)),
-        layers.Dense(128, activation='relu'),
-        layers.Dense(64, activation='relu'),
-        layers.Dense(8, activation='softmax')  #change based on number of labels
-    ])
-    dl_model.compile(optimizer=Adam(learning_rate=0.0001),        
-    loss='categorical_crossentropy',  
-    metrics=['accuracy']) 
-    dl_model.fit(X_train, y_train, 
-                    epochs = 20, 
-                    batch_size = 32, 
-                    validation_split=0.2)
-
+    rf = RandomForestClassifier(n_estimators=100, random_state=42)
+    rf.fit(X_train, y_train)
 
     dt_pred = dt.predict(X)
 
-    dl_pred = dl_model.predict(X) 
-    dl_pred_df = pd.DataFrame(dl_pred, columns=le.classes_) # in a table format showing all the confidences for each label
-    max_label = [] # to extract the label with highest confidence
-    for i in range(dl_pred_df.shape[0]):
-        max_label.append(dl_pred_df.iloc[i].idxmax())
+    rf_pred = rf.predict(X) 
 
+    data['dt_prediction'] = dt_pred
+    data['rf_prediction'] = rf_pred
 
-    prob_data['dt_prediction'] = dt_pred
-    prob_data['dl_prediction'] = max_label
-
-    return prob_data[['tag_id_long','dt_prediction', 'dl_prediction']]
+    return data[['tag_id_long','dt_prediction', 'rf_prediction']]
 
 
 
 def voting_classifier(det_results,prob_results):
+    """
+    Combines deterministic and probabilistic classification results to return a final ensemble prediction.
+
+    Parameters
+    ----------
+    det_results : pandas.DataFrame
+        DataFrame containing deterministic classification results.
+        
+    prob_results : pandas.DataFrame
+        DataFrame containing probabilistic classification results.
+
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame containing 'tag_id_long' and the final ensemble prediction.
+
+    Notes
+    -----
+    - The two input DataFrames are merged on 'tag_id_long'.
+    - The final prediction is determined by the following rules:
+        - If 'pink' is among the predictions, the final prediction is 'pink'.
+        - If 'so' is among the predictions, the final prediction is 'so'.
+        - Otherwise, the final prediction is the most common prediction among the three.
+    """
     df = det_results.merge(prob_results,on='tag_id_long',how='left')
     df.columns = ['tag_id_long','pred_1','pred_2','pred_3']
 

@@ -8,6 +8,7 @@ The goal of this model is to accurately predict the species of a fish based on i
 - data
   |- det.json      
   |- new_field.csv
+  |- schema.md
 - demo
   |- __init__.py
   |- demo.ipynb
@@ -21,10 +22,8 @@ The goal of this model is to accurately predict the species of a fish based on i
 - img
   |- Decision_tree.png
 - model
-  |- dl_riya_new.h5
-  |- dt_riya_new.pkl
-  |- dt_riya.h5
-  |- dl_riya.h5            
+  |- dl.h5
+  |- dt.pkl         
 - scripts
   |- __init__.py
   |- ensenble.py
@@ -74,10 +73,7 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
-from sklearn.preprocessing import StandardScaler, LabelEncoder
-import tensorflow as tf
-from tensorflow.keras import layers
-from tensorflow.keras.optimizers import Adam
+from sklearn.ensemble import RandomForestClassifier
 ```
 
 ## 3. Demo
@@ -92,3 +88,5 @@ Once you install and activate the environment, run the `demo.ipynb` file to view
 | 989.001038888882 | ck     | ck     | ck     | ck         |
 | 989.001038889013 | co     | co     | ck     | co         |
 
+## 4. Disclaimer
+There are files called `__init__.py`. These files serve the sole purpose of self-referencing for the scripts.

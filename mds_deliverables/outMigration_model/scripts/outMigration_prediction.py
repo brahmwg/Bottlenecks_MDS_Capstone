@@ -8,9 +8,37 @@ from sklearn.metrics import mean_squared_error
 import xgboost as xgb
 import matplotlib.pyplot as plt
 import pyarrow 
+import joblib
 
-def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plot=False):
-    df = pd.read_csv(df_name)
+def prediction(df, prediction_year, lower_percentile, upper_percentile, plot=False):
+    """
+    Predicts the count of salmon for a specified year based on lagged differences and environmental variables, 
+    then selects a specific percentile range of predictions. Optionally plots the prediction results.
+
+    The function processes the input DataFrame by creating lagged features, handling missing values,
+    filtering data based on the specified year and months, and scaling features. It trains a Lasso model
+    to select features and an XGBRegressor for the final prediction. The function calculates the cumulative 
+    percentage of predicted counts and extracts data within the specified percentile range. If plotting is 
+    enabled, it visualizes the adjusted predictions along with key dates.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame 
+        The DataFrame containing salmon data with columns for date, year, month, count, and environmental variables.
+    prediction_year: int 
+        The year for which predictions are to be made.
+    lower_percentile: int 
+        The lower bound of the percentile range for filtering predictions.
+    upper_percentile: int 
+        The upper bound of the percentile range for filtering predictions.
+    plot: bool
+        If True, the function plots the results of the predictions.
+
+    Returns
+    ----------
+        None
+    """
+    
     recent_year = df["year"].max()
     df["date"] = pd.to_datetime(df["date"], format='%Y-%m-%d')
     df['count_diff'] = df['count'].diff().dropna()
@@ -84,6 +112,8 @@ def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plo
     start_date_str = result_df["date"].iloc[0].strftime("%Y-%m-%d")
     end_date_str = result_df["date"].iloc[-1].strftime("%Y-%m-%d")
 
+    joblib.dump(model, '../model/outmigrationModel.pkl')
+    
     if plot:
         df_plot = test.copy()
         df_plot = df_plot[df_plot["year"] == prediction_year]
@@ -103,11 +133,13 @@ def prediction(df_name, prediction_year, lower_percentile, upper_percentile, plo
 
     print(f"{lower_percentile}% to {upper_percentile}% of salmon are predicted to be tagged between: {start_date_str} to {end_date_str}.")
 
+
 if __name__ == "__main__":
     df_name = "../data/preprocessed/preprocessed_ck.csv"
+    df = pd.read_csv(df_name)
     prediction_year = 2022
     lower_percentile = 5
     upper_percentile = 10
     plot = True  # Change to False if you do not want to plot the results
 
-    prediction(df_name, prediction_year, lower_percentile, upper_percentile, plot)
+    prediction(df, prediction_year, lower_percentile, upper_percentile, plot)
