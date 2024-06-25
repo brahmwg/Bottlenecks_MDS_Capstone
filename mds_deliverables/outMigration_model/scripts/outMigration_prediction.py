@@ -8,6 +8,7 @@ from sklearn.metrics import mean_squared_error
 import xgboost as xgb
 import matplotlib.pyplot as plt
 import pyarrow 
+import joblib
 
 def prediction(df, prediction_year, lower_percentile, upper_percentile, plot=False):
     """
@@ -111,6 +112,8 @@ def prediction(df, prediction_year, lower_percentile, upper_percentile, plot=Fal
     start_date_str = result_df["date"].iloc[0].strftime("%Y-%m-%d")
     end_date_str = result_df["date"].iloc[-1].strftime("%Y-%m-%d")
 
+    joblib.dump(model, '../model/outmigrationModel.pkl')
+    
     if plot:
         df_plot = test.copy()
         df_plot = df_plot[df_plot["year"] == prediction_year]
