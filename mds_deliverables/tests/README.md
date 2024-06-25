@@ -34,7 +34,7 @@ To run the tests for the functions, follow these steps:
    - If all tests pass, you will be return a newline character `\n`.
    - If any test fails, the scripts will output the error.
 
-## Additional Notes
+## **Additional Notes**
 
 - Ensure that your environment is properly set up and activated before running the tests.
 - Adjust paths and specific commands based on your project structure and environment setup.
