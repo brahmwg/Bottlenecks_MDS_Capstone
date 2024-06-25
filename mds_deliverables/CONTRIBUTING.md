@@ -63,4 +63,4 @@ Before you submit a pull request, check that it meets these guidelines:
 ## Code of Conduct
 
 Please note that the `Bottlenecks_MDS_capstone` project is released with a
-Code of Conduct. By contributing to this project you agree to abide by its terms.
+[Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project you agree to abide by its terms.
