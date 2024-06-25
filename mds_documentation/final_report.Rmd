@@ -485,7 +485,7 @@ reducing the need for manual intervention.
 
 The pipeline adheres to the following schema:
 
-![img1](../mds_deliverables/pipeline/img/pipeline.png)
+![Flow chart of the pipeline.](../mds_deliverables/pipeline/img/pipeline.png)
 
 
 where:
