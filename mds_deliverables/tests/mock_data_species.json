@@ -1,6 +1,7 @@
 {
     "data": {
         "tag_id_long": [111,222],
+        "species": ["ck", "ck"],
         "eye_size_large": [1, 0],
         "eye_size_medium": [0, 1],
         "eye_size_small": [0, 0],

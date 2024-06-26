@@ -1,7 +1,10 @@
 import pandas as pd
 import numpy as np
 import json
-from outmigration_model.scripts.outMigration_preprocessing import *
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from outMigration_model.scripts.outMigration_preprocessing import preprocess_sql, preprocessing
 
 def load_mock_data(file_path):
     with open(file_path, 'r') as file:
@@ -9,11 +12,12 @@ def load_mock_data(file_path):
     return data
 
 def test_preprocess_sql():
-    mock_data = load_mock_data('mock_data.json')
+    mock_data = load_mock_data('mock_data_outmigration_raw.json')
+    new_mock = pd.DataFrame(mock_data)
+    output = new_mock[['salmon_data','cowichan_historic_data']]
     salmon = pd.DataFrame(mock_data['salmon_data'])
     cowichan_historic = pd.DataFrame(mock_data['cowichan_historic_data'])
-    
-    result = preprocess_sql(salmon, cowichan_historic)
+    result = preprocess_sql(salmon, cowichan_historic, output)
 
     expected_columns = ['date', 'count', 'site1', 'site2', 'ck', 'co']
     
