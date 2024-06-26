@@ -1,5 +1,5 @@
 ---
-title: "Survival Analysis of Salmon in the Saline Sea"
+title: "Survival Analysis of Salmon in the Salish Sea"
 author: "Jenny Lee, Arturo Rey, Rafe Chang, Riya Eliza"
 date: "26/06/2024"
 output:
@@ -132,7 +132,7 @@ all 5 stages.
 
 ![Proprocessing pipeline](img/preprocessing_survival.png)
 
-### 3.1.2 Data Science Methods
+### 3.1.2 Cormack-Jolly-Seber model with Bayesian approach
 
 Our study implemented the Cormack-Jolly-Seber (CJS) model (Cormack,
 1964; Jolly, 1965; Seber, 1965), which was originally designed for
@@ -241,7 +241,7 @@ tagging date.
 
 ![preprocessing](img/outmigration_fig1.png)
 
-### 3.2.4 Data Science Method
+### 3.2.4 XGBoost and Lasso
 
 We employed an XGBoost model (extreme gradient boosting) to predict salmon 
 outmigration on specific dates. XGBoost is used because of its high accuracy- 
