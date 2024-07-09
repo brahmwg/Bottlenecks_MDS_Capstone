@@ -1,0 +1,22 @@
+CREATE TABLE comb_df (
+    date DATE,
+    month INTEGER,
+    year INTEGER,
+    temp DOUBLE PRECISION,
+    flow DOUBLE PRECISION,
+    level DOUBLE PRECISION,
+    count INTEGER,
+    october_flow DOUBLE PRECISION,
+    november_flow DOUBLE PRECISION,
+    december_temp DOUBLE PRECISION,
+    january_temp DOUBLE PRECISION,
+    february_temp DOUBLE PRECISION,
+    october_level DOUBLE PRECISION,
+    november_level DOUBLE PRECISION,
+    rolling_temp_mean_15 DOUBLE PRECISION,
+    rolling_temp_std_15 DOUBLE PRECISION,
+    rolling_flow_mean_15 DOUBLE PRECISION,
+    rolling_flow_std_15 DOUBLE PRECISION,
+    rolling_level_mean_15 DOUBLE PRECISION,
+    rolling_level_std_15 DOUBLE PRECISION
+);
