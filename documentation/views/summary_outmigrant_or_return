@@ -1,9 +1,0 @@
-SELECT count(*) AS count,
-    stock AS system,
-    species,
-    year,
-    source AS period,
-    migration_status
-   FROM ods.outmigrant_or_return
-  GROUP BY stock, species, year, source, migration_status
-  ORDER BY (count(*)) DESC;
